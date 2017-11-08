@@ -627,10 +627,10 @@ class MAX30102:
 
     def check(self):
         firsttime = 0
-        readPointer =self.getReadPointer()
-        # readPointer = 1
+        #readPointer =self.getReadPointer()
+        readPointer = 1
         writePointer = self.getWriterPointer()
-
+         
         print readPointer
         numberOfSamples = writePointer - readPointer
         if numberOfSamples < 0:
