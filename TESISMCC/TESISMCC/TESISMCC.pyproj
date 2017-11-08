@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ADC.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MAX3010X.py">
       <SubType>Code</SubType>
     </Compile>
