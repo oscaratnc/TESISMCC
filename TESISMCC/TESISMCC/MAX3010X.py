@@ -627,7 +627,7 @@ class MAX30102:
 
     def check(self):
         firsttime = 0
-        readPointer = self.getReadPointer()
+        print readPointer = self.getReadPointer()
         # readPointer = 1
         writePointer = self.getWriterPointer()
 

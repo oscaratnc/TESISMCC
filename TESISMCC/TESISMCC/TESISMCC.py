@@ -1,5 +1,9 @@
 import MAX3010X as MAX30102
 import RPi.GPIO as GPIO
+import ptvsd
+
+ptvsd.enable_attach(secret = "Rpi")
+
 
 GPIO.setmode(GPIO.BCM)
 max102 = MAX30102.MAX30102.max102
