@@ -624,7 +624,6 @@ class MAX30102:
             Sense.Tail = Sense.Tail % Sense.STORAGE_SIZE
             print "sense tail : ", Sense.Tail
 
-
     def check(self):
         firsttime = 0
         #readPointer =self.getReadPointer()
@@ -636,6 +635,7 @@ class MAX30102:
         if numberOfSamples < 0:
             numberOfSamples = numberOfSamples + 32
         print numberOfSamples
+        
 
 
 
