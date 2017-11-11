@@ -22,11 +22,11 @@ Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PA
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
 Spo2Sensor.check()
-
+bus = Spo2Sensor.max102
 i=0 
 while i in range (12):
     print "read pointer", i,": ", Spo2Sensor.getReadPointer()
-    sample = SMBus.read_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG)
+    sample = bus.read_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG)
     print "value:", sample
     print "read pointer",i,":", Spo2Sensor.getReadPointer()
     i=i+1
