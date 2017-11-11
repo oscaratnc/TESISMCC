@@ -1,8 +1,10 @@
 import MAX3010X as MAX30102
+from smbus2 import SMBus
+
 import RPi.GPIO as GPIO
 import ptvsd
 
-ptvsd.enable_attach(secret = "Rpi")
+ptvsd.enable_attach(secret = 'Rpi')
 
 
 GPIO.setmode(GPIO.BCM)
@@ -21,14 +23,17 @@ Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
 Spo2Sensor.check()
 
+i=0 
+while i in range (12):
+    print "read pointer", i,": ", Spo2Sensor.getReadPointer()
+    sample = SMBus.read_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG)
+    print "value:", sample
+    print "read pointer",i,":", Spo2Sensor.getReadPointer()
+    i=i+1
 
 
 
-
-
-
-#while i < 10:
- #   print "read pointer 1: ", Spo2Sensor.getReadPointer()
+  #   print "read pointer 1: ", Spo2Sensor.getReadPointer()
   #  sample = max102.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,6)
   # print "read pointer 2: ", Spo2Sensor.getReadPointer()
   #  print "sample read:", sample
