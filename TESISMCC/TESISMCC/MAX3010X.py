@@ -132,9 +132,9 @@ class MAX30102:
 
     MAX30102_EXPECTED_PARTID = 0x15
     # REGISTER DEFINITION END
-
+        
     BUS = 1
-    max102 = smbus.SMBus(1)
+    max102 = SMBus(BUS) 
     MAX30102_ADDRESS = 0x57
     activeLeds = 3
 
