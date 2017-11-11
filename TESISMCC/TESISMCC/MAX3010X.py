@@ -1,5 +1,5 @@
 
-import smbus
+from smbus2 import SMBus
 import wiringpi as wiry
 
 class Sense:
