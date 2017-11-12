@@ -630,11 +630,11 @@ class MAX30102:
             readPointer += 1
             self.max102.write_byte_data(self.MAX30102_ADDRESS, self.MAX30102_FIFOREADPTR, readPointer)
         if readPointer != writePointer:   
-            print readPointer
+           # print readPointer
             numberOfSamples = writePointer - readPointer
             if numberOfSamples < 0:
                 numberOfSamples = numberOfSamples + 32
-            print numberOfSamples
+           # print numberOfSamples
 
             bytesLeftToRead = numberOfSamples * self.activeLeds * 3
             I2C_BUFFER_LENGTH = 32
