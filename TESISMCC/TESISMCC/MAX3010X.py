@@ -688,9 +688,9 @@ class MAX30102:
                     #print "Sense RED: ", Sense.red
                     #print "Sense IR: ", Sense.IR
                     
-                else:
-                    print "Read and Write are the same"
-                    print "# Samples: ", numberOfSamples
+                #else:
+                    #print "Read and Write are the same"
+                    #print "# Samples: ", numberOfSamples
             return numberOfSamples
     # Check for new data but give up after a certain amount of time
     # Returns true if new data was found
