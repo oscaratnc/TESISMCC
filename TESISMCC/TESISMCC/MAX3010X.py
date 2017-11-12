@@ -637,7 +637,7 @@ class MAX30102:
         print numberOfSamples
 
         i=0 
-        while i in range (13):
+        while i in range (numberOfSamples):
             Samples = [None]
             print "read pointer", i,": ", self.getReadPointer()
             Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,6)
