@@ -670,7 +670,7 @@ class MAX30102:
                     temp[2] = Samples[1]
                     temp[3] = Samples[2]
    
-                    print temp
+                   # print temp
                     tempLong = self.concatbyte(temp)
                     tempLong = tempLong & 0x3FFFF
                     Sense.red[Sense.Head] = tempLong
@@ -681,7 +681,7 @@ class MAX30102:
                         temp[1] = Samples[3]
                         temp[2] = Samples[4]
                         temp[3] = Samples[5]
-                        print temp
+                        #print temp
                         tempLong = self.concatbyte(temp)
                         tempLong = tempLong & 0x3FFFF
                         Sense.IR[Sense.Head] = tempLong
