@@ -28,6 +28,8 @@ while i in range (13):
     print "read pointer", i,": ", Spo2Sensor.getReadPointer()
     sample = bus.read_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG)
     print "value:", sample
+    readPointer = Spo2Sensor.getReadPointer
+    bus.write_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFOREADPTR, readPointer+1)
     print "read pointer",i,":", Spo2Sensor.getReadPointer()
     i=i+1
 
