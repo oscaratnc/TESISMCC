@@ -688,6 +688,9 @@ class MAX30102:
                         print "IR: ", Sense.IR[Sense.Head]
                     toGet -= self.activeLeds * 3
                     print "toGet: ",toGet
+                    print "Sense RED: ", Sense.red
+                    print "Sense IR: ", Sense.IR
+                    
                 else:
                     print "Read and Write are the same"
                     print "# Samples: ", numberOfSamples
