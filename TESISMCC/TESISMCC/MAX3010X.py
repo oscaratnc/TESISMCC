@@ -670,8 +670,19 @@ class MAX30102:
                     print temp
                     tempLong = self.concatbyte(temp)
                     tempLong = tempLong & 0x3FFFF
-                    print "RED: ", tempLong
+                    Sense.red[Sense.Head] = tempLong
+                                               
+                    print "RED: ", Sense.red[Sense.Head]
 
+                    if self.activeLeds>1:
+                        temp[1] = Samples[3]
+                        temp[2] = Samples[4]
+                        temp[3] = Samples[5]
+                        print temp
+                        tempLong = self.concatbyte(temp)
+                        tempLong = tempLong & 0x3FFFF
+                        Sense.IR[Sense.Head] = tempLong
+                        print "IR: ", Sense.IR[Sense.Head]
                     toGet -= self.activeLeds * 3
                     print "toGet: ",toGet
                 else:
