@@ -22,7 +22,7 @@ Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PA
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
 i = 0
-while (i in range (10):
+while i in range (10):
     print "R[ ", Spo2Sensor.getRed(), " ] IR[  ", Spo2Sensor.getIR()," ]"
     i+=1
 
