@@ -626,26 +626,65 @@ class MAX30102:
 
     def check(self):
         firsttime = 0
-        #readPointer =self.getReadPointer()
-        readPointer = 1
+        readPointer =self.getReadPointer()
         writePointer = self.getWriterPointer()
-         
-        print readPointer
-        numberOfSamples = writePointer - readPointer
-        if numberOfSamples < 0:
-            numberOfSamples = numberOfSamples + 32
-        print numberOfSamples
 
-        i=0 
-        while i in range (numberOfSamples):
-            Samples = [None]
-            print "read pointer", i,": ", self.getReadPointer()
-            Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,6)
-            print Samples
-            print "read pointer",i,":", self.getReadPointer()
-            readPointer = self.getReadPointer()
-            i=i+1
-        
+        if readPointer == firsttime:
+            readPointer += 1
+            self.max102.write_byte_data(self.MAX30102_ADDRESS, self.MAX30102_FIFOREADPTR, readPointer)
+        if readPointer != writePointer:   
+            print readPointer
+            numberOfSamples = writePointer - readPointer
+            if numberOfSamples < 0:
+                numberOfSamples = numberOfSamples + 32
+            print numberOfSamples
+
+            bytesLeftToRead = numberOfSamples * self.activeLeds * 3
+            I2C_BUFFER_LENGTH = 32
+
+            while bytesLeftToRead > 0:
+                toGet = bytesLeftToRead
+                if toGet > I2C_BUFFER_LENGTH:
+                   toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
+                bytesLeftToRead = bytesLeftToRead - toGet
+                print "R1: ", self.getReadPointer()
+                print "toGet_init: ", toGet
+                while toGet > 0:
+                    print toGet
+                    Sense.Head = Sense.Head + 1
+                    Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
+                    
+                    Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
+                    print Samples
+                    print "R2: ", self.getReadPointer()
+                    tempLong= []*4
+                    temp= []*4
+
+                    temp[0] = 0
+                    temp[1] = Samples[0]
+                    temp[2] = Samples[1]
+                    temp[3] = Samples[2]
+
+                    tempLong = self.concatbyte(temp)
+                    print tempLong
+
+                    toGet -= self.activeLeds * 3
+                else:
+                    print "Read and Write are the same"
+                    print numberOfSamples
+            return numberOfSamples
+
+
+            #i=0 
+            #while i in range (numberOfSamples):
+            #    Samples = [None]
+            #    print "read pointer", i,": ", self.getReadPointer()
+            #    Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,6)
+            #    print Samples
+            #    print "read pointer",i,":", self.getReadPointer()
+            #    readPointer = self.getReadPointer()
+            #    i=i+1
+       
 
 
 
