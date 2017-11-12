@@ -670,7 +670,7 @@ class MAX30102:
                    # print temp
                     tempLong = self.concatbyte(temp)
                     tempLong = tempLong & 0x3FFFF
-                    Sense.red[Sense.Head] = (tempLong*5)/262144
+                    Sense.red[Sense.Head] = (tempLong*3.3)/262144
                                                
                     #print "RED: ", Sense.red[Sense.Head]
 
