@@ -658,7 +658,10 @@ class MAX30102:
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
-                    print "Samples Ready" 
+                    print"################################"
+                    print "Samples Ready"
+                    print "Samples:", Samples 
+                    print "############################"
                     print "R2: ", self.getReadPointer()
                     tempLong= [None]*4
                     temp= [0]*4
