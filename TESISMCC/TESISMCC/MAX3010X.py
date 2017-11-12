@@ -643,11 +643,12 @@ class MAX30102:
             I2C_BUFFER_LENGTH = 32
 
             while bytesLeftToRead > 0:
-                print "BLTR: ",bytesLeftToRead
+                
                 toGet = bytesLeftToRead
                 if toGet > I2C_BUFFER_LENGTH:
                    toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
                 bytesLeftToRead = bytesLeftToRead - toGet
+                print "BLTR: ",bytesLeftToRead
                 print "R1: ", self.getReadPointer()
                 print "toGet_init: ", toGet
                 while toGet > 0:
