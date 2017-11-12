@@ -27,7 +27,7 @@ i=0
 while i in range (13):
     Samples = [None]
     print "read pointer", i,": ", Spo2Sensor.getReadPointer()
-    Samples.append(bus.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,3))
+    Samples.append(bus.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,6))
     readPointer = Spo2Sensor.getReadPointer()
     #bus.write_byte_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFOREADPTR, readPointer+1)
     print "read pointer",i,":", Spo2Sensor.getReadPointer()
