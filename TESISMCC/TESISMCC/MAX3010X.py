@@ -666,6 +666,7 @@ class MAX30102:
                     temp[3] = Samples[2]
 
                     tempLong = self.concatbyte(temp)
+                    tempLong = tempLong & 0x3FFFF
                     print tempLong
 
                     toGet -= self.activeLeds * 3
