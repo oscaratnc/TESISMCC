@@ -650,7 +650,7 @@ class MAX30102:
                 print "R1: ", self.getReadPointer()
                 print "toGet_init: ", toGet
                 while toGet > 0:
-                    print toGet
+                    print "toGet: ",toGet
                     Sense.Head = Sense.Head + 1
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
@@ -665,7 +665,7 @@ class MAX30102:
                     temp[2] = Samples[1]
                     temp[3] = Samples[2]
 
-                   # tempLong = self.concatbyte(temp)
+                    tempLong = self.concatbyte(temp)
                     print tempLong
 
                     toGet -= self.activeLeds * 3
