@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import ptvsd
 
 ptvsd.enable_attach(secret = 'Rpi')
-
+#10.206.251.180
 
 GPIO.setmode(GPIO.BCM)
 max102 = MAX30102.MAX30102.max102

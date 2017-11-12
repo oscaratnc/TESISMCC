@@ -639,11 +639,11 @@ class MAX30102:
         i=0 
         while i in range (13):
             Samples = [None]
-            print "read pointer", i,": ", Spo2Sensor.getReadPointer()
-            Samples = bus.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,6)
+            print "read pointer", i,": ", self.getReadPointer()
+            Samples = bus.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,6)
             print Samples
-            print "read pointer",i,":", Spo2Sensor.getReadPointer()
-            readPointer = Spo2Sensor.getReadPointer()
+            print "read pointer",i,":", self.getReadPointer()
+            readPointer = self.getReadPointer()
             i=i+1
         
 
