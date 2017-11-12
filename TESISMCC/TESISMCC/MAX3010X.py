@@ -657,10 +657,10 @@ class MAX30102:
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     print Samples
                     print "R2: ", self.getReadPointer()
-                    tempLong= []*4
-                    temp= []*4
+                    tempLong= [None]*4
+                    temp= [0]*4
 
-                    temp[0] = 0
+                   
                     temp[1] = Samples[0]
                     temp[2] = Samples[1]
                     temp[3] = Samples[2]
