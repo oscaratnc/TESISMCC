@@ -650,7 +650,7 @@ class MAX30102:
                 print "R1: ", self.getReadPointer()
                 print "toGet_init: ", toGet
                 while toGet > 0:
-                    print "toGet: ",toGet
+                    
                     Sense.Head = Sense.Head + 1
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
@@ -670,9 +670,10 @@ class MAX30102:
                     print tempLong
 
                     toGet -= self.activeLeds * 3
+                    print "toGet: ",toGet
                 else:
                     print "Read and Write are the same"
-                    print numberOfSamples
+                    print "# Samples: ", numberOfSamples
             return numberOfSamples
 
 
