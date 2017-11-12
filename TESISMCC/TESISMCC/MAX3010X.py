@@ -643,6 +643,7 @@ class MAX30102:
             I2C_BUFFER_LENGTH = 32
 
             while bytesLeftToRead > 0:
+                print "BLTR: ",bytesLeftToRead
                 toGet = bytesLeftToRead
                 if toGet > I2C_BUFFER_LENGTH:
                    toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
@@ -655,7 +656,7 @@ class MAX30102:
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
-                    #print Samples
+                    print "Samples Ready" 
                     print "R2: ", self.getReadPointer()
                     tempLong= [None]*4
                     temp= [0]*4
