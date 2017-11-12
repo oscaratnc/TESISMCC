@@ -645,21 +645,21 @@ class MAX30102:
                 if toGet > I2C_BUFFER_LENGTH:
                    toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
                 bytesLeftToRead = bytesLeftToRead - toGet
-                print "toGEt: ",toGet
-                print "BLTR: ",bytesLeftToRead
-                print "R1: ", self.getReadPointer()
-                print "toGet_init: ", toGet
+                ##print "toGEt: ",toGet
+                ##print "BLTR: ",bytesLeftToRead
+                ##print "R1: ", self.getReadPointer()
+                ##print "toGet_init: ", toGet
                 while toGet > 0:
                     
                     Sense.Head = Sense.Head + 1
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
-                    print"################################"
-                    print "Samples Ready"
-                    #print "Samples:", Samples 
-                    print "############################"
-                    print "R2: ", self.getReadPointer()
+                    #print"################################"
+                    #print "Samples Ready"
+                    ##print "Samples:", Samples 
+                    #print "############################"
+                    #print "R2: ", self.getReadPointer()
                     tempLong= []*4
                     temp= [0]*4
 
@@ -672,7 +672,7 @@ class MAX30102:
                     tempLong = tempLong & 0x3FFFF
                     Sense.red[Sense.Head] = tempLong
                                                
-                    print "RED: ", Sense.red[Sense.Head]
+                    #print "RED: ", Sense.red[Sense.Head]
 
                     if self.activeLeds>1:
                         temp[1] = Samples[3]
@@ -682,15 +682,15 @@ class MAX30102:
                         tempLong = self.concatbyte(temp)
                         tempLong = tempLong & 0x3FFFF
                         Sense.IR[Sense.Head] = tempLong
-                        print "IR: ", Sense.IR[Sense.Head]
+                      #  print "IR: ", Sense.IR[Sense.Head]
                     toGet -= self.activeLeds * 3
-                    print "toGet: ",toGet
-                    print "Sense RED: ", Sense.red
-                    print "Sense IR: ", Sense.IR
+                    #print "toGet: ",toGet
+                    #print "Sense RED: ", Sense.red
+                    #print "Sense IR: ", Sense.IR
                     
                 else:
-                    print "Read and Write are the same"
-                    print "# Samples: ", numberOfSamples
+                    #print "Read and Write are the same"
+                    #print "# Samples: ", numberOfSamples
             return numberOfSamples
     # Check for new data but give up after a certain amount of time
     # Returns true if new data was found
