@@ -23,8 +23,8 @@ Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
 i = 0
 while i in range (100):
-    Red =  Spo2Sensor.getRed()
-    IR = Spo2Sensor.getIR()
+    Red[i] =  Spo2Sensor.getRed()
+    IR[i] = Spo2Sensor.getIR()
     i+=1
    
     print Red
