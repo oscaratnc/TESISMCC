@@ -635,6 +635,16 @@ class MAX30102:
         if numberOfSamples < 0:
             numberOfSamples = numberOfSamples + 32
         print numberOfSamples
+
+        i=0 
+        while i in range (13):
+            Samples = [None]
+            print "read pointer", i,": ", Spo2Sensor.getReadPointer()
+            Samples = bus.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,6)
+            print Samples
+            print "read pointer",i,":", Spo2Sensor.getReadPointer()
+            readPointer = Spo2Sensor.getReadPointer()
+            i=i+1
         
 
 
