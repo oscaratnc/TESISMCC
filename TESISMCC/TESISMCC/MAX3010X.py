@@ -582,14 +582,11 @@ class MAX30102:
 
     # TELL CALLER HOW MANY SAMPLES ARE AVAILABLE
 
-    def available(self):
-        print "Head: ", Sense.Head, "Tail: ", Sense.Tail
+    def available(self): 
         numberOfSamples = Sense.Head - Sense.Tail
-        print "Head - Tail: ", numberOfSamples
         if numberOfSamples < 0:
             numberOfSamples += Sense.STORAGE_SIZE
-        print "samples available:", numberOfSamples
-        return numberOfSamples, True
+            return numberOfSamples, True
 
 
     def getRed(self):
@@ -695,30 +692,6 @@ class MAX30102:
                     print "Read and Write are the same"
                     print "# Samples: ", numberOfSamples
             return numberOfSamples
-
-
-            #i=0 
-            #while i in range (numberOfSamples):
-            #    Samples = [None]
-            #    print "read pointer", i,": ", self.getReadPointer()
-            #    Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,6)
-            #    print Samples
-            #    print "read pointer",i,":", self.getReadPointer()
-            #    readPointer = self.getReadPointer()
-            #    i=i+1
-       
-
-
-
-
-
-
-
-
-
-
-
-        #
     # Check for new data but give up after a certain amount of time
     # Returns true if new data was found
     # Returns false if new data was not found
