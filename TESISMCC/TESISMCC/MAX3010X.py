@@ -670,8 +670,8 @@ class MAX30102:
                    # print temp
                     tempLong = self.concatbyte(temp)
                     tempLong = tempLong & 0x3FFFF
-                    Sense.red[Sense.Head] = round((tempLong*3.3)/262144,2)
-                                               
+                   # Sense.red[Sense.Head] = round((tempLong*3.3)/262144,2)
+                     Sense.red[Sense.Head] = tempLong                          
                     #print "RED: ", Sense.red[Sense.Head]
 
                     if self.activeLeds>1:
@@ -681,7 +681,8 @@ class MAX30102:
                         #print temp
                         tempLong = self.concatbyte(temp)
                         tempLong = tempLong & 0x3FFFF
-                        Sense.IR[Sense.Head] = round((tempLong*3.3)/262144,2)
+                       #Sense.IR[Sense.Head] = round((tempLong*3.3)/262144,2)
+                        Sense.IR[Sense.Head] = tempLong
                       #  print "IR: ", Sense.IR[Sense.Head]
                     toGet -= self.activeLeds * 3
                     #print "toGet: ",toGet
