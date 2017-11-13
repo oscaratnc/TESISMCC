@@ -33,6 +33,7 @@ while i in range (30):
         redTemp = lastCorrectRed
     else: 
         ReD = redTemp
+        print redTemp
 
     iR  = Spo2Sensor.getIR()
     
