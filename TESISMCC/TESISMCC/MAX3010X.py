@@ -623,12 +623,11 @@ class MAX30102:
 
     def lastCorrect (self, read):
         last = 15000
-        if read < 15000:
-            read = last
-        elif read >45000:
-            read = last
-        else:
+        if read >15000 & read <45000:
             last = read
+        if read < 15000 & read >45000:
+            read = last
+       
         return read
 
     def check(self):
