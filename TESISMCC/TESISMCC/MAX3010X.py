@@ -624,12 +624,8 @@ class MAX30102:
     def lastCorrect (self, Samples):
         i = 0
         for i in range(len(Samples)):
-            if Samples[i] <45000:
-                return Samples
-            elif Samples[i]>15000:
-                return Samples
-            else: 
-                Samples[i] = Samples[i-1]
+            while  Samples[i] >45000 | Samples[i]<15000:
+               Samples[i] = Samples[i-1]
             return Samples
 
     def check(self):
