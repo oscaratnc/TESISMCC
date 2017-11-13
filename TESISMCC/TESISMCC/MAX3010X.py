@@ -625,9 +625,7 @@ class MAX30102:
         i = 0
         lastCorrect= 0
         for i in range(len(Samples)):
-            if Samples[i] >15000: 
-               lastCorrect = Samples[i]
-            elif  Samples[i]<45000:
+            if Samples[i] >15000 & Samples[i]<45000: 
                lastCorrect = Samples[i]
             else:
                 Samples[i] = lastCorrect
