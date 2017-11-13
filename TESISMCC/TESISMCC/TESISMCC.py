@@ -30,6 +30,7 @@ while i in range (50):
     while Spo2Sensor.available():
         samplesTaken+=1
         print "R: ", Spo2Sensor.getFIFORed, ", IR: ", Spo2Sensor.getFIFOIR, "Hz: ", (samplesTaken/(wiry.millis()-Starttime)/1000)
+        Spo2Sensor.nextSample()
     i+=1
 
 
