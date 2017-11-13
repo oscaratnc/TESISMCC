@@ -22,7 +22,7 @@ Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PA
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
 i = 0
-while i in range (400):
+while i in range (50):
     redValue = Spo2Sensor.getRed()
     Red.append(redValue)
     print "#############################################"
