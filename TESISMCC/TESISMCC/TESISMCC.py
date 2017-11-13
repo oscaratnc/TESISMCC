@@ -28,19 +28,7 @@ i=0
 while i in range (30):
     
     reD = Spo2Sensor.getRed()
-    if reD < 15000 & reD > 45000:
-        lastCorrectRed= reD
-        redTemp = lastCorrectRed
-        reD = redTemp
-        print redTemp
-    else: 
-        ReD = redTemp
-        print redTemp
-
     iR  = Spo2Sensor.getIR()
-    
-
-
     i+=1 
     print "R: ",reD , "IR: ", iR
 
