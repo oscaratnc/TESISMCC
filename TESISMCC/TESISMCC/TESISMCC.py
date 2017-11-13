@@ -26,8 +26,8 @@ lastCorrect= 0
 
 while (1):
     
-    reD = Spo2Sensor.lastCorrect(Spo2Sensor.getRed())
-    iR  = Spo2Sensor.lastCorrect(Spo2Sensor.getIR())
+    reD = Spo2Sensor.lastCorrect(Spo2Sensor.getRed(), lastCorrect)
+    iR  = Spo2Sensor.lastCorrect(Spo2Sensor.getIR(),lastCorrect)
     
     print "R: ",reD , "IR: ", iR
 
