@@ -28,7 +28,7 @@ i=0
 while i in range (30):
     
     reD = Spo2Sensor.getRed()
-    if reD > 15000 & reD < 45000:
+    if reD < 15000 & reD > 45000:
         lastCorrectRed= reD
         redTemp = lastCorrectRed
         reD = redTemp
