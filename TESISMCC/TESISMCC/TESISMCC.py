@@ -31,7 +31,9 @@ while i in range (50):
     IR = Spo2Sensor.lastCorrect(IR)
     i+=1
 
- 
+print Red
+print IR
+
 
 
 
