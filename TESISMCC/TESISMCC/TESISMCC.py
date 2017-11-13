@@ -24,11 +24,8 @@ print"###################################################."
 i = 0
 while i in range (200):
     redValue = Spo2Sensor.getRed()
-    
-    print redValue
     Red.append(redValue)
     irValue = Spo2Sensor.getIR()
-    print irValue
     IR.append(irValue)
     i+=1
  
