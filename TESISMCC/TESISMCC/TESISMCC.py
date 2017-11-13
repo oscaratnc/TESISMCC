@@ -25,16 +25,14 @@ i = 0
 while i in range (50):
     redValue = Spo2Sensor.getRed()
     Red.append(redValue)
-    print "#############################################"
-    print "RED value Ready :)"
+    Red = Spo2Sensor.lastCorrect(Red)
     irValue = Spo2Sensor.getIR()
     IR.append(irValue)
+    IR = Spo2Sensor.lastCorrect(IR)
     i+=1
+
  
-Red = Spo2Sensor.lastCorrect(Red)
-print Red
-IR = Spo2Sensor.lastCorrect(IR)
-print IR
+
 
 
 
