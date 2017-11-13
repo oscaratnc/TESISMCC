@@ -22,12 +22,20 @@ samplesTaken = 0
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
+lastCorrectRed = 0
 
 i=0
 while i in range (30):
+    reD = Spo2Sensor.getRed()
+    if reD > 15000 & reD < 45000:
+        lastCorrectRed= reD
+    else: 
+        ReD = lastCorrectRed
+
+    iR  = Spo2Sensor.getIR()
     
-    reD = Spo2Sensor.lastCorrect(Spo2Sensor.getRed())
-    iR  = Spo2Sensor.lastCorrect(Spo2Sensor.getIR())
+
+
     i+=1 
     print "R: ",reD , "IR: ", iR
 
