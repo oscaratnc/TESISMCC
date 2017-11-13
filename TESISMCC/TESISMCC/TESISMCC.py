@@ -24,7 +24,7 @@ Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PA
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 
 while (1):
-    print "R: ", Spo2Sensor.getRed, "IR: ", Spo2Sensor.getIR
+    print "R: ", Spo2Sensor.getRed(), "IR: ", Spo2Sensor.getIR()
     wiry.delay(1)
 
 
