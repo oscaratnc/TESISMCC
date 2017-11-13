@@ -621,6 +621,13 @@ class MAX30102:
             Sense.Tail = Sense.Tail % Sense.STORAGE_SIZE
             print "sense tail : ", Sense.Tail
 
+    def lastCorrect (self, Samples):
+        i = 0
+        for i in range(len(Samples)):
+            if 15000<Samples[i]<45000:
+                Samples[i] = Samples[i-1]
+        return Samples
+
     def check(self):
         firsttime = 0
         readPointer =self.getReadPointer()
