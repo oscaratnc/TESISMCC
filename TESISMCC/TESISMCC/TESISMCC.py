@@ -22,10 +22,14 @@ samplesTaken = 0
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
+lastCorrect= 0
 
 while (1):
-    print "R: ", Spo2Sensor.getRed(), "IR: ", Spo2Sensor.getIR()
-    wiry.delay(1)
+    
+    reD = Spo2Sensor.lastCorrect(Spo2Sensor.getRed())
+    iR  = Spo2Sensor.lastCorrect(Spo2Sensor.getIR())
+    
+    print "R: ",reD , "IR: ", iR
 
 
 
