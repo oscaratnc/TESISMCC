@@ -32,9 +32,7 @@ while i in range (50):
         print "R: ", Spo2Sensor.getFIFORed, ", IR: ", Spo2Sensor.getFIFOIR, "Hz: ", (samplesTaken/(wiry.millis()-Starttime)/1000)
     i+=1
 
-   
-print Red
-print IR
+
 
 
 
