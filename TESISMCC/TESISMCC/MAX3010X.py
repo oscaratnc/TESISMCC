@@ -664,32 +664,14 @@ class MAX30102:
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
-                    #print"################################"
-                    #print "Samples Ready"
-                    ##print "Samples:", Samples 
-                    #print "############################"
-                    #print "R2: ", self.getReadPointer()
-                    tempLong= []*4
-                    temp= [0]*4
-
-                    temp[1] = Samples[0]
-                    temp[2] = Samples[1]
-                    temp[3] = Samples[2]
-   
-                   # print temp
-                    tempLong = self.concatbyte(temp)
-                    tempLong = tempLong & 0x3FFFF
-                   # Sense.red[Sense.Head] = round((tempLong*3.3)/262144,2)
-                    Sense.red[Sense.Head] = tempLong                          
-                    #print "RED: ", Sense.red[Sense.Head]
-
+                    tempLongred = Samples[0] << 16 | Samples[1] << 8 | Samples[2]
+                    tempLongred = tempLongred >> 2
+                    
+                    Sense.red[Sense.Head] = tempLongred                          
+                   
                     if self.activeLeds>1:
-                        temp[1] = Samples[3]
-                        temp[2] = Samples[4]
-                        temp[3] = Samples[5]
-                        #print temp
-                        tempLong = self.concatbyte(temp)
-                        tempLong = tempLong & 0x3FFFF
+                        tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
+                        tempLongIR = tempLongIR >> 2
                        #Sense.IR[Sense.Head] = round((tempLong*3.3)/262144,2)
                         Sense.IR[Sense.Head] = tempLong
                       #  print "IR: ", Sense.IR[Sense.Head]
