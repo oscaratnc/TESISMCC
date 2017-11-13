@@ -625,8 +625,10 @@ class MAX30102:
         i = 0
         for i in range(len(Samples)):
             if 15000<Samples[i]<45000:
+                return Samples
+            else: 
                 Samples[i] = Samples[i-1]
-        return Samples
+            return Samples
 
     def check(self):
         firsttime = 0
