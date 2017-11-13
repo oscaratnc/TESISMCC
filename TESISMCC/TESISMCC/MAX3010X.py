@@ -673,7 +673,7 @@ class MAX30102:
                         tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
                         tempLongIR = tempLongIR >> 2
                        #Sense.IR[Sense.Head] = round((tempLong*3.3)/262144,2)
-                        Sense.IR[Sense.Head] = tempLong
+                        Sense.IR[Sense.Head] = tempLongIR
                       #  print "IR: ", Sense.IR[Sense.Head]
                     toGet -= self.activeLeds * 3
                     #print "toGet: ",toGet
