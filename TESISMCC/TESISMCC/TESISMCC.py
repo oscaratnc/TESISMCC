@@ -29,8 +29,11 @@ while i in range (30):
     
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
-    i+=1 
     print "R: ",reD , "IR: ", iR
+    Red.append(reD)
+    IR.append(iR)
+
+    i+=1
 
 
 
