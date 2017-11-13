@@ -25,7 +25,7 @@ Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 lastCorrectRed = 0
 redTemp= 0
 i=0
-while i in range (300):
+while i in range (500):
     
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
