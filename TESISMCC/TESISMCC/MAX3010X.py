@@ -654,10 +654,6 @@ class MAX30102:
                 if toGet > I2C_BUFFER_LENGTH:
                    toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
                 bytesLeftToRead = bytesLeftToRead - toGet
-                ##print "toGEt: ",toGet
-                ##print "BLTR: ",bytesLeftToRead
-                ##print "R1: ", self.getReadPointer()
-                ##print "toGet_init: ", toGet
                 while toGet > 0:
                     
                     Sense.Head = Sense.Head + 1
@@ -665,20 +661,18 @@ class MAX30102:
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     tempLongred = Samples[0] << 16 | Samples[1] << 8 | Samples[2]
-                    tempLongred = tempLongred >> 2
+                    tempLongred = tempLongred >> 2 
                     
-                    Sense.red[Sense.Head] = tempLongred                          
+                    Sense.red[Sense.Head] = round((tempLongred*3.3)/262144,2)                          
                    
                     if self.activeLeds>1:
                         tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
                         tempLongIR = tempLongIR >> 2
-                       #Sense.IR[Sense.Head] = round((tempLong*3.3)/262144,2)
-                        Sense.IR[Sense.Head] = tempLongIR
-                      #  print "IR: ", Sense.IR[Sense.Head]
+                      
+                        Sense.IR[Sense.Head] = round((tempLongIR*3.3)/262144,2)
+                     
                     toGet -= self.activeLeds * 3
-                    #print "toGet: ",toGet
-                    #print "Sense RED: ", Sense.red
-                    #print "Sense IR: ", Sense.IR
+                    
                     
                 #else:
                     #print "Read and Write are the same"
