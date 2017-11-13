@@ -1,5 +1,6 @@
 import MAX3010X as MAX30102
 from smbus2 import SMBus
+import wiringpi as wiry
 
 import RPi.GPIO as GPIO
 import ptvsd
@@ -16,21 +17,21 @@ Red = []
 IR = []
 
 print "interrupt status", int_status
-
+i = 0
+samplesTaken = 0
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 print"###################################################."
-i = 0
+Starttime = wiry.millis()
 while i in range (50):
-    redValue = Spo2Sensor.getRed()
-    Red.append(redValue)
-    Red = Spo2Sensor.lastCorrect(Red)
-    irValue = Spo2Sensor.getIR()
-    IR.append(irValue)
-    IR = Spo2Sensor.lastCorrect(IR)
-    i+=1
+    Spo2Sensor.check()
 
+    while Spo2Sensor.available():
+        samplesTaken+=1
+        print "R: ", Spo2Sensor.getFIFORed, ", IR: ", Spo2Sensor.getFIFOIR, "Hz: ", (samplesTaken/(wiry.millis()-Starttime)/1000)
+
+   
 print Red
 print IR
 
