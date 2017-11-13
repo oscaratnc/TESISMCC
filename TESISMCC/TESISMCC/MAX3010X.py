@@ -625,7 +625,7 @@ class MAX30102:
         last = 15000
         if read >15000 & read <45000:
             last = read
-        if read < 15000 & read >45000:
+        else:
             read = last
        
         return read
