@@ -5,7 +5,7 @@ from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import ptvsd
 
-ptvsd.enable_attach(secret = None )
+ptvsd.enable_attach(secret = 'my-secret')
 #10.206.251.180
 
 GPIO.setmode(GPIO.BCM)
@@ -25,7 +25,7 @@ Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
 lastCorrectRed = 0
 redTemp= 0
 i=0
-while i in range (80):
+while i in range (200):
     
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
