@@ -22,16 +22,10 @@ samplesTaken = 0
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
-print"###################################################."
-Starttime = wiry.millis()
-while i in range (50):
-    Spo2Sensor.check()
 
-    while Spo2Sensor.available():
-        samplesTaken+=1
-        print "R: ", Spo2Sensor.getFIFORed, ", IR: ", Spo2Sensor.getFIFOIR, "Hz: ", (samplesTaken/(wiry.millis()-Starttime)/1000)
-        Spo2Sensor.nextSample()
-    i+=1
+while (1):
+    print "R: ", Spo2Sensor.getRed, "IR: ", Spo2Sensor.getIR
+    wiry.delay(1)
 
 
 
