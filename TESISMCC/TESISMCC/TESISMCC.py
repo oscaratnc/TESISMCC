@@ -1,6 +1,6 @@
 import MAX3010X as MAX30102
 from smbus2 import SMBus
-import wiringpi as wiry
+
 
 import RPi.GPIO as GPIO
 import ptvsd
@@ -35,7 +35,8 @@ while i in range (30):
 
     i+=1
 
-
+print "RED data: ", Red
+print "IR data ", IR
 
 
 
