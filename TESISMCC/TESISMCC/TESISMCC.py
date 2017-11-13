@@ -31,6 +31,8 @@ while i in range (30):
     if reD > 15000 & reD < 45000:
         lastCorrectRed= reD
         redTemp = lastCorrectRed
+        reD = redTemp
+        print redTemp
     else: 
         ReD = redTemp
         print redTemp
