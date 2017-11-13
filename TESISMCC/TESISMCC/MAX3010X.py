@@ -622,6 +622,7 @@ class MAX30102:
             print "sense tail : ", Sense.Tail
 
     def lastCorrect (self, read):
+        last = 15000
         if read < 15000:
             read = last
         elif read >45000:
