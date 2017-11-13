@@ -621,8 +621,8 @@ class MAX30102:
             Sense.Tail = Sense.Tail % Sense.STORAGE_SIZE
             print "sense tail : ", Sense.Tail
 
-    def lastCorrect (self, read,lastCorrect):
-
+    def lastCorrect (self, read):
+        lastCorrect= 0
         if read < 15000:
             read = lastCorrect
         elif read >45000:
