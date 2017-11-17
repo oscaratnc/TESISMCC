@@ -662,14 +662,16 @@ class MAX30102:
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     tempLongred = Samples[0] << 16 | Samples[1] << 8 | Samples[2]
                     tempLongred = tempLongred >> 2 
+
+                    tempLongred = tempLongred & 0x3FFFF
                     
-                    Sense.red[Sense.Head] = round((tempLongred*3.3)/262144,4)                          
+                    Sense.red[Sense.Head] = tempLongred                        
                    
                     if self.activeLeds>1:
                         tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
                         tempLongIR = tempLongIR >> 2
-                      
-                        Sense.IR[Sense.Head] = round((tempLongIR*3.3)/262144,4)
+                        tempLongIR = tempLongIR & 0x3FFFF
+                        Sense.IR[Sense.Head] = tempLongIR
                      
                     toGet -= self.activeLeds * 3
                     
