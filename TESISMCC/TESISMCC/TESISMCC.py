@@ -35,8 +35,8 @@ while i in range (300):
 
     i+=1
 
-print "RED data: ", Red
-print "IR data ", IR
+#print "RED data: ", Red
+#print "IR data ", IR
 
 GRAPH.plot(Red)
 
