@@ -8,7 +8,7 @@ for i in range (len(red)):
     time[i]=i
     
 axes = plt.gca()
-axes.set_ylim([max(red)-200, max(red)+200])
+axes.set_ylim([max(red)-500, max(red)+500])
 plt.plot(time,red)
 
 plt.show()
