@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 def plot(self, x):
     i=0
-    x= self.x
+    x=x
     time = [None]*len(x)
 
     for i in range (len(x)):
