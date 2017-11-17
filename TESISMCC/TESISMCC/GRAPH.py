@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def plot(self, x):
+def plot(x):
     i=0
     x=x
     time = [None]*len(x)
