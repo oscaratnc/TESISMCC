@@ -7,6 +7,7 @@ time = [None]*len(red)
 for i in range (len(red)):
     time[i]=i
     
+red = red/10
 
-plt.plot(time,(red/10))
+plt.plot(time,red)
 plt.show()
