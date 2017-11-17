@@ -43,19 +43,4 @@ print "IR data ", IR
 
 
 
-  #   print "read pointer 1: ", Spo2Sensor.getReadPointer()
-  #  sample = max102.read_i2c_block_data(Spo2Sensor.MAX30102_ADDRESS, Spo2Sensor.MAX30102_FIFODATAREG,6)
-  # print "read pointer 2: ", Spo2Sensor.getReadPointer()
-  #  print "sample read:", sample
-  #  Redsample = sample[0:3]
-  #  IRsample = sample[3:6]
-  #  Redvalue = Red.append(Spo2Sensor.concatbyte(Redsample))
-  #  IRvalue  = IR.append(Spo2Sensor.concatbyte(IRsample))
-  #  print Red
-  #  print IR
-  #  i = i+1
-
-
-
-
 
