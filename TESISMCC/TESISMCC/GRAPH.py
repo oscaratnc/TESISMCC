@@ -9,7 +9,7 @@ def plot(x):
         time[i]=i
     
     axes = plt.gca()
-    axes.set_ylim([max(x)-(.4*max(x)), max(x)+(.4+max(x))])
+    axes.set_ylim([max(x)-1500, max(x)+1500])
     plt.plot(time,x)
 
     plt.show()
