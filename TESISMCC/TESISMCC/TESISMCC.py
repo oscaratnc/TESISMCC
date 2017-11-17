@@ -1,6 +1,6 @@
 import MAX3010X as MAX30102
 from smbus2 import SMBus
-
+import GRAPH
 
 import RPi.GPIO as GPIO
 import ptvsd
@@ -38,6 +38,7 @@ while i in range (300):
 print "RED data: ", Red
 print "IR data ", IR
 
+GRAPH.plot(Red)
 
 
 
