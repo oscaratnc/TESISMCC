@@ -663,7 +663,7 @@ class MAX30102:
                     tempLongred = Samples[0] << 16 | Samples[1] << 8 | Samples[2]
                     tempLongred = tempLongred >> 2 
 
-                    tempLongred = tempLongred & 0x3FFFF
+                   # tempLongred = tempLongred & 0x3FFFF
                     
                     Sense.red[Sense.Head] = tempLongred                        
                    
