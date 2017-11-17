@@ -25,6 +25,12 @@
     <Compile Include="ADC.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BABYIM.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GRAPH.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HeartRate.py">
       <SubType>Code</SubType>
     </Compile>
