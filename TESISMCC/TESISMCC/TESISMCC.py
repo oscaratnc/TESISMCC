@@ -27,7 +27,7 @@ redTemp= 0
 i=0
 while i in range (100):
     
-    reD = Spo2Sensor.getRed()/10
+    reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
     print "R: ",reD , "IR: ", iR
     Red.append(reD)

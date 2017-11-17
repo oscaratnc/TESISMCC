@@ -670,7 +670,7 @@ class MAX30102:
                     if self.activeLeds>1:
                         tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
                         tempLongIR = tempLongIR >> 2
-                        tempLongIR = tempLongIR & 0x3FFFF
+                        
                         Sense.IR[Sense.Head] = tempLongIR
                      
                     toGet -= self.activeLeds * 3
