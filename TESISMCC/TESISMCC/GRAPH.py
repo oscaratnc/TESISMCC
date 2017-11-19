@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+matplotlib.use('Agg')
 def plot(x):
     i=0
     x=x
@@ -13,3 +13,6 @@ def plot(x):
     plt.plot(time,x)
 
     plt.show()
+
+
+plt.plot([1,2,3],[5,7,4])
