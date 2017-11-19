@@ -5,5 +5,5 @@ app = QtGui.QApplication(sys.argv)
 window= QtGui.QWidget()
 window.setGeometry(0,0,500,500)
 window.setWindowTitle("PyQt tuts!")
-windows.show()
+window.show()
 
