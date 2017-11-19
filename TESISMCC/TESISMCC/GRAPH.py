@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-matplotlib.use('Agg')
+plt.use('Agg')
 def plot(x):
     i=0
     x=x
