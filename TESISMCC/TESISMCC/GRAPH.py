@@ -16,4 +16,4 @@ def plot(x):
     plt.show()
 
 
-plt.plot([1,2,3],[5,7,4])
+
