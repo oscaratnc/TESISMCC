@@ -31,6 +31,9 @@
     <Compile Include="GRAPH.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GuiTest.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HeartRate.py">
       <SubType>Code</SubType>
     </Compile>
