@@ -11,9 +11,14 @@ class  Window (QtGui.QMainWindow):
     def home(self):
         btn = QtGui.QPushButton("Quit",self)
         btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
-        btn.resize(100,100)
+        btn.resize(btn.sizeHint())
         btn.move(100,100)
         self.show()
+
+    def close_application():
+        print("WHOOOOAAAA HARDCORE!!")
+        sys.exit()
+
 def run():
     app = QtGui.QApplication(sys.argv)
     GUI = Window()
