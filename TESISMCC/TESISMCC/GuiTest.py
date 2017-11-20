@@ -1,6 +1,11 @@
 import sys
 from PyQt4 import QtGui, QtCore
+import matplotlib.pyplot as plt
 
+from matplotlib.backends.backend_qt4agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
+
+ 
 class  Window (QtGui.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()

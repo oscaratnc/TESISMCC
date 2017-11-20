@@ -28,6 +28,9 @@
     <Compile Include="BABYIM.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="babyIMGUI.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GRAPH.py">
       <SubType>Code</SubType>
     </Compile>
