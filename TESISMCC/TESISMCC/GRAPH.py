@@ -66,9 +66,7 @@ class plotWidget:
             cp = QtGui.QDesktopWidget().availableGeometry().center()
             qr.moveCenter(cp)
             self.move(qr.topLeft())
-def main():
-    spo2= TESISMCC.Sp
-    
+def main():  
     app = QtGui.QApplication(sys.argv)
     w= plotWidget()
     app.exec_()
