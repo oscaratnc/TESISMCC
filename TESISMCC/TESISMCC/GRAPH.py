@@ -11,9 +11,8 @@ class plotWidget:
     Spo2.dataAcquisition(20)
           
     def __init__(self):
-      
         super(plotWidget, self).__init__()
-        self.initUI(Red,IR)
+        self.initUI()
 
     def initUI(self):
         self.setGeometry(600,300,1000,600)
