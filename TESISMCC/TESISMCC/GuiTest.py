@@ -15,9 +15,10 @@ class  Window (QtGui.QMainWindow):
         btn.move(100,100)
         sekf.show()
 
-    def run():
+def run():
         app= QtGui.QApplication(sys.argv)
         GUI=Window()
         sys.exit(app.exec_())
-    run()
+        
+run()
 
