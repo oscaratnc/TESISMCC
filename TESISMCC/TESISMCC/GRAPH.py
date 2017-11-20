@@ -5,7 +5,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg  as FigureCanva
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 
-class plotWidget (self):
+class plotWidget:
     Spo2= TESISMCC.spo2Sensor()
     Spo2.dataAcquisition()
            
