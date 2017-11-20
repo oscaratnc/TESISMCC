@@ -1,6 +1,6 @@
 from PyQt4 import QtGui
 import matplotlib.pyplot as plt
-import TESISMCC
+
 
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg  as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
@@ -11,7 +11,7 @@ class plotWidget (self):
         super(plotWidget, self).__init__()
         self.initUI()
 
-    def initUI(self):
+    def initUI(self,Red,IR):
         self.setGeometry(600,300,1000,600)
         self.center()
         self.setWindowTitle('Plotting window')
@@ -21,12 +21,12 @@ class plotWidget (self):
        
         btn1 = QtGui.QPushButton('Plot Red', self)
         btn1.resize(btn1.sizeHint()) 
-        btn1.clicked.connect(self.plotRed)
+        btn1.clicked.connect(self.plotRed(Red))
         grid.addWidget(btn1, 2,0)
 
         btn2 = QtGui.QPushButton('Plot IR', self)
         btn2.resize(btn2.sizeHint())    
-        btn2.clicked.connect(self.plotIR)
+        btn2.clicked.connect(self.plotIR(IR))
         grid.addWidget(btn2, 2,1)
                
         self.figure = plt.figure(figsize=(15,5))    
@@ -37,8 +37,8 @@ class plotWidget (self):
                
         self.show()
 
-        def plotRed(self):
-            red = TESISMCC.Red
+        def plotRed(self,Red):
+            red = Red
             plt.cla()
             ax= self.figure.add_subplot(111)
             x= [i for i in range(len(red))]
@@ -47,8 +47,8 @@ class plotWidget (self):
             ax.setTitle('HR MODE')
             self.canvas.draw()
 
-        def plotIR(self):
-            IR = TESISMCC.IR
+        def plotIR(self,iR):
+            IR = iR
             plt.cla()
             ax= self.figure.add_subplot(111)
             x= [i for i in range(len(IR))]

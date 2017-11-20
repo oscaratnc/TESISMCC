@@ -22,8 +22,6 @@ samplesTaken = 0
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
 Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
-lastCorrectRed = 0
-redTemp= 0
 i=0
 while i in range (200):
     
@@ -38,7 +36,7 @@ while i in range (200):
 #print "RED data: ", Red
 #print "IR data ", IR
 
-GRAPH.plotWidget.initUI
+GRAPH.plotWidget.initUI(Red,IR)
 
 
 
