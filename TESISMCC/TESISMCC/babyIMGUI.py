@@ -10,13 +10,18 @@ class babyIMGUI (QtGui.QWidget):
         self.setGeometry(500,500,500,500)
         self.setWindowTitle('New GUI')
 
-        self.btn = QtGui.QPushButton('Button', self)
-        self.btn.resize(self.btn.sizeHint())
-        self.btn.move(150,100)
-       
+        hbox = QtGui.QHBoxLayout()
+        hbox.addStretch(1)
 
-       
+        btn1 = QtGui.QPushButton('Button 1', self)
+        btn1.resize(self.btn1.sizeHint())
+        hbox.addWidget(btn1)
 
+        btn2 = QtGui.QPushButton('Button 2', self)
+        btn2.resize(self.btn2.sizeHint())
+        hbox.addWidget(btn2)
+             
+        self.setLayout(hbox)
         self.show()
    
 def main():
