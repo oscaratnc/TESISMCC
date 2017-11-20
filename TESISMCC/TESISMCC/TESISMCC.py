@@ -6,15 +6,15 @@ import RPi.GPIO as GPIO
 #ptvsd.enable_attach(secret = 'my-secret')
 #10.206.251.180
 class spo2Sensor:
-    Red = []
-    IR = []
+   
     def dataAcquisition(self,num):
         GPIO.setmode(GPIO.BCM)
         max102 = MAX30102.MAX30102.max102
         GPIO.setup(4, GPIO.IN)
         int_status = GPIO.input(4)
         i = 0
-       
+        Red = []
+        IR = []
         print "interrupt status", int_status
         i = 0
         samplesTaken = 0
