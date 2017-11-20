@@ -9,14 +9,13 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as Navigatio
 class plotWidget:
     Spo2= TESISMCC.spo2Sensor()
     Spo2.dataAcquisition(20)
-           
+          
     def __init__(self):
-        Red= TESISMCC.Red
-        IR = TESISMCC.IR
+      
         super(plotWidget, self).__init__()
         self.initUI(Red,IR)
 
-    def initUI(self,Red,IR):
+    def initUI(self):
         self.setGeometry(600,300,1000,600)
         self.center()
         self.setWindowTitle('Plotting window')
@@ -26,12 +25,12 @@ class plotWidget:
        
         btn1 = QtGui.QPushButton('Plot Red', self)
         btn1.resize(btn1.sizeHint()) 
-        btn1.clicked.connect(self.plotRed(Red))
+        btn1.clicked.connect(self.plotRedS(Spo2.Red))
         grid.addWidget(btn1, 2,0)
 
         btn2 = QtGui.QPushButton('Plot IR', self)
         btn2.resize(btn2.sizeHint())    
-        btn2.clicked.connect(self.plotIR(IR))
+        btn2.clicked.connect(self.plotIR(Spo2.IR))
         grid.addWidget(btn2, 2,1)
                
         self.figure = plt.figure(figsize=(15,5))    
