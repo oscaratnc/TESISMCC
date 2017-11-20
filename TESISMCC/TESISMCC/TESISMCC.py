@@ -38,7 +38,7 @@ while i in range (200):
 #print "RED data: ", Red
 #print "IR data ", IR
 
-GRAPH.plot(Red)
+GRAPH.plotWidget.initUI
 
 
 
