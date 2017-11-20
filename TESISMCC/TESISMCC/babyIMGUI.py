@@ -9,6 +9,11 @@ class babyIMGUI (QtGui.QWidget):
     def initUI(self):
         self.setGeometry(500,500,500,500)
         self.setWindowTitle('New GUI')
+
+        btn = QtGui.QPushButton('Button', self)
+        btn.resize(btn.sizeHint)
+        btn.move(150,100)
+
         self.show()
 
 
