@@ -16,7 +16,7 @@ class babyIMGUI (QtGui.QWidget):
         self.btn.clicked.connect(self.Signal)
 
         self.lbl = QtGui.QLabel(self)
-        self.lbl = move(180,50)
+        self.lbl.move(180,50)
         self.lbl.setText('Slot')
         self.lbl.adjustSize()
 
