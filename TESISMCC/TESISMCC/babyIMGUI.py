@@ -14,11 +14,11 @@ class babyIMGUI (QtGui.QWidget):
         hbox.addStretch(1)
 
         btn1 = QtGui.QPushButton('Button 1', self)
-        btn1.resize(self.btn1.sizeHint())
+        btn1.resize(btn1.sizeHint())
         hbox.addWidget(btn1)
 
         btn2 = QtGui.QPushButton('Button 2', self)
-        btn2.resize(self.btn2.sizeHint())
+        btn2.resize(btn2.sizeHint())
         hbox.addWidget(btn2)
              
         self.setLayout(hbox)
