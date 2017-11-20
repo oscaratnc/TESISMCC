@@ -11,7 +11,7 @@ class babyIMGUI (QtGui.QWidget):
         self.setWindowTitle('New GUI')
 
         self.btn = QtGui.QPushButton('Button', self)
-        self.btn.resize(btn.sizeHint())
+        self.btn.resize(self.btn.sizeHint())
         self.btn.move(150,100)
         self.btn.clicked.connect(self.Signal)
 
