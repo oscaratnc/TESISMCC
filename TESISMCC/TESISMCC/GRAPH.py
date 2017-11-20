@@ -8,6 +8,8 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as Navigatio
 
 class plotWidget (self):
     def __init__(self):
+        Red= TESISMCC.Red
+        IR = TESISMCC.IR
         super(plotWidget, self).__init__()
         self.initUI(Red,IR)
 

@@ -36,9 +36,8 @@ while i in range (200):
 #print "RED data: ", Red
 #print "IR data ", IR
 
-plot= GRAPH.plotWidget()
+plot= GRAPH.main()
 
-plot.initUI(Red,IR)
 
 
 
