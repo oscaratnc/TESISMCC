@@ -6,10 +6,10 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg  as FigureCanva
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 
-class plotWidget (self):
+class plotWidget (self,Red,IR):
     def __init__(self):
         super(plotWidget, self).__init__()
-        self.initUI()
+        self.initUI(Red,IR)
 
     def initUI(self,Red,IR):
         self.setGeometry(600,300,1000,600)
