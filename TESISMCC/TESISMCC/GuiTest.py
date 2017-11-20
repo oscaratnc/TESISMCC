@@ -19,5 +19,5 @@ class  Window (QtGui.QMainWindow):
         app= QtGui.QApplication(sys.argv)
         GUI=Window()
         sys.exit(app.exec_())
-run()
+    run()
 
