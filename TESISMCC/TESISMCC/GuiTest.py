@@ -13,7 +13,7 @@ class  Window (QtGui.QMainWindow):
         btn.clicked.connect(QtCore.QCoreApplication.instance().quit)
         btn.resize(100,100)
         btn.move(100,100)
-        sekf.show()
+        self.show()
 
 def run():
         app= QtGui.QApplication(sys.argv)
