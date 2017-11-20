@@ -10,11 +10,21 @@ class babyIMGUI (QtGui.QWidget):
         self.setGeometry(500,500,500,500)
         self.setWindowTitle('New GUI')
 
-        btn = QtGui.QPushButton('Button', self)
-        btn.resize(btn.sizeHint())
-        btn.move(150,100)
+        self.btn = QtGui.QPushButton('Button', self)
+        self.btn.resize(btn.sizeHint())
+        self.btn.move(150,100)
+        self.btn.clicked.connect(self.Signal)
+
+        self.lbl = QtGui.QLabel(self)
+        self.lbl = move(180,50)
+        self.lbl.setText('Slot')
+        self.lbl.adjustSize()
 
         self.show()
+    def Signal(self):
+        self.lbl.setText('Signal Recieved')
+        self.lbl.move(150,50)
+        self.lbl.adjustSize()
 
 
 def main():
