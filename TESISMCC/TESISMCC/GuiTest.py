@@ -14,11 +14,10 @@ class  Window (QtGui.QMainWindow):
         btn.resize(100,100)
         btn.move(100,100)
         self.show()
-
 def run():
-        app= QtGui.QApplication(sys.argv)
-        GUI=Window()
-        sys.exit(app.exec_())
-        
+    app = QtGui.QApplication(sys.argv)
+    GUI = Window()
+    sys.exit(app.exec_())
+
 run()
 
