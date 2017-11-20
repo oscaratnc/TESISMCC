@@ -1,12 +1,14 @@
 from PyQt4 import QtGui
 import matplotlib.pyplot as plt
 import TESISMCC
-
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg  as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 
 class plotWidget (self):
+    Spo2= TESISMCC.spo2Sensor()
+    Spo2.dataAcquisition()
+           
     def __init__(self):
         Red= TESISMCC.Red
         IR = TESISMCC.IR
@@ -65,6 +67,8 @@ class plotWidget (self):
             qr.moveCenter(cp)
             self.move(qr.topLeft())
 def main():
+    spo2= TESISMCC.Sp
+    
     app = QtGui.QApplication(sys.argv)
     w= plotWidget()
     app.exec_()
