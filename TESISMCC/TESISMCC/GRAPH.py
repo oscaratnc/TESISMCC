@@ -7,7 +7,7 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as Navigatio
 
 class plotWidget:
     Spo2= TESISMCC.spo2Sensor()
-    Spo2.dataAcquisition(self,20)
+    Spo2.dataAcquisition(20)
            
     def __init__(self):
         Red= TESISMCC.Red
