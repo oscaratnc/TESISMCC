@@ -7,7 +7,7 @@ class babyIMGUI (QtGui.QWidget):
         self.initUI()
     
     def initUI(self):
-        self.setGeometry(600,300,500,500)
+        self.setGeometry(500,500,500,500)
         self.setWindowTitle('New GUI')
         self.show()
 
