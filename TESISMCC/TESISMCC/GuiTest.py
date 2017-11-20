@@ -1,9 +1,18 @@
 import sys
-from PyQt4  import QtGui
+from PyQt4 import QtGui
 
-app = QtGui.QApplication(sys.argv)
-window= QtGui.QWidget()
-window.setGeometry(0,0,500,500)
-window.setWindowTitle("PyQt tuts!")
-window.show()
+import sys
+from PyQt4 import QtGui
+
+class  Window (QtGui.QMainWindow):
+    def __init__(self):
+        super(Window, self).__init__()
+        self.setGeometry(50,50,500,300)
+        self.setWindowTitle("PyQt tuts!")
+        self.show()
+
+
+app= QtGui.QApplication(sys.argv)
+GUI=Window()
+sys.exit(app.exec_())
 
