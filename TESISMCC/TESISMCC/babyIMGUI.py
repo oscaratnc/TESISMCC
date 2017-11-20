@@ -4,7 +4,7 @@ from PyQt4 import QtGui
 class babyIMGUI (QtGui.QWidget):
     def __init__(self):
         super(babyIMGUI, self).__init__()
-        self.iniUI()
+        self.initUI()
     
     def initUI(self):
         self.setGeometry(600,300,400,200)
