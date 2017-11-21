@@ -41,7 +41,9 @@ while i in range (30):
     ecgValues.append(Ecg)
 
     i+=1
-   
+print Red
+print IR
+print ecgValues
 
 
 
