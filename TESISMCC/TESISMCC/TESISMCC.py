@@ -24,7 +24,7 @@ Red = []
 IR = []
 
 
-def getECG(self):
+def getECG():
     ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
     print(ECGValue)
     #Sampling Frecuency 250Hz
@@ -33,7 +33,7 @@ def getECG(self):
 
 i=0
 while i in range (30):
-    Ecg = getECG(self)
+    Ecg = getECG()
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
     print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
