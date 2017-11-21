@@ -30,8 +30,8 @@ def acquireData(self,num):
         reD = Spo2Sensor.getRed()
         iR  = Spo2Sensor.getIR()
         print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
-        Red.append(round((reD*3.3)/262144,5))
-        IR.append(round((iR*3.3)/262144,5))
+        Red.append(reD)
+        IR.append(iR)
         ecgValues.append(Ecg)
         wiringpi.delayMicroseconds(400)
         i+=1
