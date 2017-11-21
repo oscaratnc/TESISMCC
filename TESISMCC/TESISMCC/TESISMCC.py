@@ -32,7 +32,7 @@ def getECG(self):
     return ECGValue
 
 i=0
-while i in range (num):
+while i in range (30):
     Ecg = self.getECG()
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
