@@ -1,36 +1,27 @@
-import sys
-from PyQt4 import QtGui
 
+from Sensor import acquireData
+from pyqtgraph.Qt import QtGui, QtCore
+import numpy as np
+import pyqtgraph as pg
 
-class babyIMGUI (QtGui.QWidget):
-    def __init__(self):
-        super(babyIMGUI, self).__init__()
-        self.initUI()
-    
-    def initUI(self):
-        self.setGeometry(500,500,500,500)
-        self.setWindowTitle('New GUI')
+sensor = Sensor()
+sensor.acquireData(sensor, 50)
+ECG = sensors.ecgValues
+RED = sensors.Red
+IR = sensors.IR
+print ECG
+print RED
+print IR
 
-        hbox = QtGui.QHBoxLayout()
-        hbox.addStretch(1)
+app = QtGui.QApplication([])
 
-        btn1 = QtGui.QPushButton('Button 1', self)
-        btn1.resize(btn1.sizeHint())
-        hbox.addWidget(btn1)
+win = pg.GraphicsWindow()
+win.resize(1000,600)
+win.setWindowTitle("Signals Ploting")
 
-        btn2 = QtGui.QPushButton('Button 2', self)
-        btn2.resize(btn2.sizeHint())
-        hbox.addWidget(btn2)
-             
-        self.setLayout(hbox)
-        self.show()
-   
-def main():
-    app = QtGui.QApplication(sys.argv)
-    w = babyIMGUI()
-    app.exec_()
+pg.setConfigOptions(antialias= True)
 
-if __name__ == '__main__' :
-    main()
-
-
+p2 = win.addPlot(title="Vital Curves")
+p2.plot(ECG, pen=(255,0,0), name="ECG")
+p2.plot(RED, pen=(0,255,0), name="HR led")
+p2.plot(IR, pen=(0,0,255), name="IR led")

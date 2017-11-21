@@ -23,21 +23,21 @@ ecgValues = []
 Red = []
 IR = []
 
-i=0
-while i in range (50):
-    Ecg = ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
-    reD = Spo2Sensor.getRed()
-    iR  = Spo2Sensor.getIR()
-    print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
-    Red.append(round((reD*3.3)/262144,5))
-    IR.append(round((iR*3.3)/262144,5))
-    ecgValues.append(Ecg)
-    wiringpi.delayMicroseconds(400)
-    i+=1
+def acquireData(self,num):
+    i=0
+    while i in range (num):
+        Ecg = ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
+        reD = Spo2Sensor.getRed()
+        iR  = Spo2Sensor.getIR()
+        print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
+        Red.append(round((reD*3.3)/262144,5))
+        IR.append(round((iR*3.3)/262144,5))
+        ecgValues.append(Ecg)
+        wiringpi.delayMicroseconds(400)
+        i+=1
 
-print Red
-print IR
-print ecgValues
+
+
 
 
 

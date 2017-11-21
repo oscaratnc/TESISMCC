@@ -22,13 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BABYIM.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="babyIMGUI.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GRAPH.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GuiTest.py">
@@ -40,10 +34,12 @@
     <Compile Include="MAX3010X.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MCP3008.py">
+    <Compile Include="Sensor.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TESISMCC.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MAX3010X.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
