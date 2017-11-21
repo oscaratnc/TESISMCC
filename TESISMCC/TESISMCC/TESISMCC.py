@@ -31,6 +31,7 @@ def getECG(self):
     wiringpi.delayMicroseconds(400)
     return ECGValue
 
+i=0
 while i in range (num):
     Ecg = self.getECG()
     reD = Spo2Sensor.getRed()
