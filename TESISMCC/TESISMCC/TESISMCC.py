@@ -1,36 +1,47 @@
 import MAX3010X as MAX30102
 from smbus2 import SMBus
 import RPi.GPIO as GPIO
-#import ptvsd
+import Adafruit_MCP3008
+import wiringpi
+GPIO.setmode(GPIO.BCM)
 
-#ptvsd.enable_attach(secret = 'my-secret')
-#10.206.251.180
-class spo2Sensor:
+#Definitions for ECG acquisition
+CLK  = 11
+MISO = 9
+MOSI = 10
+CS   = 8
+mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
+
+#Definitions for SPO2 Acquisition
+max102 = MAX30102.MAX30102.max102
+Spo2Sensor = MAX30102.MAX30102()
+Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
+Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
+
+#Array variables to store samples
+ecgValues = []
+Red = []
+IR = []
+
+
+def getECG(self):
+    ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
+    print(ECGValue)
+    #Sampling Frecuency 250Hz
+    wiringpi.delayMicroseconds(400)
+    return ECGValue
+
+while i in range (num):
+    Ecg = self.getECG()
+    reD = Spo2Sensor.getRed()
+    iR  = Spo2Sensor.getIR()
+    print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
+    Red.append(reD)
+    IR.append(iR)
+    ecgValues.append(Ecg)
+
+    i+=1
    
-    def dataAcquisition(self,num):
-        GPIO.setmode(GPIO.BCM)
-        max102 = MAX30102.MAX30102.max102
-        GPIO.setup(4, GPIO.IN)
-        int_status = GPIO.input(4)
-        i = 0
-        Red = []
-        IR = []
-        print "interrupt status", int_status
-        i = 0
-        samplesTaken = 0
-        Spo2Sensor = MAX30102.MAX30102()
-        Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
-        Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
-        i=0
-        while i in range (num):
-            reD = Spo2Sensor.getRed()
-            iR  = Spo2Sensor.getIR()
-            print "R: ",reD , "IR: ", iR
-            Red.append(reD)
-            IR.append(iR)
-
-            i+=1
-        return Red,IR
 
 
 
