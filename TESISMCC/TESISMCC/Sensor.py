@@ -16,7 +16,7 @@ mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 max102 = MAX30102.MAX30102.max102
 Spo2Sensor = MAX30102.MAX30102()
 Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
-Spo2Sensor.setup(31, 4, 2, 100, 411, 4096)
+Spo2Sensor.setup(31, 4, 2, 200, 411, 4096)
 
 #Array variables to store samples
 ecgValues = []
