@@ -4,8 +4,8 @@ import numpy as np
 import pyqtgraph as pg
 
 num = 200
-Sensor.getECG(num)
-Sensor.getSpo2(num)
+Sensor.getECG(Sensor,num)
+Sensor.getSpo2(Sensor,num)
 ECG = Sensor.ecgValues
 RED = Sensor.Red
 IR = Sensor.IR
