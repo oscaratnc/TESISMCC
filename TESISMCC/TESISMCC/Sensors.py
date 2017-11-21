@@ -29,8 +29,8 @@ while i in range (50):
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
     print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
-    Red.append(round((reD*3.3)/262144,3))
-    IR.append(round((iR*3.3)/262144,3))
+    Red.append(round((reD*3.3)/262144,5))
+    IR.append(round((iR*3.3)/262144,5))
     ecgValues.append(Ecg)
     wiringpi.delayMicroseconds(400)
     i+=1
