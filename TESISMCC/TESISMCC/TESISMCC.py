@@ -24,7 +24,7 @@ Red = []
 IR = []
 
 i=0
-while i in range (30):
+while i in range (50):
     Ecg = ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
