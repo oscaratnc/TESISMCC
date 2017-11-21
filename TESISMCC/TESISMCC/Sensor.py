@@ -23,26 +23,24 @@ ecgValues = []
 Red = []
 IR = []
 
-def getECG(self, num):
-    while True: 
+def getECG(self, numSeconds):
+    startTime = wiringpi.millis()
+    while wiringpi.millis()-startTime > (numSeconds*1000): 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         ecgValues.append(Ecg)
         wiringpi.delayMicroseconds(400)
-        if (len(ecgValues)-1 == num):
-                break
+        
 
-def getSpo2(self,num):
+def getSpo2(self,numSeconds):
     
-    while True:
-       
-        reD = Spo2Sensor.getRed()
-        iR  = Spo2Sensor.getIR()
-        #print "R: ", reD , "IR: ", iR
-        Red.append(reD)
-        IR.append(iR)
-        if (len(IR)-1 == num):
-            break
-
+   startTime = wiringpi.millis()
+   while wiringpi.millis()-startTime > (numSeconds*1000): 
+       reD = Spo2Sensor.getRed()
+       iR  = Spo2Sensor.getIR()
+       #print "R: ", reD , "IR: ", iR
+       Red.append(reD)
+       IR.append(iR)
+      
 
 
 
