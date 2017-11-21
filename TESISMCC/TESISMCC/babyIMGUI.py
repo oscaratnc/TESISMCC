@@ -4,9 +4,9 @@ import numpy as np
 import pyqtgraph as pg
 
 Sensor.acquireData(Sensor, 50)
-ECG = sensors.ecgValues
-RED = sensors.Red
-IR = sensors.IR
+ECG = Sensor.ecgValues
+RED = Sensor.Red
+IR = Sensor.IR
 print ECG
 print RED
 print IR
