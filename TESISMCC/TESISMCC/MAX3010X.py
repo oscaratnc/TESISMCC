@@ -1,6 +1,7 @@
 
 from smbus2 import SMBus
 import wiringpi as wiry
+import numpy as np
 
 class Sense:
     STORAGE_SIZE = 4
@@ -693,6 +694,8 @@ class MAX30102:
 
             wiry.delay(1)
 
-#def removeDC(self):
+#def removeDC(self, array):
+#    mean = np.average(array)
+
 
 

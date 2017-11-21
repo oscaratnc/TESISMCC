@@ -3,6 +3,7 @@ from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import Adafruit_MCP3008
 import wiringpi
+import numpy as np
 GPIO.setmode(GPIO.BCM)
 
 #Definitions for ECG acquisition
@@ -19,15 +20,15 @@ Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PA
 Spo2Sensor.setup(31, 4, 2, 200, 411, 4096)
 
 #Array variables to store samples
-ecgValues = []
-Red = []
-IR = []
+ecgValues = np.array([])
+Red = np.array([])
+IR = np.array([])
 
 def getECG(self, numSeconds):
     startTime = wiringpi.millis()
     while wiringpi.millis()-startTime < (numSeconds*1000): 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
-        ecgValues.append(Ecg)
+        np.concatenate(ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
         
 
@@ -38,8 +39,8 @@ def getSpo2(self,numSeconds):
        reD = Spo2Sensor.getRed()
        iR  = Spo2Sensor.getIR()
        #print "R: ", reD , "IR: ", iR
-       Red.append(reD)
-       IR.append(iR)
+       np.concatenate(Red,reD)
+       np.concatenate(IR,iR)
       
 
 
