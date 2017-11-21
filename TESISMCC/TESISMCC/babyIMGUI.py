@@ -23,3 +23,8 @@ p2 = win.addPlot(title="Vital Curves")
 p2.plot(ECG, pen=(255,0,0), name="ECG")
 p2.plot(RED, pen=(0,255,0), name="HR led")
 p2.plot(IR, pen=(0,0,255), name="IR led")
+
+if __name__ == '__main__':
+    import sys
+    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
+        QtGui.QApplication.instance().exec_()
