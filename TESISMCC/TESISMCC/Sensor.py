@@ -37,7 +37,7 @@ def getSpo2(self,num):
        
         reD = Spo2Sensor.getRed()
         iR  = Spo2Sensor.getIR()
-        print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
+        #print "R: ", reD , "IR: ", iR
         Red.append(reD)
         IR.append(iR)
         if (len(IR)-1 == num):
