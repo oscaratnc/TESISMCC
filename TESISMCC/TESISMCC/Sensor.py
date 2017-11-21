@@ -34,7 +34,7 @@ def acquireData(self,num):
         IR.append(iR)
         ecgValues.append(Ecg)
         wiringpi.delayMicroseconds(400)
-        if (lec(ecgValues)-1 == num):
+        if (len(ecgValues)-1 == num):
             break
 
 
