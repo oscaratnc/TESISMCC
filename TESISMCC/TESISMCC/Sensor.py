@@ -27,7 +27,7 @@ IR = np.array([])
 def getECG(self, numSeconds):
     startTime = wiringpi.millis()
     while wiringpi.millis()-startTime < (numSeconds*1000): 
-        print wiringpi.milis()
+        print wiringpi.millis()
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
