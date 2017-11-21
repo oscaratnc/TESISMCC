@@ -3,7 +3,7 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-numSeconds = 5
+numSeconds = 20
 Sensor.getECG(Sensor,numSeconds)
 print "ECG done"
 Sensor.getSpo2(Sensor,numSeconds)
@@ -11,9 +11,9 @@ print "SPO2 done"
 ECG = Sensor.ecgValues
 RED = Sensor.Red
 IR = Sensor.IR
-#print ECG
-#print RED
-#print IR
+print ECG
+print RED
+print IR
 
 app = QtGui.QApplication([])
 
