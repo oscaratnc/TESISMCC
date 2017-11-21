@@ -33,7 +33,7 @@ def getECG(self):
 
 i=0
 while i in range (30):
-    Ecg = getECG()
+    Ecg = getECG(self)
     reD = Spo2Sensor.getRed()
     iR  = Spo2Sensor.getIR()
     print "R: ", reD , "IR: ", iR, "ECG: ", Ecg
