@@ -5,13 +5,15 @@ import pyqtgraph as pg
 
 num = 200
 Sensor.getECG(Sensor,num)
+print "ECG done"
 Sensor.getSpo2(Sensor,num)
+print "SPO2 done"
 ECG = Sensor.ecgValues
 RED = Sensor.Red
 IR = Sensor.IR
-print ECG
-print RED
-print IR
+#print ECG
+#print RED
+#print IR
 
 app = QtGui.QApplication([])
 
