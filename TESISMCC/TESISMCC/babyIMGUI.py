@@ -3,7 +3,7 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-Sensor.acquireData(Sensor, 50)
+Sensor.acquireData(Sensor, 200)
 ECG = Sensor.ecgValues
 RED = Sensor.Red
 IR = Sensor.IR
