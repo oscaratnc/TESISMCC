@@ -25,7 +25,7 @@ IR = []
 
 def getECG(self, num):
     while True: 
-        Ecg = round((mcp.read_adc(1)*3.3)/1024,2)
+        Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         ecgValues.append(Ecg)
         wiringpi.delayMicroseconds(400)
         if (len(ecgValues)-1 == num):

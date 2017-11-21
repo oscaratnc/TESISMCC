@@ -31,9 +31,9 @@ win.nextRow()
 p2 = win.addPlot(title = "RED LED")
 p2.plot(RED, pen=(0,255,0))
 
-win.nextRow()
-p3= win.addPlot(title = "IR LED")
-p3.plot(IR, pen=(0,0,255))
+#win.nextRow()
+#p3= win.addPlot(title = "IR LED")
+p2.plot(IR, pen=(0,0,255))
 
 if __name__ == '__main__':
     import sys

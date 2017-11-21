@@ -693,4 +693,6 @@ class MAX30102:
 
             wiry.delay(1)
 
+def removeDC(self):
+
 
