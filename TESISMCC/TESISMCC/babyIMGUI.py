@@ -1,11 +1,9 @@
-
-from Sensor import acquireData
+import Sensor
 from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-sensor = Sensor()
-sensor.acquireData(sensor, 50)
+Sensor.acquireData(Sensor, 50)
 ECG = sensors.ecgValues
 RED = sensors.Red
 IR = sensors.IR
