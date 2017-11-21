@@ -4,7 +4,7 @@ import numpy as np
 import pyqtgraph as pg
 
 numecg = 5000
-numspo2 = 200
+numspo2 = 20
 Sensor.getECG(Sensor,numecg)
 print "ECG done"
 Sensor.getSpo2(Sensor,numspo2)
