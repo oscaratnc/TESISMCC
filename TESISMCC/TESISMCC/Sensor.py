@@ -28,7 +28,7 @@ def getECG(self, numSeconds):
     startTime = wiringpi.millis()
     while wiringpi.millis()-startTime < (numSeconds*1000): 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
-        np.concatenate(ecgValues,Ecg)
+        np.append(ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
         
 
@@ -39,8 +39,8 @@ def getSpo2(self,numSeconds):
        reD = Spo2Sensor.getRed()
        iR  = Spo2Sensor.getIR()
        #print "R: ", reD , "IR: ", iR
-       np.concatenate(Red,reD)
-       np.concatenate(IR,iR)
+       np.append(Red,reD)
+       np.append(IR,iR)
       
 
 
