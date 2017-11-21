@@ -23,7 +23,6 @@ ecgValues = []
 Red = []
 IR = []
 
-
 def getECG():
     ECGValue= round((mcp.read_adc(1)*3.3)/1024,3)
     print(ECGValue)
