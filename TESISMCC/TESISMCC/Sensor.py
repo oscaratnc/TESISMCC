@@ -45,7 +45,7 @@ def getSpo2(self,numSeconds):
        self.Red = np.append(self.Red,reD)  
        self.IR = np.append(self.IR,iR)
 
-   self.IR = Spo2Sensor.removeDC2(self.IR)
+   self.IR = Spo2Sensor.removeDC(self.IR)
    self.Red = Spo2Sensor.removeDC2(self.Red)
 
 
