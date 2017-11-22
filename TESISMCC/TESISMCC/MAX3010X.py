@@ -696,7 +696,7 @@ class MAX30102:
 
     def removeDC(self, measure):
         for i in range (len(measure)):
-            measure[i]= masure[i]-np.average(measure)
+            measure[i]= measure[i]-np.average(measure)
         return measure
 
 
