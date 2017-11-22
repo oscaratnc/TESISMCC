@@ -706,7 +706,7 @@ class MAX30102:
         measureDCR= np.array([])
         for i in range (len(measure)):
             dcRemoved = measure[i] - lastmeasure +.95*lastDC
-            measureDCR.append(dcRemoved)
+            measureDCR= np.append(measureDCR,dcRemoved)
             lastmeasure =measure[i]
             lastDC = dcRemoved
 
