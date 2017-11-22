@@ -703,7 +703,8 @@ class MAX30102:
 
     def removeDC2(self, input):
         DCRemoved = sp.detrend(input)
-        round(DCRemoved,3)
+        for i in range(len(DCRemoved)):
+            round(DCRemoved[i],3)
         return DCRemoved
 
 
