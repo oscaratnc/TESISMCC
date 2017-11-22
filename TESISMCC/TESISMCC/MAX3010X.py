@@ -698,7 +698,7 @@ class MAX30102:
     def removeDC(self, measure):
         mean = np.average(measure)
         for i in range (len(measure)):
-            measure[i]= round(measure[i]-mean,3)
+            measure[i]= measure[i]-mean
         return measure
 
     def removeDC2(self, input):
