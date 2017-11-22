@@ -702,7 +702,7 @@ class MAX30102:
         return measure
 
     def removeDC2(self, input):
-        DCRemoved = sp.detrend(input)   
+        DCRemoved = sp.signal.detrend(input)   
         return DCRemoved*1000
 
 
