@@ -708,10 +708,10 @@ class MAX30102:
        
         i=0
         for i in range (len(input)):
-            output = input[i]-lastinput+.995*lastouput
+            output = input[i]-lastinput+.95*lastouput
             DCRemoved = np.append(DCRemoved,output)
             lastinput = input[i]
-            lastouput = output
+            lastouput = DCRemoved[i]
         return DCRemoved
 
 
