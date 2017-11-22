@@ -696,23 +696,14 @@ class MAX30102:
 
     def removeDC1(self, measure):
         mean = np.average(measure)
+        maxDC = np.max(np.abs(measure))
         for i in range (len(measure)):
             measure[i]= measure[i]-mean
+        for i in range(len(measure)):
+            measure[i] = measure[i]/maxDC
         return measure
 
-    def removeDC2(self, input):
-        lastinput = 0
-        lastouput = 0
-        output = 0
-        DCRemoved = np.array([])
-       
-        
-        for i in range (len(input)):
-            output= input[i]-lastinput+.95*lastouput
-            DCRemoved = np.append(DCRemoved,output)
-            lastinput = input[i]
-            lastouput = DCRemoved[-1]
-        return DCRemoved
+   
 
 
 
