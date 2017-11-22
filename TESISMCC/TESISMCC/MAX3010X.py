@@ -2,6 +2,7 @@
 from smbus2 import SMBus
 import wiringpi as wiry
 import numpy as np
+import scipy as sp
 
 class Sense:
     STORAGE_SIZE = 4
@@ -694,16 +695,15 @@ class MAX30102:
 
             wiry.delay(1)
 
-    def removeDC(self, measure):
+    def removeDC1(self, measure):
         mean = np.average(measure)
-        maxDC = np.max(np.abs(measure))
         for i in range (len(measure)):
             measure[i]= measure[i]-mean
-        for i in range(len(measure)):
-            measure[i] = measure[i]/maxDC
-        return measure+ (np.min(measure)*-1)
+        return measure
 
-   
+    def removeDC2(self, input):
+        DCRemoved = sp.detrend(input)   
+        return DCRemoved*1000
 
 
 
