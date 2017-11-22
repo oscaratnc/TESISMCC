@@ -701,7 +701,7 @@ class MAX30102:
             measure[i]= measure[i]-mean
         for i in range(len(measure)):
             measure[i] = measure[i]/maxDC
-        return measure+5
+        return measure+ (np.min(measure)*-1)
 
    
 
