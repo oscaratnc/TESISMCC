@@ -703,6 +703,7 @@ class MAX30102:
     def removeDC2(self, input):
         lastinput = 0
         lastouput = 0
+        output = np.array([])
         measureDCR= np.array([])
         for i in range (len(input)):
             output[i] = input[i]-lastinput+.995*lastouput
