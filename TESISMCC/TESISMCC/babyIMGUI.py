@@ -3,11 +3,11 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-numSecondsECG = 5
-numSecondsSpo2 = 5
-Sensor.getECG(Sensor,numSecondsECG)
+numSeconds= 3
+
+Sensor.getECG(Sensor,numSeconds)
 print "ECG done"
-Sensor.getSpo2(Sensor,numSecondsSpo2)
+Sensor.getSpo2(Sensor,numSeconds)
 print "SPO2 done"
 ECG = Sensor.ecgValues
 RED = Sensor.Red
