@@ -706,12 +706,12 @@ class MAX30102:
         output = 0
         DCRemoved = np.array([])
        
-        i=0
+        
         for i in range (len(input)):
-            output = input[i]-lastinput+.95*lastouput
+            output= input[i]-lastinput+.95*lastouput
             DCRemoved = np.append(DCRemoved,output)
             lastinput = input[i]
-            lastouput = DCRemoved[i]
+            lastouput = DCRemoved[-1]
         return DCRemoved
 
 
