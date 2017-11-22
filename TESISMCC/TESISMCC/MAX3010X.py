@@ -696,7 +696,8 @@ class MAX30102:
 
     def removeDC(self, array):
         mean = np.average(array)
-        array = array - mean
+        for i in range (len(array)):
+            array[i]= array[i]-mean
     
 
 
