@@ -694,11 +694,10 @@ class MAX30102:
 
             wiry.delay(1)
 
-    def removeDC(self, array):
-        mean = np.average(array)
-        for i in range (len(array)):
-            array[i]= array[i]-mean
-    
+    def removeDC(self, measure):
+        for i in range (len(measure)):
+            measure[i]= masure[i]-np.average(measure)
+        return masure
 
 
 
