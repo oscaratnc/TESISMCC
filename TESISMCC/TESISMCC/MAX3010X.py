@@ -700,16 +700,15 @@ class MAX30102:
             measure[i]= measure[i]-mean
         return measure
 
-    def removeDC2(self, measure):
-        lastmeasure = 0
-        lastDC = 0
+    def removeDC2(self, input):
+        lastinput = 0
+        lastouput = 0
         measureDCR= np.array([])
-        for i in range (len(measure)):
-            dcRemoved = measure[i] - lastmeasure +.95*lastDC
-            measureDCR= np.append(measureDCR,dcRemoved)
-            lastmeasure =measure[i]
-            lastDC = dcRemoved
-
+        for i in range (len(input)):
+            output[i] = input[i]-lastinput+.995*lastouput
+            measureDCR = np.append(output[i])
+            lastinput = input[i]
+            lastouput = output[i]
         return measureDCR
 
 
