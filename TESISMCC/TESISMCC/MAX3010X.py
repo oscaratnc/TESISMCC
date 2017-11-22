@@ -705,6 +705,7 @@ class MAX30102:
         lastouput = 0
         output = np.array([])
         measureDCR= np.array([])
+        i=0
         for i in range (len(input)):
             output[i] = input[i]-lastinput+.995*lastouput
             measureDCR = np.append(output[i])
