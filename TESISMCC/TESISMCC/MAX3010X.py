@@ -712,7 +712,7 @@ class MAX30102:
             DCRemoved = np.append(DCRemoved,output)
             lastinput = input[i]
             lastouput = output
-        return 
+        return DCRemoved
 
 
 
