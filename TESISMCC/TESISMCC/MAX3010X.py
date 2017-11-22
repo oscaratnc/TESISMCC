@@ -2,7 +2,7 @@
 from smbus2 import SMBus
 import wiringpi as wiry
 import numpy as np
-import scipy as sp
+from scipy import signal as sp
 
 class Sense:
     STORAGE_SIZE = 4
@@ -702,8 +702,8 @@ class MAX30102:
         return measure
 
     def removeDC2(self, input):
-        DCRemoved = sp.signal.detrend(input)   
-        return DCRemoved*1000
+        DCRemoved = sp.detrend(input)
+        return DCRemoved
 
 
 
