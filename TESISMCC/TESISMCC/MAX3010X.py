@@ -668,10 +668,10 @@ class MAX30102:
                     
                     tempsample= Samples[2]
                     tempLongRed= tempLongRed + tempsample
-                    tempLongRed = templongRed & 0x3FFFF
+                    tempLongRed = tempLongRed & 0x3FFFF
                     
                  
-                    Sense.red[Sense.Head] = tempLongred                        
+                    Sense.red[Sense.Head] = tempLongRed                        
                    
                     if self.activeLeds>1:
                         tempsample=Samples[3]
