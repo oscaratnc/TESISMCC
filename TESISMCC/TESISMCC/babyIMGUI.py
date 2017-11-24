@@ -1,4 +1,4 @@
-import Sensor
+import Sensor as Sensors
 from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
@@ -6,13 +6,13 @@ import pyqtgraph as pg
 numSecondsECG=3 
 numSecondsSpO2=5
 
-Sensor.getECG(Sensor,numSecondsECG)
+Sensors.getECG(Sensor,numSecondsECG)
 print "ECG done"
-Sensor.getSpo2(Sensor,numSecondsSpO2)
+Sensors.getSpo2(Sensor,numSecondsSpO2)
 print "SPO2 done"
-ECG = Sensor.ecgValues
-RED = Sensor.Red
-IR = Sensor.IR
+ECG = Sensors.ecgValues
+RED = Sensors.Red
+IR = Sensors.IR
 print ECG
 print RED
 print IR
