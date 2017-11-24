@@ -720,7 +720,7 @@ class MAX30102:
         for i in range(len(measure)):
             abs = np.max(np.abs(measure))
             measure[i] = measure[i]/abs
-        return measure
+        return round(measure,4)
 
     
 
