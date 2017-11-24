@@ -660,7 +660,7 @@ class MAX30102:
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     tempsample=Samples[0]
                     tempsample<<= 16
-                    tempLongRed = tempLongRed+tempsample
+                    tempLongRed = tempLongRed + tempsample
 
                     tempsample=Samples[1]
                     tempsample<<= 8 
@@ -668,7 +668,7 @@ class MAX30102:
                     
                     tempsample= Samples[2]
                     tempLongRed= tempLongRed + tempsample
-                    tempLongRed = templongRed & 0x3FFF
+                    tempLongRed = templongRed & 0x3FFFF
                     
                  
                     Sense.red[Sense.Head] = tempLongred                        
@@ -683,8 +683,8 @@ class MAX30102:
                         tempLongIR = tempLongIR+tempsample
                     
                         tempsample= Samples[2]
-                        tempLongIR =tempLongred + tempsample
-                        tempLongIR = templongIR & 0x3FFF
+                        tempLongIR =tempLongIR + tempsample
+                        tempLongIR = templongIR & 0x3FFFF
                     
                         
                         Sense.IR[Sense.Head] = tempLongIR
