@@ -653,7 +653,9 @@ class MAX30102:
                     
                     Sense.Head = Sense.Head + 1
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
-                    
+                    tempLongIR=0
+                    tempLongRed=0
+
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     tempsample=Samples[0]
                     tempsample<<= 16
