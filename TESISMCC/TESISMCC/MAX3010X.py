@@ -625,15 +625,6 @@ class MAX30102:
             Sense.Tail = Sense.Tail % Sense.STORAGE_SIZE
             print "sense tail : ", Sense.Tail
 
-    def lastCorrect (self, read):
-        last = 15000
-        if read >15000 & read <45000:
-            last = read
-        else:
-            read = last
-       
-        return read
-
     def check(self):
         firsttime = 0
         readPointer =self.getReadPointer()
@@ -664,14 +655,34 @@ class MAX30102:
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
                     
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
-                    tempLongred = Samples[0] << 16 | Samples[1] << 8 | Samples[2]
-                    tempLongred = tempLongred >> 2 
-                   
+                    tempsample=Samples[0]
+                    tempsample<<= 16
+                    tempLongRed = tempLongRed+tempsample
+
+                    tempsample=Samples[1]
+                    tempsample<<= 8 
+                    tempLongRed= tempLongRed+tempsample
+                    
+                    tempsample= Samples[2]
+                    tempLongRed= tempLongRed + tempsample
+                    tempLongRed = templongRed & 0x3FFF
+                    
+                 
                     Sense.red[Sense.Head] = tempLongred                        
                    
                     if self.activeLeds>1:
-                        tempLongIR = Samples[3]<<16 |Samples[4] << 8 |Samples[5]
-                        tempLongIR = tempLongIR >> 2
+                        tempsample=Samples[3]
+                        tempsample<<= 16
+                        tempLongIR = tempLongIR + tempsample
+
+                        tempsample=Samples[4]
+                        tempsample<<= 8 
+                        tempLongIR = tempLongIR+tempsample
+                    
+                        tempsample= Samples[2]
+                        tempLongIR =tempLongred + tempsample
+                        tempLongIR = templongIR & 0x3FFF
+                    
                         
                         Sense.IR[Sense.Head] = tempLongIR
                      
