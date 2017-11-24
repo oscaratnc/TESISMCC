@@ -49,14 +49,14 @@ def getSpo2(self,numSeconds):
        #print "R: ", reD , "IR: ", iR
        self.Red = np.append(self.Red,reD)  
        self.IR = np.append(self.IR,iR)
+   self.Red = Spo2Sensor.removeDC(self.Red)
+   self.IR = Spo2Sensor.removeDC(self.IR)
    print "min IR:", min(self.IR)
    print "max IR:", max(self.IR)
    print "min RED:", min(self.Red)
    print "max RED: ", max(self.Red)
 
-   #self.Red = Spo2Sensor.removeDC(self.Red)
-   #self.IR = Spo2Sensor.removeDC(self.IR)
-
+   
 
 
 
