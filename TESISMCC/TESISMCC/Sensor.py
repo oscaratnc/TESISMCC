@@ -36,7 +36,7 @@ def getECG(self, numSeconds):
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
-    self.ecgValues = Spo2Sensor.removeDC()
+    self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
         
 
 def getSpo2(self,numSeconds):
