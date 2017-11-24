@@ -5,7 +5,7 @@ import pyqtgraph as pg
 
 numSecondsECG=3 
 numSecondsSpO2=5
-Sensors.beginSpO2(200)
+Sensors.beginSpO2(Sensors,200)
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
 Sensors.getSpo2(Sensors,numSecondsSpO2)
