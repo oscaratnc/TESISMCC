@@ -684,7 +684,7 @@ class MAX30102:
                     
                         tempsample= Samples[2]
                         tempLongIR =tempLongIR + tempsample
-                        tempLongIR = templongIR & 0x3FFFF
+                        tempLongIR = tempLongIR & 0x3FFFF
                     
                         
                         Sense.IR[Sense.Head] = tempLongIR
