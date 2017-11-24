@@ -6,9 +6,9 @@ import pyqtgraph as pg
 numSecondsECG=3 
 numSecondsSpO2=5
 
-Sensors.getECG(Sensor,numSecondsECG)
+Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
-Sensors.getSpo2(Sensor,numSecondsSpO2)
+Sensors.getSpo2(Sensors,numSecondsSpO2)
 print "SPO2 done"
 ECG = Sensors.ecgValues
 RED = Sensors.Red
