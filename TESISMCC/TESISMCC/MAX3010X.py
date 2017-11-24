@@ -649,12 +649,13 @@ class MAX30102:
                 if toGet > I2C_BUFFER_LENGTH:
                    toGet = I2C_BUFFER_LENGTH - (I2C_BUFFER_LENGTH % (self.activeLeds * 3))
                 bytesLeftToRead = bytesLeftToRead - toGet
+                tempLongIR=0
+                tempLongRed=0
                 while toGet > 0:
                     
                     Sense.Head = Sense.Head + 1
                     Sense.Head = Sense.Head % Sense.STORAGE_SIZE       
-                    tempLongIR=0
-                    tempLongRed=0
+
 
                     Samples = self.max102.read_i2c_block_data(self.MAX30102_ADDRESS, self.MAX30102_FIFODATAREG,self.activeLeds*3)
                     tempsample=Samples[0]
