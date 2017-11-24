@@ -16,8 +16,10 @@ mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 #Definitions for SPO2 Acquisition
 max102 = MAX30102.MAX30102.max102
 Spo2Sensor = MAX30102.MAX30102()
-Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
-Spo2Sensor.setup(31, 4, 2, 200, 411, 4096)
+
+def beginSpO2(self, sampleRate):
+    Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
+    Spo2Sensor.setup(31, 4, 2, sampleRate, 411, 4096)
 
 #Array variables to store samples
 ecgValues = np.array([])
@@ -45,8 +47,8 @@ def getSpo2(self,numSeconds):
        self.Red = np.append(self.Red,reD)  
        self.IR = np.append(self.IR,iR)
 
-   self.Red = Spo2Sensor.removeDC(self.Red)
-   self.IR = Spo2Sensor.removeDC(self.IR)
+   #self.Red = Spo2Sensor.removeDC(self.Red)
+   #self.IR = Spo2Sensor.removeDC(self.IR)
 
 
 

@@ -509,7 +509,9 @@ class MAX30102:
             self.setADCRange(self.MAX30102_ADCRANGE_16384)  # 62.5pA per LSB
         else:
             self.setADCRange(self.MAX30102_ADCRANGE_2048)
-
+       
+        
+        
         if sampleRate < 100:
             self.setSampleRate(self.MAX30102_SAMPLERATE_50)  # takes 50 samples per second
         elif sampleRate < 200:
@@ -706,6 +708,5 @@ class MAX30102:
         for i in range(len(DCRemoved)):
             round(DCRemoved[i],3)
         return DCRemoved
-
 
 
