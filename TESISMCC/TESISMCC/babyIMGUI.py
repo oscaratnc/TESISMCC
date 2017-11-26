@@ -13,9 +13,9 @@ print "SPO2 done"
 ECG = Sensors.ecgValues
 RED = Sensors.Red
 IR = Sensors.IR
-print ECG
-print RED
-print IR
+#print ECG
+#print RED
+#print IR
 
 app = QtGui.QApplication([])
 
