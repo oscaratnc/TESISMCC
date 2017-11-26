@@ -37,6 +37,7 @@ def getECG(self, numSeconds):
         self.ecgValues = np.append(self.ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
     self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
+   
         
 
 def getSpo2(self,numSeconds):
@@ -51,7 +52,10 @@ def getSpo2(self,numSeconds):
        self.Red = np.append(self.Red,reD)  
        self.IR = np.append(self.IR,iR)
    self.Red = Spo2Sensor.removeDC(self.Red)
+   self.Red = Spo2Sensor.lowPasFilter(self.Red,10,0.5,6,100)
    self.IR = Spo2Sensor.removeDC(self.IR)
+   self.IR = Spo2Sensor.lowPasFilter(self.IR,10,0.5,6,100)
+
    print "min IR:", min(self.IR)
    print "max IR:", max(self.IR)
    print "min RED:", min(self.Red)
