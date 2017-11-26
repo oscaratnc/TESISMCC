@@ -722,10 +722,11 @@ class MAX30102:
             measure[i] = round(measure[i]/abs,4)
         return measure
     
-    def lowPasFilter(self,signal, norder ,lcf, hcf, fs):
-        #low pass filter at 6hz cofficients
-        lpfC=  sp.firwin(norder,(lcf,hcf),.05,'hamming',False,False,2*fs)
-        filtered = sp.convolve(signal,lpfC,'full')
+    def lowPasFilter(self,signal,order,sampleF,fc):
+        nyquist = 0.5 * sampleF
+        Wn = fc/nyquist
+        b, a = sp.butter(order,Wn,'low',False,'ba')
+        filtered  = sp.lfilter(b,a,signal)
         return filtered
-
+        
 
