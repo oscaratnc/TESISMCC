@@ -724,7 +724,7 @@ class MAX30102:
     
     def lowPasFilter(self,signal, norder ,lcf, hcf, fs):
         #low pass filter at 6hz cofficients
-        lpfC=  sp.firwin(norder,(lcf,hcf),.05,'hamming',False,False,2*fs,fs)
+        lpfC=  sp.firwin(norder,(lcf,hcf),.05,'hamming',False,False,2*fs)
         filtered = sp.convolve(signal,lpfC,'full','auto')
         return filtered
 
