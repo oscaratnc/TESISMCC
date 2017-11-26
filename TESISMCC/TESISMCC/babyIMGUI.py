@@ -3,8 +3,8 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-numSecondsECG=5
-numSecondsSpO2=5
+numSecondsECG=0
+numSecondsSpO2=9
 Sensors.beginSpO2(Sensors,200)
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
