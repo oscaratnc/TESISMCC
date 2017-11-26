@@ -725,8 +725,8 @@ class MAX30102:
     def lowPasFilter(self,signal,order,sampleF,fc):
         nyquist = 0.5 * sampleF
         Wn = fc/nyquist
-        b, a = sp.butter(order,Wn,'low','ba')
-        filtered  = sp.lfilter(b,a,signal)
+        b, a = sp.butter(order,Wn,'low',False,'ba')
+        filtered  = sp.lfilter(a,b,signal)
         return filtered
         
 
