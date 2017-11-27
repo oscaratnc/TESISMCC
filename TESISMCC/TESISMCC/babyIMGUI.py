@@ -5,7 +5,7 @@ import pyqtgraph as pg
 
 numSecondsECG=.5
 numSecondsSpO2=9
-sampleRate = 200
+sampleRate = 100
 
 Sensors.setSamplerate(Sensors,sampleRate)
 Sensors.beginSpO2(Sensors,sampleRate)
