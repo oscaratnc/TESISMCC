@@ -730,7 +730,7 @@ class MAX30102:
         N, beta = sp.kaiserord(ripple_db,width)
 
         cutoff_hz = fc
-        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate,fs = sampleRate)
+        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate)
         filtered = sp.lfilter(taps,1, signal)
         return filtered
    
