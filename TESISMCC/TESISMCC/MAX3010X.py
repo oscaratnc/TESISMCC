@@ -732,7 +732,7 @@ class MAX30102:
         cutoff_hz = fc
         taps  = sp.firwin(N,(2*cutoff_hz)/nyq_rate,nyq = nyq_rate)
         print taps
-        filtered = sp.lfilter(taps,1.0, signal)
+        filtered = sp.lfilter(1.0,taps, signal)
         return filtered
    
 
