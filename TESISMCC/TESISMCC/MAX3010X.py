@@ -723,13 +723,18 @@ class MAX30102:
         return measure
     
     def lowPasFilter(self,signal,fc,sampleF):
-        nyquist = 0.5 * sampleF
-        wp = fc /nyquist
-        ws = wp * 1.1
-        [n,Wn] = sp.buttord(wp,ws,3,40)
-        print "n: ", n, "Wn: ", Wn 
-        [b, a] = sp.butter(n,Wn,'low',False,'ba')
-        filtered  = sp.lfilter(b,a,signal)
+        sampleRate  = sampleF
+        nyq_rate = sampleRate/2.0
+        width = 3.0/nyq_rate
+        ripple_db = 40
+        N, beta = sp.kaiserord(ripple_db,width)
+
+        cutoff_hz = fc
+        taps  = sp.firwin(N,cutoff_hz/nyq_rate,window = ('kaiser', beta))
+        filtered = sp.lfilter(taps,1, signal)
         return filtered
+   
+
+
         
 
