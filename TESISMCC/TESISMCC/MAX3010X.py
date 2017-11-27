@@ -726,7 +726,7 @@ class MAX30102:
         sampleRate  = sampleF
         nyq_rate = sampleRate/2.0
         width = 3.0/nyq_rate
-        ripple_db = 40
+        ripple_db = 60
         N, beta = sp.kaiserord(ripple_db,width)
 
         cutoff_hz = fc
