@@ -60,7 +60,7 @@ def getSpo2(self,numSeconds):
    
   
    self.IRAC = Spo2Sensor.lowPasFilter(self.IR,6,100)
-    self.IRAC = Spo2Sensor.removeDC(self.IRAC)
+   self.IRAC = Spo2Sensor.removeDC(self.IRAC)
    
    
 
