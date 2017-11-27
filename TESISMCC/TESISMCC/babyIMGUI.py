@@ -5,7 +5,10 @@ import pyqtgraph as pg
 
 numSecondsECG=.5
 numSecondsSpO2=9
-Sensors.beginSpO2(Sensors,200)
+sampleRate = 200
+
+Sensors.defSamplerate(sampleRate)
+Sensors.beginSpO2(Sensors,sampleRate)
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
 Sensors.getSpo2(Sensors,numSecondsSpO2)
