@@ -11,8 +11,8 @@ print "ECG done"
 Sensors.getSpo2(Sensors,numSecondsSpO2)
 print "SPO2 done"
 ECG = Sensors.ecgValues
-RED = Sensors.RedAC
-IR = Sensors.IRAC
+RED = Sensors.Red
+IR = Sensors.IR
 PPG = RED/IR
 #print ECG
 #print RED
