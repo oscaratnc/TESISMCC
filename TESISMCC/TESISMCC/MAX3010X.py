@@ -691,11 +691,8 @@ class MAX30102:
                      
                     toGet -= self.activeLeds * 3
                     
-                    
-                #else:
-                    #print "Read and Write are the same"
-                    #print "# Samples: ", numberOfSamples
             return numberOfSamples
+
     # Check for new data but give up after a certain amount of time
     # Returns true if new data was found
     # Returns false if new data was not found
@@ -727,10 +724,10 @@ class MAX30102:
         nyq_rate = sampleRate/2.0
         width = (fc*0.1)/nyq_rate
         ripple_db = 60
-        N, beta = sp.kaiserord(ripple_db,width)
+        N=48
 
         cutoff_hz = fc
-        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate)
+        taps  = sp.firwin(N,(2*cutoff_hz)/nyq_rate,nyq = nyq_rate)
         filtered = sp.lfilter(taps,1, signal)
         return filtered
    
