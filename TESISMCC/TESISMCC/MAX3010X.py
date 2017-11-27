@@ -724,7 +724,7 @@ class MAX30102:
         print "Sample Rate: ", sampleRate
         nyq_rate = sampleRate/2.0
         print "Nyq: ", nyq_rate
-        width = (fc*0.1)/nyq_rate
+        width = (fc*0.5)/nyq_rate
         print "width: ", width
         ripple_db = 60
         N=48
