@@ -722,11 +722,14 @@ class MAX30102:
             measure[i] = round(measure[i]/abs,4)
         return measure
     
-    def lowPasFilter(self,signal,order,sampleF,fc):
+    def lowPasFilter(self,signal,fc,sampleF):
         nyquist = 0.5 * sampleF
-        Wn = fc/nyquist
-        b, a = sp.butter(order,Wn,'low',False,'ba')
-        filtered  = sp.convolve(b,signal,'full')
+        wp = fc /nyquist
+        ws = wp * 1.1
+        [n,Wn] = sp.buttord(wp,ws,3,40)
+        print "n: ", n, "Wn: ", Wn 
+        [b, a] = sp.butter(n,Wn,'low',False,'ba')
+        filtered  = sp.lfilter(b,a,signal)
         return filtered
         
 
