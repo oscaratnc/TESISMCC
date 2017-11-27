@@ -725,12 +725,12 @@ class MAX30102:
     def lowPasFilter(self,signal,fc,sampleF):
         sampleRate  = sampleF
         nyq_rate = sampleRate/2.0
-        width = 3.0/nyq_rate
+        width = (fc*0.1)/nyq_rate
         ripple_db = 60
         N, beta = sp.kaiserord(ripple_db,width)
 
         cutoff_hz = fc
-        taps  = sp.firwin(N,cutoff_hz/nyq_rate,window = ('kaiser', beta))
+        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate,fs = sampleRate)
         filtered = sp.lfilter(taps,1, signal)
         return filtered
    
