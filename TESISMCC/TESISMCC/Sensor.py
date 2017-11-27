@@ -51,7 +51,7 @@ def getECG(self, numSeconds):
 def getSpo2(self,numSeconds):
     
    startTime = wiringpi.millis()
-   samplerate = self.getSampleRate()
+   samplerate = self.getSampleRate(self)
 
    while wiringpi.millis()-startTime < (numSeconds*1000): 
       # print (wiringpi.millis()-startTime)/1000
