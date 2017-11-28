@@ -730,12 +730,8 @@ class MAX30102:
 
         Wp = fc/nyq_rate
         print "Wp = ",Wp
-        Ws = 2/nyq_rate
-        print "Ws = ", Ws
-
-        [n,Wn] = sp.buttord(Wp, Ws, rpb, rsb)
-        print "Order:",n,"Wn:", Wn
-        [b, a] = sp.butter(n,Wn,'low')
+    
+        [b, a] = sp.butter(n,Wp,'low')
         print [b,a]
         filtered = sp.lfilter(b,a,signal)
         return filtered
