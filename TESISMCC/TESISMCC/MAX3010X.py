@@ -731,7 +731,7 @@ class MAX30102:
         Wp = fc/nyq_rate
         print "Wp = ",Wp
     
-        [b, a] = sp.butter(n,Wp,'low')
+        [b, a] = sp.butter(1,Wp,'low')
         print [b,a]
         filtered = sp.lfilter(b,a,signal)
         return filtered
