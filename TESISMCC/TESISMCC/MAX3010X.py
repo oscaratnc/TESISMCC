@@ -727,9 +727,11 @@ class MAX30102:
         width = .45
         print "width: ", width
         ripple_db = 60
+        Wp = fc/nyq_rate
+        Ws = (fc *.2)/nyq_rate
        
-        [n,Wn] = sp.buttord(fc/nyq_rate,width,3,ripple_db)
-        [b,a ] = sp.butter(n,Wn,'low',False,'ba')
+        [n,Wn] = sp.buttord(Wp, Ws, 3, 40)
+        [b,a ] = sp.butter(n,Wn,'low')
         filtered = sp.lfilter(b,a,signal)
         return filtered
    
