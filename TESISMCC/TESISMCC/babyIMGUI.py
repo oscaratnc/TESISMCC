@@ -23,13 +23,13 @@ print IR
 
 IRFile = open("IRfile.txt", 'w')
 IRFile.write("Red:\n ")
-for i in np.nditer(RED):
-    valueRed = str(i)
+for i in range(RED.shape(0)):
+    valueRed = str(RED(i))
     IRFile.write(valueRed)
 
 IRFile.write("IR: ")
-for i in np.nditer(IR):
-    valueIR = str(i)
+for i in range(IR.shape(0)):
+    valueIR = str(IR(i))
     IRFile.write(valueIR)
     
 IRFile.close
