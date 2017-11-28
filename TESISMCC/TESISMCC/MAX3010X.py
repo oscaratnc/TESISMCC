@@ -729,7 +729,7 @@ class MAX30102:
         ripple_db = 40
         N=20
         cutoff_hz = fc
-        taps  = sp.firwin(N,(2*cutoff_hz)/nyq_rate,nyq = nyq_rate)
+        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate)
         print taps
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
