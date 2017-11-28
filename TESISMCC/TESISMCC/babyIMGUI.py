@@ -21,11 +21,16 @@ PPG = RED/IR
 print RED
 print IR
 
-IRFile = open("IRfile.txt", "w")
+IRFile = open("IRfile.txt", 'w')
 IRFile.write("Red: ")
-IRFile.write( RED)
+for i in np.nditer(RED):
+    valueRed = str(RED[i])
+    IRFile.write(valueRed)
 IRFile.write("IR: ")
-IRFile.write( IR)
+for i in np.nditer(IR):
+    valueIR = str(IR[i])
+    IRFile.write(valueIr)
+    
 IRFile.close
 
 
