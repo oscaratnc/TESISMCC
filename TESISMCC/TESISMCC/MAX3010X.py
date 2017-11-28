@@ -734,8 +734,8 @@ class MAX30102:
         print "Ws = ", Ws
 
         [n,Wn] = sp.buttord(Wp, Ws, rpb, rsb)
-        print n, Wn
-        [b,a ] = sp.butter(n,Wn,'low')
+        print "Order:",n,"Wn:", Wn
+        [b, a] = sp.butter()
         print [b,a]
         filtered = sp.lfilter(b,a,signal)
         return filtered
