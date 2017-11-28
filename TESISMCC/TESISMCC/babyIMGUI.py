@@ -26,8 +26,8 @@ IRFile.write("Red: ")
 IRFile.write( RED)
 IRFile.write("IR: ")
 IRFile.write( IR)
+IRFile.close
 
-IR
 
 app = QtGui.QApplication([])
 
