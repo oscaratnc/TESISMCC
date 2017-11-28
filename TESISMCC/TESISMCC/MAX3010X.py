@@ -727,11 +727,10 @@ class MAX30102:
         width = (fc*0.5)/nyq_rate
         print "width: ", width
         ripple_db = 40
-        N=48
-        cutoff_hz = fc
-        taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate)
-        print taps
-        filtered = sp.lfilter(taps,1.0,signal)
+       
+        [n,Wn] = sp.buttord(fc/nyq_rate,width,3,ripple_db)
+        [b,a ] = sp.butter(n,Wn,'low',False,'ba')
+        filtered = sp.lfilter(b,a,signal)
         return filtered
    
 
