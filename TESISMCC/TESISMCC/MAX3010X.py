@@ -726,13 +726,12 @@ class MAX30102:
         print "Nyq: ", nyq_rate
         width = (fc*0.5)/nyq_rate
         print "width: ", width
-        ripple_db = 60
+        ripple_db = 40
         N=48
-
         cutoff_hz = fc
         taps  = sp.firwin(N,(2*cutoff_hz)/nyq_rate,nyq = nyq_rate)
         print taps
-        filtered = sp.lfilter(1.0,taps, signal)
+        filtered = sp.lfilter(taps,1.0,signal)
         return filtered
    
 
