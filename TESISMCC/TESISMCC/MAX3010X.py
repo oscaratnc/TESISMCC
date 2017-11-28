@@ -724,9 +724,9 @@ class MAX30102:
         print "Sample Rate: ", sampleRate
         nyq_rate = sampleRate/2.0
         print "Nyq: ", nyq_rate
-        width = .1
+        width = .4
         print "width: ", width
-        ripple_db = 40
+        ripple_db = 60
        
         [n,Wn] = sp.buttord(fc/nyq_rate,width,3,ripple_db)
         [b,a ] = sp.butter(n,Wn,'low',False,'ba')
