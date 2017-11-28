@@ -725,13 +725,16 @@ class MAX30102:
         nyq_rate = sampleRate/2.0
         print "Nyq: ", nyq_rate
         rpb= 3
-        print "width: ", width
+      
         rsb= 40 
 
         Wp = fc/nyq_rate
+        print "Wp = ",Wp
         Ws = 2/nyq_rate
-       
+        print "Ws = ", Ws
+
         [n,Wn] = sp.buttord(Wp, Ws, rpb, rsb)
+        print n, Wn
         [b,a ] = sp.butter(n,Wn,'low')
         print [b,a]
         filtered = sp.lfilter(b,a,signal)
