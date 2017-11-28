@@ -727,7 +727,7 @@ class MAX30102:
         width = (fc*0.5)/nyq_rate
         print "width: ", width
         ripple_db = 40
-        N=20
+        N=48
         cutoff_hz = fc
         taps  = sp.firwin(N,cutoff_hz/nyq_rate,nyq = nyq_rate)
         print taps
