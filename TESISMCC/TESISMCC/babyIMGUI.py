@@ -26,6 +26,7 @@ IRFile.write("Red: ")
 for i in np.nditer(RED):
     valueRed = str(i)
     IRFile.write(valueRed)
+IRFile.write("\n")
 IRFile.write("IR: ")
 for i in np.nditer(IR):
     valueIR = str(i)
