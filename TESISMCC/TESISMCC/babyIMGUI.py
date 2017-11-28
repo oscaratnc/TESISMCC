@@ -21,6 +21,12 @@ PPG = RED/IR
 print RED
 print IR
 
+IRFile = open("IRfile.txt", "w")
+IRFile.write("Red: ", RED)
+IRFile.write("IR: ", IR)
+
+IR
+
 app = QtGui.QApplication([])
 
 win = pg.GraphicsWindow()
