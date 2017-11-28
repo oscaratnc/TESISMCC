@@ -22,7 +22,7 @@ print RED
 print IR
 
 IRFile = open("IRfile.txt", 'w')
-IRFile.write("Red: ")
+IRFile.write("Red:\n ")
 for i in np.nditer(RED):
     valueRed = str(i)
     IRFile.write(valueRed)
