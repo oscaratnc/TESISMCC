@@ -724,14 +724,16 @@ class MAX30102:
         print "Sample Rate: ", sampleRate
         nyq_rate = sampleRate/2.0
         print "Nyq: ", nyq_rate
-        width = .45
+        rpb= 3
         print "width: ", width
-        ripple_db = 60
+        rsb= 40 
+
         Wp = fc/nyq_rate
-        Ws = (fc *.2)/nyq_rate
+        Ws = 2/nyq_rate
        
-        [n,Wn] = sp.buttord(Wp, Ws, 3, 40)
+        [n,Wn] = sp.buttord(Wp, Ws, rpb, rsb)
         [b,a ] = sp.butter(n,Wn,'low')
+        print [b,a]
         filtered = sp.lfilter(b,a,signal)
         return filtered
    

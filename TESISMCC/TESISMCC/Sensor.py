@@ -16,7 +16,7 @@ mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 #Definitions for SPO2 Acquisition
 max102 = MAX30102.MAX30102.max102
 Spo2Sensor = MAX30102.MAX30102()
-sampleRate= 100
+sampleRate= 200
 
 def setSamplerate(self, samplerate):
     self.sampleRate = samplerate
