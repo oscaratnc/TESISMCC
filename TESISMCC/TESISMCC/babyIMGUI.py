@@ -24,11 +24,11 @@ print IR
 IRFile = open("IRfile.txt", 'w')
 IRFile.write("Red: ")
 for i in np.nditer(RED):
-    valueRed = str(RED[i])
+    valueRed = str(i)
     IRFile.write(valueRed)
 IRFile.write("IR: ")
 for i in np.nditer(IR):
-    valueIR = str(IR[i])
+    valueIR = str(i)
     IRFile.write(valueIr)
     
 IRFile.close
