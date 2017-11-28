@@ -22,8 +22,8 @@ print RED
 print IR
 
 IRFile = open("IRfile.txt", "w")
-IRFile.write("Red: ", RED)
-IRFile.write("IR: ", IR)
+IRFile.write("Red: " + RED)
+IRFile.write("IR: " + IR)
 
 IR
 
