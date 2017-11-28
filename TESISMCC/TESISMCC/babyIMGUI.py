@@ -16,7 +16,7 @@ print "SPO2 done"
 ECG = Sensors.ecgValues
 RED = Sensors.Red
 IR = Sensors.IR
-PPG = RED/IR
+#PPG = RED/IR
 #print ECG
 print RED.shape
 print IR.shape
