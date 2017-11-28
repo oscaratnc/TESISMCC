@@ -29,7 +29,7 @@ for i in np.nditer(RED):
 IRFile.write("IR: ")
 for i in np.nditer(IR):
     valueIR = str(i)
-    IRFile.write(valueIr)
+    IRFile.write(valueIR)
     
 IRFile.close
 
