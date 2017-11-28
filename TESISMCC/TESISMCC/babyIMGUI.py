@@ -30,7 +30,7 @@ win.setWindowTitle("Signals Ploting")
 pg.setConfigOptions(antialias= True)
 
 p1 = win.addPlot(title="ECG")
-p1.plot(PPG, pen=(255,0,0))
+p1.plot(ECG, pen=(255,0,0))
 
 win.nextRow()
 p2 = win.addPlot(title = "RED LED")
