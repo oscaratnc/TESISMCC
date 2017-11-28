@@ -61,11 +61,11 @@ def getSpo2(self,numSeconds):
        self.Red = np.append(self.Red,reD)  
        self.IR = np.append(self.IR,iR)
       
-   self.Red = Spo2Sensor.lowPasFilter(self.Red,6,samplerate)
+   #self.Red = Spo2Sensor.lowPasFilter(self.Red,6,samplerate)
    self.Red = Spo2Sensor.removeDC(self.Red)
    
   
-   self.IR = Spo2Sensor.lowPasFilter(self.IR,6,samplerate)
+   #self.IR = Spo2Sensor.lowPasFilter(self.IR,6,samplerate)
    self.IR = Spo2Sensor.removeDC(self.IR)
    
    
