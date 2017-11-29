@@ -18,17 +18,19 @@ RED = Sensors.Red
 IR = Sensors.IR
 #PPG = RED/IR
 #print ECG
-print RED.shape
-print IR.shape
+print RED
+print IR
 
 IRFile = open("IRfile.txt", 'w')
 IRFile.write("Red:\n ")
 for i in range(RED.shape[0]):
+    print i, RED[i]
     valueRed = str(RED[i])
     IRFile.write(valueRed)
 
 IRFile.write("IR: ")
 for i in range(IR.shape[0]):
+    print i , IR[i]
     valueIR = str(IR[i])
     IRFile.write(valueIR)
     
