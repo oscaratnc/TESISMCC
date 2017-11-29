@@ -187,8 +187,8 @@ class MAX30102(object):
 
     def set_mode(self, mode):
         i2c = self.i2c
-        reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
-        i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg & MAX30102_MODE_MASK)
+        reg = i2c.read_byte_data(self.MAX30102_ADDRESS,self.MAX30102_MODECONFIG)
+        i2c.write_byte_data(self.MAX30102_ADDRESS,self.MAX30102_MODECONFIG,reg & MAX30102_MODE_MASK)
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG, reg | mode)
         print "mode done"
         
