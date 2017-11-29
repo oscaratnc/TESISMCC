@@ -167,6 +167,8 @@ class MAX30102(object):
         self.max_buffer_len = max_buffer_len
         self._interrupt = None
 
+        print "Config done :)"
+
     @property
     def red(self):
         return self.buffer_red[-1] if self.buffer_red else None
