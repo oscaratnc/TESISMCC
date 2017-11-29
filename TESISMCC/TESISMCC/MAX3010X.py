@@ -594,14 +594,14 @@ class MAX30102:
 
 
     def getRed(self):
-        if self.safeCheck(250):
+        if self.safeCheck(100):
             redsample = Sense.red[Sense.Head]
             return redsample
         else:
             return 0
 
     def getIR(self):
-        if self.safeCheck(250):
+        if self.safeCheck(100):
             IRhead = Sense.IR[Sense.Head]
             return IRhead
         else:
