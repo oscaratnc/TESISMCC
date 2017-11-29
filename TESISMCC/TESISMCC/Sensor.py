@@ -48,11 +48,12 @@ def getECG(self, numSeconds):
     self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
 
-def getSpo2(self):
+
    
  
-#def getSpo2(self,numSeconds):
-    
+def getSpo2(self):
+   mx102 = MAx30102.MAX30102()
+   mx102.getRegisters()
 #   startTime = wiringpi.millis()
 #   samplerate = self.getSampleRate(self)
 
