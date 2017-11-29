@@ -51,9 +51,9 @@ def getECG(self, numSeconds):
 
    
  
-def getSpo2(self):
-   mx102 = MAx30102.MAX30102()
-   mx102.getRegisters()
+
+mx102 = MAx30102.MAX30102()
+mx102.getRegisters()
 #   startTime = wiringpi.millis()
 #   samplerate = self.getSampleRate(self)
 
