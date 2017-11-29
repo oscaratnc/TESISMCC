@@ -189,6 +189,7 @@ class MAX30102(object):
         reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg & MAX30102_MODE_MASK)
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG, reg | mode)
+        print "mode done"
         
     def set_PulseWidth(self, pulseWidth):
         reg = i2c.read_byte_data(MAX30102_ADDRESS,MAX30102_SPO2CONFIG)
@@ -197,6 +198,7 @@ class MAX30102(object):
 
     def enable_spo2(self):
         self.set_mode(MODE_SPO2)
+
     def disable_spo2(self):
         self.set_mode(MODE_HR)
 
