@@ -40,7 +40,7 @@ IRFile.close
 app = QtGui.QApplication([])
 
 win = pg.GraphicsWindow()
-win.resize(1000,600)
+win.resize(1000,1000)
 win.setWindowTitle("Signals Ploting")
 
 pg.setConfigOptions(antialias= True)
