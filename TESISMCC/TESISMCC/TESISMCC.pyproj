@@ -31,6 +31,9 @@
     <Compile Include="HeartRate.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MAx30102.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MAX3010X.py">
       <SubType>Code</SubType>
     </Compile>
