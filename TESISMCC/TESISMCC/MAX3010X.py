@@ -594,14 +594,14 @@ class MAX30102:
 
 
     def getRed(self):
-        if self.safeCheck(100):
+        if self.safeCheck(200):
             redsample = Sense.red[Sense.Head]
             return redsample
         else:
             return 0
 
     def getIR(self):
-        if self.safeCheck(100):
+        if self.safeCheck(200):
             IRhead = Sense.IR[Sense.Head]
             return IRhead
         else:
@@ -700,13 +700,12 @@ class MAX30102:
     def safeCheck(self, maxTimetoCheck):
         markTime = wiry.millis()
 
-        while 1:
+        while True:
             if wiry.millis() - markTime > maxTimetoCheck:
                 return False
             if self.check():
                 return True
-
-            wiry.delay(1)
+            #wiry.delay(1)
 
     def removeDC(self, measure):
         mean = np.mean(measure)
