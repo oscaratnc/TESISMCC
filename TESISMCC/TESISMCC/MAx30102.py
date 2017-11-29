@@ -158,7 +158,7 @@ class MAX30102(object):
 
     def __init__(self, mode = MODE_SPO2, sample_rate= 200, led_current_red =6.4, led_current_ir = 6.4, pulse_width= 411, max_buffer_len= 10000):
       
-        self.set_mode(MODE_SPO2)
+        self.set_mode(self.MODE_SPO2)
         self.set_led_current (led_current_red, led_current_ir)
         self.set_spo_config(sample_rate, pulse_width)
 
