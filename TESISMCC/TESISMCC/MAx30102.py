@@ -185,7 +185,7 @@ class MAX30102(object):
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_LED2_PULSEAMP,(led_current_red<<4) | led_current_ir)
 
     def set_mode(self, mode):
-            
+        i2c = i2c
         reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg & MAX30102_MODE_MASK)
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG, reg | mode)
