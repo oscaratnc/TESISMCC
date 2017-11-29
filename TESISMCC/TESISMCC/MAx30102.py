@@ -204,15 +204,18 @@ class MAX30102(object):
         self.set_mode(MODE_HR)
 
     def enable_interrupt(self, interrupt_type):
+        i2c = self.i2c
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_INTENABLE1, (interrupt_type+1)<<4 )
         i2c.read_byte_data(MAX30102_ADDRESS,MAX30102_INSTAT1)
 
     def getNumberOfSamples(self):
+        i2c = self.i2c
         writePointer = i2c.read_byte_data(MAX30102_ADDRESS,MAX30102_FIFOWRITEPTR)
         readPointer = i2c.read_byte_data(MAX30102_ADDRESS,MAX30102_FIFOREADPTR)
         return abs(32+(writePointer - readPointer))%32
 
     def read_sensor(self):
+        i2c = self.i2c
         Samples = i2c.read_i2c_block_data(MAX30102_ADDRESS,MAX30102_FIFODATAREG,6)
 
         tempsample=Samples[0]
@@ -246,29 +249,36 @@ class MAX30102(object):
         buffer_ir = buffer_ir[-max_buffer_len:]
 
     def shutdown(self):
+        i2c = self.i2c
         reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG, reg | MAX30102_SHUTDOWN)
 
     def reset(self):
+        i2c = self.i2c
         reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg | MAX30102_RESET)
 
     def refresh_temperature (self):
+        i2c = self.i2c
         reg  = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg | (1 << 3))
             
     def get_temperature (self):
+        i2c = self.i2c
         intg = _twos_complement(i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_DIETEMPINT))
         frac = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_DIETEMPFRAC)
         return intg + (frac * 0.0625)
 
     def get_rev_id(self):
+        i2c = self.i2c
         return i2c.read_byte_data(MAX30102_ADDRESS,MAX30102_REVISIONID)
 
     def get_part_id (self):
+        i2c = self.i2c
         return i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_PARTID)
 
     def getRegisters(self):
+        i2c = self.i2c
         print   "INT STATUS: ", i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_INSTAT1),
         print   "INT_ENABLE:", self.i2c.read_byte_data(I2C_ADDRESS, INT_ENABLE),
         print   "FIFO_WR_PTR: ", self.i2c.read_byte_data(I2C_ADDRESS, FIFO_WR_PTR),
