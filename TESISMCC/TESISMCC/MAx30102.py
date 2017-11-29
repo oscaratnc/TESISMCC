@@ -199,10 +199,10 @@ class MAX30102(object):
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_SPO2CONFIG, reg|pulseWidth)
 
     def enable_spo2(self):
-        self.set_mode(MODE_SPO2)
+        self.set_mode(self.MODE_SPO2)
 
     def disable_spo2(self):
-        self.set_mode(MODE_HR)
+        self.set_mode(self.MODE_HR)
 
     def enable_interrupt(self, interrupt_type):
         i2c = self.i2c
