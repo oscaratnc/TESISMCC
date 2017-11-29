@@ -151,12 +151,12 @@ def _twos_complement(val,bits):
         val = val-(1<<bits)
     return val
 class MAX30102(object):
+    BUS  = 1
+    i2c  = SMBus(BUS) 
     def __init__(self, mode = MODE_SPO2, sample_rate= 200, led_current_red =6.4, led_current_ir = 6.4, pulse_width= 411, max_buffer_len= 10000):
-        BUS  = 1 
+         
         MAX30102_ADDRESS = 0X57
-        i2c  = SMBus(BUS) 
-       
-       
+          
         self.set_mode(MODE_SPO2)
         self.set_led_current (led_current_red, led_current_ir)
         self.set_spo_config(sample_rate, pulse_width)
@@ -185,7 +185,7 @@ class MAX30102(object):
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_LED2_PULSEAMP,(led_current_red<<4) | led_current_ir)
 
     def set_mode(self, mode):
-        i2c = i2c
+        i2c = i2c()
         reg = i2c.read_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG)
         i2c.write_byte_data(MAX30102_ADDRESS,MAX30102_MODECONFIG,reg & MAX30102_MODE_MASK)
         i2c.write_byte_data(MAX30102_ADDRESS, MAX30102_MODECONFIG, reg | mode)
