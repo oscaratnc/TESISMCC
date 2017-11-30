@@ -54,7 +54,7 @@ def getSpo2(self):
     interrupt = Button(7)
     #while wiringpi.millis()-startTime < (numSeconds*1000): 
     #    interrupt.when_activated = mx102.read_sensor()
-    interrupt.when_activated = mx102.read_sensor
+    interrupt.when_activated = mx102.read_sensor()
     self.Red = mx102.buffer_red
     self.IR = mx102.buffer_ir
     
