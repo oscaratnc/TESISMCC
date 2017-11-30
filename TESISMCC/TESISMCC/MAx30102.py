@@ -208,7 +208,7 @@ class MAX30102(object):
     def enable_interrupt(self, interrupt_type):
         i2c = self.i2c
         i2c.write_byte_data(self.MAX30102_ADDRESS, self.MAX30102_INTENABLE1, (interrupt_type+1)<<4 )
-        i2c.read_byte_data(self.MAX30102_ADDRESS,self.MAX30102_INSTAT1)
+        print i2c.read_byte_data(self.MAX30102_ADDRESS,self.MAX30102_INSTAT1)
 
     def getNumberOfSamples(self):
         i2c = self.i2c
