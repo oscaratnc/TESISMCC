@@ -52,30 +52,30 @@ mx102.getRegisters()
 measure = mx102.read_sensor()
 print measure
 
-def getSpo2(self, numSeconds):
-    startTime = wiringpi.millis()
+#def getSpo2(self, numSeconds):
+    #startTime = wiringpi.millis()
 
- while wiringpi.millis()-startTime < (numSeconds*1000): 
-#      # print (wiringpi.millis()-startTime)/1000
-#       reD = Spo2Sensor.getRed()
-#       iR  = Spo2Sensor.getIR()
-#       #print "R: ", reD , "IR: ", iR
-#       self.Red = np.append(self.Red,reD)  
-#       self.IR = np.append(self.IR,iR)
+    # while wiringpi.millis()-startTime < (numSeconds*1000): 
+    #      # print (wiringpi.millis()-startTime)/1000
+    #       reD = Spo2Sensor.getRed()
+    #       iR  = Spo2Sensor.getIR()
+    #       #print "R: ", reD , "IR: ", iR
+    #       self.Red = np.append(self.Red,reD)  
+    #       self.IR = np.append(self.IR,iR)
    
-#   #self.Red = Spo2Sensor.lowPasFilter(self.Red,6,samplerate)
-#   #self.Red = Spo2Sensor.removeDC(self.Red)
+    #   #self.Red = Spo2Sensor.lowPasFilter(self.Red,6,samplerate)
+    #   #self.Red = Spo2Sensor.removeDC(self.Red)
    
    
-#   #self.IR = Spo2Sensor.lowPasFilter(self.IR,6,samplerate)
-#   #self.IR = Spo2Sensor.removeDC(self.IR)
+    #   #self.IR = Spo2Sensor.lowPasFilter(self.IR,6,samplerate)
+    #   #self.IR = Spo2Sensor.removeDC(self.IR)
    
    
 
-#   print "min IR:", min(self.IR)
-#   print "max IR:", max(self.IR)
-#   print "min RED:", min(self.Red)
-#   print "max RED: ", max(self.Red)
+    #   print "min IR:", min(self.IR)
+    #   print "max IR:", max(self.IR)
+    #   print "min RED:", min(self.Red)
+    #   print "max RED: ", max(self.Red)
 
    
 
