@@ -251,6 +251,8 @@ class MAX30102(object):
 
         self.buffer_red = self.buffer_red[-self.max_buffer_len:]
         self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
+        
+        
 
     def shutdown(self):
         i2c = self.i2c
