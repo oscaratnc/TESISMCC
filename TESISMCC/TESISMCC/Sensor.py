@@ -50,7 +50,7 @@ def getECG(self, numSeconds):
 mx102 = MAx30102.MAX30102()
 mx102.getRegisters()
 measure = mx102.read_sensor()
-print measure+
+print measure
 
 def getSpo2(self, numSeconds):
     startTime = wiringpi.millis()
