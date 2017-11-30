@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 import Adafruit_MCP3008
 import wiringpi
 import numpy as np
+from gpiozero import Button
 GPIO.setmode(GPIO.BCM)
 
 #Definitions for ECG acquisition
@@ -48,11 +49,12 @@ def getECG(self, numSeconds):
 
 def getSpo2(self, numSeconds):
     mx102 = MAx30102.MAX30102()
-    
+    mx102.enable_interrupt(mx102.INTERRUPT_FIFO)
     startTime = wiringpi.millis()
-
+    interrupt = Button(7)
     while wiringpi.millis()-startTime < (numSeconds*1000): 
-         mx102.read_sensor()
+        interrupt.when_activated = mx102.read_sensor()
+
     self.Red = mx102.buffer_red
     self.IR = mx102.buffer_ir
 

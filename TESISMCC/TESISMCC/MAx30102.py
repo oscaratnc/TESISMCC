@@ -156,7 +156,7 @@ class MAX30102(object):
     LED_CURRENT = { 0: 0, .2: 1, .4: 2, 3.1:15, 6.4: 17, 12.5: 63, 25.4:127, 50:255}
 
 
-    def __init__(self, mode = MODE_SPO2, sample_rate= 100, led_current_red =6.4, led_current_ir = 6.4, pulse_width= 411, max_buffer_len= 10000):
+    def __init__(self, mode = MODE_SPO2, sample_rate= 200, led_current_red =6.4, led_current_ir = 6.4, pulse_width= 411, max_buffer_len= 10000):
       
         self.set_mode(self.MODE_SPO2)
         self.set_led_current (led_current_red, led_current_ir)
