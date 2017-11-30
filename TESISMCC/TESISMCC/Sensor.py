@@ -58,8 +58,7 @@ def getSpo2(self, numSeconds):
          mx102.read_sensor()
     Red = mx102.buffer_red
     IR = mx102.buffer_ir
-    print Red
-    print IR
+    
     #      # print (wiringpi.millis()-startTime)/1000
     #       reD = Spo2Sensor.getRed()
     #       iR  = Spo2Sensor.getIR()
