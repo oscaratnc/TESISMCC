@@ -219,6 +219,8 @@ class MAX30102(object):
     def read_sensor(self):
         i2c = self.i2c
         Samples = i2c.read_i2c_block_data(self.MAX30102_ADDRESS,self.MAX30102_FIFODATAREG,6)
+        tempLongRed = 0
+        tempLongIR = 0
 
         tempsample=Samples[0]
         tempsample<<= 16
