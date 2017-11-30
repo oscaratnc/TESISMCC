@@ -37,7 +37,7 @@ IR = np.array([])
 RedAC =np.array([])
 IRAC= np.array([])
 
-self.getSpo2(3)
+
 
 def getECG(self, numSeconds):
     startTime = wiringpi.millis()

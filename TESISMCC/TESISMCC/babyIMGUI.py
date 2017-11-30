@@ -7,8 +7,6 @@ numSecondsECG=.5
 numSecondsSpO2=10
 sampleRate = 400
 
-Sensors.setSamplerate(Sensors,sampleRate)
-Sensors.beginSpO2(Sensors,sampleRate)
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
 Sensors.getSpo2(Sensors,numSecondsSpO2)
