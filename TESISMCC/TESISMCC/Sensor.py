@@ -34,9 +34,6 @@ mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 ecgValues = np.array([])
 Red = np.array([])
 IR = np.array([])
-RedAC =np.array([])
-IRAC= np.array([])
-
 
 
 def getECG(self, numSeconds):
@@ -51,13 +48,14 @@ def getECG(self, numSeconds):
 
 def getSpo2(self, numSeconds):
     mx102 = MAx30102.MAX30102()
-  
+    
     startTime = wiringpi.millis()
 
     while wiringpi.millis()-startTime < (numSeconds*1000): 
          mx102.read_sensor()
-    Red = mx102.buffer_red
-    IR = mx102.buffer_ir
+    self.Red = mx102.buffer_red
+    self.IR = mx102.buffer_ir
+
     
     #      # print (wiringpi.millis()-startTime)/1000
     #       reD = Spo2Sensor.getRed()
