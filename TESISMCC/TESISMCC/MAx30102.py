@@ -179,6 +179,7 @@ class MAX30102(object):
         return self.bufer_ir[-1] if self.buffer_ir else None
 
     def set_led_current(self, led_current_red = 6.4, led_current_ir = 6.4):
+        i2c = self.i2c
         #validate the settings, convert bit values
         led_current_red = _get_valid(self.LED_CURRENT, led_current_red )
         led_current_ir = _get_valid(self.LED_CURRENT,led_current_ir)
