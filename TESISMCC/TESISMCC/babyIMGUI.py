@@ -16,8 +16,8 @@ RED = Sensors.Red
 IR = Sensors.IR
 #PPG = RED/IR
 #print ECG
-print RED
-print IR
+#print RED
+#print IR
 
 IRFile = open("IRfile.txt", 'w')
 IRFile.write("Red:\n ")
