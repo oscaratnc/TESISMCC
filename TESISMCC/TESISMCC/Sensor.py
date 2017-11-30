@@ -47,7 +47,7 @@ def getECG(self, numSeconds):
     #self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
 
-def getSpo2(self):
+def getSpo2(self,numSeconds):
     mx102 = MAx30102.MAX30102()
     mx102.enable_interrupt(mx102.INTERRUPT_FIFO)
     startTime = wiringpi.millis()
