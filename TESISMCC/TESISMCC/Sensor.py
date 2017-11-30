@@ -36,7 +36,8 @@ Red = np.array([])
 IR = np.array([])
 RedAC =np.array([])
 IRAC= np.array([])
-       
+
+self.getSpo2(3)
 
 def getECG(self, numSeconds):
     startTime = wiringpi.millis()
@@ -55,8 +56,8 @@ def getSpo2(self, numSeconds):
 
     while wiringpi.millis()-startTime < (numSeconds*1000): 
         mx102.read_sensor()
-    red = mx102.buffer_red()
-    iR = mx102.buffer_ir()
+    Red = mx102.buffer_red()
+    IR = mx102.buffer_ir()
     print red
     print iR
     #      # print (wiringpi.millis()-startTime)/1000
