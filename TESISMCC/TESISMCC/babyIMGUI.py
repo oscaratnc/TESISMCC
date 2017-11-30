@@ -4,12 +4,12 @@ import numpy as np
 import pyqtgraph as pg
 
 numSecondsECG=.5
-numSecondsSpO2=2
+numSecondsSpO2=5
 sampleRate = 200
 
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
-Sensors.getSpo2(Sensors,numSecondsSpO2)
+Sensors.getSpo2(Sensors)
 print "SPO2 done"
 ECG = Sensors.ecgValues
 RED = Sensors.Red
