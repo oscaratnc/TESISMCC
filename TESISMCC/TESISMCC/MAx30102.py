@@ -225,29 +225,8 @@ class MAX30102(object):
         tempLongRed = 0
         tempLongIR = 0
 
-        tempsample=Samples[0]
-        tempsample<<= 16
-        tempLongRed = tempLongRed + tempsample
-
-        tempsample=Samples[1]
-        tempsample<<= 8 
-        tempLongRed= tempLongRed+tempsample
-                    
-        tempsample= Samples[2]
-        tempLongRed= tempLongRed + tempsample
-        tempLongRed = tempLongRed & 0x3FFFF
-
-        tempsample=Samples[3]
-        tempsample<<= 16
-        tempLongIR = tempLongIR + tempsample
-
-        tempsample=Samples[4]
-        tempsample<<= 8 
-        tempLongIR = tempLongIR+tempsample
-                    
-        tempsample= Samples[2]
-        tempLongIR =tempLongIR + tempsample
-        tempLongIR = tempLongIR & 0x3FFFF
+        tempLongRed = Samples[0]<<16 | Samples[1]<<8 | Samples[2]
+        tempLongIR = Samples[3]<<16 | Samples[4]<<8 | Samples[3]
                     
         self.buffer_red = np.append(self.buffer_red,tempLongRed)
         self.buffer_ir  = np.append(self.buffer_ir, tempLongIR)
