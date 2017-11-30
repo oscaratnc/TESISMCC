@@ -160,7 +160,7 @@ class MAX30102(object):
       
         self.set_mode(self.MODE_SPO2)
         self.set_led_current (led_current_red, led_current_ir)
-        self.set_spo_config(sample_rate, pulse_width)
+        self.set_spo_config(pulse_width)
 
         self.buffer_red = np.array([])
         self.buffer_ir = np.array([])
@@ -193,7 +193,7 @@ class MAX30102(object):
         i2c.write_byte_data(self.MAX30102_ADDRESS, self.MAX30102_MODECONFIG, reg | mode)
         print "mode done"
         
-    def set_PulseWidth(self, pulseWidth):
+    def set_spo_config(self, pulseWidth):
         i2c = self.i2c
         reg = i2c.read_byte_data(self.MAX30102_ADDRESS,self.MAX30102_SPO2CONFIG)
         reg = reg & 0xFC
