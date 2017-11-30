@@ -47,17 +47,18 @@ def getECG(self, numSeconds):
         wiringpi.delayMicroseconds(400)
     self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
-mx102 = MAx30102.MAX30102()
-mx102.getRegisters()
 
-Ir = mx102.read_sensor()
-red = mx102.buffer_red()
-print red
+def getSpo2(self, numSeconds):
+    mx102 = MAx30102.MAX30102()
+    mx102.getRegisters()
+    startTime = wiringpi.millis()
 
-#def getSpo2(self, numSeconds):
-    #startTime = wiringpi.millis()
-
-    # while wiringpi.millis()-startTime < (numSeconds*1000): 
+    while wiringpi.millis()-startTime < (numSeconds*1000): 
+        mx102.read_sensor()
+    red = mx102.buffer_red()
+    iR = mx102.buffer_ir()
+    print red
+    print iR
     #      # print (wiringpi.millis()-startTime)/1000
     #       reD = Spo2Sensor.getRed()
     #       iR  = Spo2Sensor.getIR()
