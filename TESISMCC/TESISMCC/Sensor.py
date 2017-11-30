@@ -55,9 +55,9 @@ def getSpo2(self, numSeconds):
     startTime = wiringpi.millis()
 
     while wiringpi.millis()-startTime < (numSeconds*1000): 
-        mx102.read_sensor()
-    Red = mx102.buffer_red()
-    IR = mx102.buffer_ir()
+         mx102.read_sensor()
+    Red = mx102.buffer_red
+    IR = mx102.buffer_ir
     print red
     print iR
     #      # print (wiringpi.millis()-startTime)/1000
