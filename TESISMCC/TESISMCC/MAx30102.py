@@ -249,8 +249,8 @@ class MAX30102(object):
         self.buffer_red = np.append(self.buffer_red,tempLongRed)
         self.buffer_ir  = np.append(self.buffer_ir, tempLongIR)
 
-        self.buffer_red = buffer_red[-self.max_buffer_len:]
-        self.buffer_ir = buffer_ir[-self.max_buffer_len:]
+        self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
     def shutdown(self):
         i2c = self.i2c
