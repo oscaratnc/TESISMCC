@@ -51,7 +51,7 @@ def getECG(self, numSeconds):
 
 def getSpo2(self, numSeconds):
     mx102 = MAx30102.MAX30102()
-    mx102.getRegisters()
+  
     startTime = wiringpi.millis()
 
     while wiringpi.millis()-startTime < (numSeconds*1000): 
