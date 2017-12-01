@@ -86,9 +86,9 @@ class Spo2Sensor (object):
 
     MODE_MASK = 0xF8
     MODE = {
-        RED: 0X02,
-        IR:0X03,
-        MULTI:0X07}
+        'RED': 0X02,
+        'IR':0X03,
+        'MULTI':0X07}
     
     #SPO2 CONFIGURATION MASKS AND DICTIONARIES
     #ADC RESOLUTION 69:15bits, 118:16bits, 215: 17bits, 411: 18 bits
@@ -174,7 +174,7 @@ class Spo2Sensor (object):
     BUS = 1
     i2c = SMBus(BUS)
     
-    def __init__(self, mode = SPO2, ledCurrent = 6.4, sampleAvg = 4, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
+    def __init__(self, mode = 'SPO2', ledCurrent = 6.4, sampleAvg = 4, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
         self.setLEDMode(mode)
         self.setFIFOAverage(sampleAvg)
         self.setLEDCurrent(ledCurrent)
