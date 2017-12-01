@@ -1,0 +1,143 @@
+class Spo2Sensor (object):
+    #REGISTERS 
+     # INTERRUPT STATE REGISTERS
+    INSTAT1 = 0x00
+    INSTAT2 = 0x01
+    INTENABLE1 = 0x02
+    INTENABLE2 = 0x03
+
+    #INTERRUPT CONFIGURATION MASKS
+    INT_A_FULL_MASK = 0b10000000
+    INT_A_FULL_ENABLE = 0x80
+    INT_A_FULL_DISABLE = 0X00
+
+    INT_A_DATA_RDY_MASK = 0b01000000
+    INT_DATA_RDY_ENABLE = 0x40
+    INT_DATA_RDY_DISABLE = 0x00
+
+    INT_ALC_OVF_MASK = 0b00100000
+    INT_ALC_OVF_ENABLE = 0x20
+    INT_ALC_OVF_DISABLE = 0x00
+
+    INT_PROX_INT_MASK = 0b00010000
+    INT_PROX_INT_ENABLE = 0x10
+    INT_PROX_INT_DISABLE = 0x00
+
+    INT_DIE_TEMP_RDY_MASK = 0b00000010
+    INT_DIE_TEMP_RDY_ENABLE = 0x02
+    INT_DIE_TEMP_RDY_DISABLE = 0x00
+
+    #FIFO BUS REGISTERS
+    FIFOWRITEPTR = 0x04
+    FIFOOVERFLOW = 0x05
+    FIFOREADPTR = 0x06
+    FIFODATAREG = 0x07
+ 
+    # CONFIGURATION REGISTERS
+    FIFOCONFIG = 0x08
+    MODECONFIG = 0x09
+    SPO2CONFIG = 0x0A
+    LED1_PA = 0x0C
+    LED2_PA = 0x0D
+    PROXLED_PA = 0x10
+    MULTILEDCONFIG1 = 0x11
+    MULTILEDCONFIG2 = 0x12
+
+    #FIFO CONFIGURATION MASKS
+    SAMPLEAVG_MASK = 0b11100000
+    SAMPLEAVG = {
+        1:0x00,
+        2:0X20,
+        3:0X40, 
+        8:0X60, 
+        16:0X80, 
+        32:0XA0
+        }
+    
+
+    ROLLOVER_MASK = 0xEF
+    ROLLOVER_ENABLE = 0x10
+    ROLLOVER_DISABLE = 0x00
+
+    A_FULL_MASK = 0xF0
+
+    #MODE CONFIGURATION MASKS
+    SHUTDOWN_MASK = 0x7F
+    SHUTDOWN = 0x80
+    WAKEUP = 0x00
+
+    RESET_MASK = 0xBF
+    RESET = 0x40
+
+    MODE_MASK = 0xF8
+    MODE = {
+        RED: 0X02,
+        IR:0X03,
+        MULTI:0X07}
+    
+    #SPO2 CONFIGURATION MASKS AND DICTIONARIES
+    #ADC RESOLUTION 69:15bits, 118:16bits, 215: 17bits, 411: 18 bits
+    ADCRANGE_MASK = 0x9F
+    SAMPLERATE_MASK = 0xE3
+    PULSEWIDTH_MASK = 0xFC
+
+    ADCRANGE = {
+        2048:0x00, 
+        4096:0x20, 
+        8192:0x40, 
+        16384:0x60
+        }   
+    PULSE_WIDTH = { 
+        69:  0x00, 
+        118: 0x01, 
+        215: 0x02, 
+        411: 0x03
+        }
+    SAMPLE_RATE = { 
+        50:0x00, 100:0x04, 
+        200:0x08, 
+        400:0x0C, 
+        800:0x10, 
+        1000:0x14, 
+        1600:0x18, 
+        3200:0x1C
+        }
+    LED_CURRENT = { 
+        0: x00, 
+        .2: 0x01, 
+        .4: 0x02, 
+        3.1:0x0F, 
+        6.4: 0x1F, 
+        12.5: 0x3F, 
+        25.4:0x7F, 
+        50:0xFF
+        }
+
+    # Multi-LED Mode configuration (pg 22)
+    MAX30102_SLOT1_MASK = 0xF8
+    MAX30102_SLOT2_MASK = 0x8F
+    MAX30102_SLOT3_MASK = 0xF8
+    MAX30102_SLOT4_MASK = 0x8F
+
+    SLOT_NONE = 0x00
+    SLOT_RED_LED = 0x01
+    SLOT_IR_LED = 0x02
+    SLOT_NONE_PILOT = 0x04
+    SLOT_RED_PILOT = 0x05
+    SLOT_IR_PILOT = 0x06
+    SLOT_GREEN_PILOT = 0x07
+    
+    #DIE TEMPERATURE REGISTERS
+    DIETEMPINT = 0x1F
+    DIETEMPFRAC = 0X20
+    DIETEMPCONFIG = 0X21
+
+    # PROXIMITY FUNCTION REGISTERS
+    PROXINTTHRES = 0X30
+
+    # PARTID REGISTER
+    REVISIONID = 0XFE
+    PARTID = 0xFF
+
+
+    

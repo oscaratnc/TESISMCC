@@ -161,7 +161,7 @@ class MAX30102(object):
         self.set_mode(self.MODE_SPO2)
         self.set_led_current (led_current_red, led_current_ir)
         self.set_spo_config(pulse_width)
-
+        
         self.buffer_red = np.array([])
         self.buffer_ir = np.array([])
 
@@ -225,8 +225,8 @@ class MAX30102(object):
         tempLongRed = 0
         tempLongIR = 0
 
-        tempLongRed = Samples[0]<<16 | Samples[1]<<8 | Samples[2]
-        tempLongIR = Samples[3]<<16 | Samples[4]<<8 | Samples[3]
+        tempLongRed = (Samples[0]<<16 | Samples[1])<<8 | Samples[2]
+        tempLongIR = (Samples[3]<<16 | Samples[4])<<8 | Samples[5]
                     
         self.buffer_red = np.append(self.buffer_red,tempLongRed)
         self.buffer_ir  = np.append(self.buffer_ir, tempLongIR)
