@@ -222,7 +222,7 @@ class MAX30102:
         int_prox_int_disable = self.MAX30102_INT_PROX_INT_DISABLE
         self.bitmask(self, intenable1, int_prox_int_max, int_prox_int_disable)
         return True
-
+   
     def enableDIETEMPRDY(self):
         intenable2 = self.MAX30102_INTENABLE2
         int_die_temp_rdy_mask = self.MAX30102_INT_DIE_TEMP_RDY_MASK
@@ -230,7 +230,7 @@ class MAX30102:
 
         self.bitmask(self, intenable2, int_die_temp_rdy_mask, int_die_temp_rdy_enable)
         return True
-
+    
     def disbaleDIETEMPRDY(self):
         intenable2 = self.MAX30102_INTENABLE2
         int_die_temp_rdy_mask = self.MAX30102_INT_DIE_TEMP_RDY_MASK
@@ -325,7 +325,7 @@ class MAX30102:
     def setPulseAmplitudeProximity(self, amplitude):
         max102 = self.max102
         led_prox_amp = self.MAX30102_PROX_LED_PA
-        max102.write_byte_data(self.MAX30102_ADDRESS, led_prox_amp, amplitude)
+        max102.write_byte_data(self.MAX30102_ARESS, led_prox_amp, amplitude)
         return True
 
     def setProximityThreshold(self, threshMSB):
