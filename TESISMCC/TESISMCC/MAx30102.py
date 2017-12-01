@@ -222,17 +222,19 @@ class MAX30102(object):
         
         
         Samples = i2c.read_i2c_block_data(self.MAX30102_ADDRESS,self.MAX30102_FIFODATAREG,6)
-        tempLongRed = 0
-        tempLongIR = 0
+        HR = 0
+        IR = 0
 
-        tempLongRed = (Samples[0]<<16 | Samples[1])<<8 | Samples[2]
-        tempLongIR = (Samples[3]<<16 | Samples[4])<<8 | Samples[5]
-                    
-        self.buffer_red = np.append(self.buffer_red,tempLongRed)
-        self.buffer_ir  = np.append(self.buffer_ir, tempLongIR)
+        HR = (Samples[0]<<16) | (Samples[1]<<8) | Samples[2]
+        HR = HR>>2
+        IR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
+        IR = IR>>2
+        
+        self.buffer_red = np.append(self.buffer_red,HR)
+        self.buffer_ir  = np.append(self.buffer_ir,IR)
 
-        self.buffer_red = self.buffer_red[-self.max_buffer_len:]
-        self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
+        #self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        #self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
         
         
 
