@@ -176,7 +176,7 @@ class MAX30102(object):
 
     @property
     def ir(self):
-        return self.bufer_ir[-1] if self.buffer_ir else None
+        return self.buffer_ir[-1] if self.buffer_ir else None
 
     def set_led_current(self, led_current_red = 6.4, led_current_ir = 6.4):
         i2c = self.i2c
