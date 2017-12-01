@@ -56,6 +56,7 @@ def getSpo2(self,numSeconds):
     while wiringpi.millis()-startTime < (numSeconds*1000): 
         RedValue = Spo2Sensor.getRed()
         IRValue = Spo2Sensor.getIR()
+        Spo2Sensor.nextSample()
         self.Red = np.append(self.Red,RedValue)
         self.IR = np.append(self.IR, IRValue)
 
