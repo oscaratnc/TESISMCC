@@ -28,7 +28,7 @@ def getSampleRate(self):
 def beginSpO2(self, sampleRate):
     Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
     Spo2Sensor.setup(31, 4, 2, sampleRate, 411, 4096)
-    Spo2Sensor.setup()
+    
 
 #Array variables to store samples
 ecgValues = np.array([])
