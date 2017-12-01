@@ -1,4 +1,19 @@
+from smbus2 import SMBus
+import numpy as np
+
+def _get_valid(d,value):
+    try:
+        return d[value]
+    except KeyError:
+        raise("Value %s not valid, use one of: %s" % (value,','.join([str(s) for s in d.keys()])))
+
+def _twos_complement(val,bits):
+    if (val &(1<<(bits-1)))!=0:
+        val = val- (1<<bits)
+        return val
+
 class Spo2Sensor (object):
+    
     #REGISTERS 
      # INTERRUPT STATE REGISTERS
     INSTAT1 = 0x00
@@ -112,7 +127,24 @@ class Spo2Sensor (object):
         25.4:0x7F, 
         50:0xFF
         }
-
+    FIFOALMOSTFULL={
+        32:0x00,
+        31:0x01,
+        30:0x02,
+        29:0x03,
+        28:0x04,
+        27:0x05,
+        26:0x06,
+        25:0x07,
+        24:0x08,
+        23:0x09,
+        22:0x0A,
+        21:0x0B,
+        20:0x0C,
+        19:0x0D,
+        18:0x0E,
+        17:0x0F
+    }
     # Multi-LED Mode configuration (pg 22)
     MAX30102_SLOT1_MASK = 0xF8
     MAX30102_SLOT2_MASK = 0x8F
@@ -138,6 +170,162 @@ class Spo2Sensor (object):
     # PARTID REGISTER
     REVISIONID = 0XFE
     PARTID = 0xFF
+    ADDRESS = 0x57
+    BUS = 1
+    i2c = SMBus(BUS)
+    
+    def __init__(self, mode = SPO2, ledCurrent = 6.4, sampleAvg = 4, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
+        self.setLEDMode(mode)
+        self.setFIFOAverage(sampleAvg)
+        self.setLEDCurrent(ledCurrent)
+        self.setSampleRate(sampleRate)
+        self.setPulseWidth(pulseWidth)
+        self.setADCRange(ADCrange)
 
+        self.buffer_red = []
+        self.buffer_ir = []
+        
+    @property
+    def red(self):
+        return self.buffer_red[-1] if self.buffer_red else None
+
+    @property
+    def ir(self):
+        return self.bufer_ir[-1] if self.buffer_ir else None    
+
+    def bitmask(self, reg, mask, thing):
+        originalContents= self.i2c.read_byte_data(self.ADDRESS, reg)
+        originalContetnsMasked= originalContents & mask
+        self.i2c.write_byte_data(self.ADDRESS, reg, originalContetnsMasked | thing)
 
     
+    def readintstat1 (self):
+        intst1 = self.i2c.read_byte_data(self.ADDRESS,self.INSTAT1)
+        return intst1
+    
+    def readintstat2 (self):
+        intst2 = self.i2c.read_byte_data(self.ADDRESS, self.INSTAT2)
+        return intst2
+
+    def enableAfull(self):
+        self.bitmask(self.INTENABLE1, self.INT_A_FULL_MASK, self.INT_A_FULL_ENABLE)
+
+    def disableAfull(self):
+        self.bitmask(self.INTENABLE1, self.A_FULL_MASK, self.INT_A_FULL_DISABLE)
+
+    def enablePPGRDY(self):
+        self.bitmask(self.INTENABLE1, self.INT_A_DATA_RDY_MASK, self.INT_DATA_RDY_ENABLE)
+
+    def disablePPGRDY(self):
+         self.bitmask(self.INTENABLE1, self.INT_A_DATA_RDY_MASK, self.INT_DATA_RDY_DISABLE)
+    
+    def enableALCOVF(self):
+        self.bitmask(self.INTENABLE1, self.INT_ALC_OVF_MASK, self.INT_ALC_OVF_ENABLE)
+    
+    def disableALCOVF(self):
+        self.bitmask(self.INTENABLE1,self.INT_ALC_OVF_MASK,self.INT_ALC_OVF_DISABLE)
+
+    def enablePROXINT(self):
+        self.bitmask(self.INTENABLE1, self.INT_PROX_INT_MASK,self.INT_PROX_INT_ENABLE)
+
+    def disablePROXINT(self):
+        self.bitmask(self.INTENABLE1, self.INT_PROX_INT_MASK, self.INT_A_FULL_DISABLE)
+    
+    def enableDIETEMPRDY(self):
+        self.bitmask(self.INTENABLE2, self.INT_DIE_TEMP_RDY_MASK, self.INT_DIE_TEMP_RDY_ENABLE)
+    
+    def disableDIETEMPRDY(self):
+        self.bitmask(self.INTENABLE2, self.INT_DIE_TEMP_RDY_MASK, self.INT_DIE_TEMP_RDY_DISABLE)
+
+    def shutdown(self):
+        self.bitmask(self.MODECONFIG, self.SHUTDOWN_MASK, self.SHUTDOWN)
+    
+    def WAKEUP(self):
+        self.bitmask(self.MODECONFIG, self.SHUTDOWN_MASK, self.WAKEUP)
+    
+    def reset(self):
+        self.bitmask(self.MODECONFIG, self.RESET_MASK, self.RESET)
+    
+    def setLEDMode(self, mode):
+        self._get_valid(self.MODE, mode)
+        self.bitmask(self.MODECONFIG, self.MODE_MASK, mode)
+        print "mode set: ", mode
+    
+    def setADCRange(self, ADCrange):
+        self._get_valid(self.ADCRANGE, ADCrange)
+        self.bitmask(self.SPO2CONFIG, self.ADCRANGE_MASK,ADCrange)
+        print "ADC at ", ADCrange
+
+    def setSampleRate(self, sampleRate):
+        self._get_valid(self.SAMPLE_RATE, sampleRate)
+        self.bitmask(self.SPO2CONFIG, self.SAMPLERATE_MASK, sampleRate)
+
+    def setPulseWidth(self, pulseWidth):
+        self._get_valid(self.PULSE_WIDTH, pulseWidth)
+        self.bitmask(self.SPO2CONFIG, self.PULSEWIDTH_MASK, pulseWidth)
+
+    def setLEDCurrent(self,led_current = 6.4):
+        self._get_valid(self.LED_CURRENT,led_current)
+        self.i2c.write_byte_data(self.ADDRESS,self.LED1_PA,led_current)
+        self.i2c.write_byte_data(self.ADDRESS,self.LED2_PA, led_current)
+
+    def setProxCurrent(self, proxCurrent = 6.4):
+        self._get_valid(self.LED_CURRENT,proxCurrent)
+        self.i2c.write_byte_data(self.ADDRESS, self.PROXLED_PA, proxCurrent)
+
+    def setProxThreshold(self, threshold):
+        self.i2c.write_byte_data(self.ADDRESS, self.PROXINTTHRES, threshold)
+
+    def setFIFOAverage(self, numberofSamples):
+        self._get_valid(self.SAMPLEAVG, numberofSamples)
+        self.bitmask(self.FIFOCONFIG, self.SAMPLEAVG_MASK, numberofSamples)
+    
+    def clearFIFO(self):
+        self.i2c.write_byte_data(self.ADDRESS, self.FIFOWRITEPTR, 0)
+        self.i2c.write_byte_data(self.ADDRESS, self.FIFOREADPTR, 0)
+        self.i2c.write_byte_data(self.ADDRESS, self.FIFOOVERFLOW, 0)
+
+    def enableFIFOROllover(self):
+        self.bitmask(self.FIFOCONFIG,self.ROLLOVER_MASK ,self.ROLLOVER_ENABLE)
+    
+    def diableFIFORollober(self):
+        self.bitmask(self.FIFOCONFIG, self.ROLLOVER_MASK, self.ROLLOVER_DISABLE)
+
+    # Set number of samples to trigger the almost full interrupt(Page 18)
+    # Power on default is 32 samples
+    # Note it is reverse: 0x00 is 32 samples, 0x0F is 17 samples
+        
+    def setFIFOAF(self, numberofSamples):
+        self._get_valid(self.FIFOALMOSTFULL, numberofSamples)
+        self.bitmask(self.FIFOCONFIG, self.A_FULL_MASK, numberofSamples)
+
+    def getWritePointer(self):
+        writePointer = self.i2c.read_byte_data(self.ADDRESS, self.FIFOWRITEPTR)
+        return writePointer
+
+    def getReadPointer(self):
+        readPointer = self.i2c.read_byte_data(self.ADDRESS, self.FIFOREADPTR)
+        return readPointer
+    
+    def getTemperature(self):
+        intg= _twos_complement(self.i2c.read_byte_data(self.ADDRESS, self.DIETEMPINT))
+        frac = self.i2c.read_byte_data(self.ADDRESS, self.DIETEMPFRAC)
+        return intg + (frac*0.0625)
+
+    def getRevID(self):
+        revID = self.i2c.read_byte_data(self.ADDRESS, self.REVISIONID)
+        return revID
+
+    def getPartID(self):
+        partID = self.i2c.read_byte_data(self.ADDRESS, self.PARTID)
+        return partID
+
+    def getNumberofSamples(self):
+        writePointer = self.getWritePointer()
+        readPointer = self.getReadPointer()
+        numberofSamples = abs(32+ (writePointer-readPointer)) % 32
+        return numberofSamples
+
+    def readFromFIFO(self):
+        writePointer= self.getWritePointer()
+        

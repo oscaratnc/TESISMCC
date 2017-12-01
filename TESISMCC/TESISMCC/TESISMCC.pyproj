@@ -40,6 +40,7 @@
     <Compile Include="Sensor.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spo2Sensor.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MAX3010X.pyc" />

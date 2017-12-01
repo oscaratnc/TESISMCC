@@ -569,21 +569,6 @@ class MAX30102:
             print "FIFO cleared"
 
 
-    # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=
-    # Data Collection
-    # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=
-    # Transform to hex for concatenation
-    def to_hex(self, d):
-        return hex(d).split('x')[-1]
-
-    def concatbyte(self, tempArray):
-        b0 = tempArray[0]
-        b1 = tempArray[1]
-        b2 = tempArray[2]
-        b3 = tempArray[3]
-        res = int(self.to_hex(b3) + self.to_hex(b2) + self.to_hex(b1) + self.to_hex(b0), 16)
-        return res
-
     # TELL CALLER HOW MANY SAMPLES ARE AVAILABLE
 
     def available(self): 

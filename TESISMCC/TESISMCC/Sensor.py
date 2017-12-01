@@ -1,5 +1,6 @@
-import MAX3010X as MAX30102
+#import MAX3010X as MAX30102
 #import MAx30102 
+import Spo2Sensor as Sp2
 from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import Adafruit_MCP3008
@@ -16,18 +17,19 @@ CS   = 8
 mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 
 #Definitions for SPO2 Acquisition
-max102 = MAX30102.MAX30102.max102
-Spo2Sensor = MAX30102.MAX30102()
-sampleRate= 200
+#max102 = MAX30102.MAX30102.max102
+#Spo2Sensor = MAX30102.MAX30102()
+#sampleRate= 200
 
-def setSamplerate(self, samplerate):
-    self.sampleRate = samplerate
+#def setSamplerate(self, samplerate):
+#    self.sampleRate = samplerate
 
-def getSampleRate(self):
-    return sampleRate
-def beginSpO2(self, sampleRate):
-    Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
-    Spo2Sensor.setup(31, 4, 2, sampleRate, 411, 4096)
+#def getSampleRate(self):
+#    return sampleRate
+#def beginSpO2(self, sampleRate):
+#    Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
+#    Spo2Sensor.setup(31, 4, 2, sampleRate, 411, 4096)
+#    Spo2Sensor.setup()
     
 
 #Array variables to store samples
@@ -47,18 +49,23 @@ def getECG(self, numSeconds):
    
 
 def getSpo2(self,numSeconds):
+    Spo2 = Sp2.Spo2Sensor()
+    WP  = Spo2.getWritePointer()
+    print WP
+
+
     #mx102 = MAx30102.MAX30102()
     #mx102.enable_interrupt(mx102.INTERRUPT_FIFO)
     #startTime = wiringpi.millis()
     #interrupt = Button(7)
     #interrupt.when_activated = mx102.read_sensor
-    startTime = wiringpi.millis()
-    while wiringpi.millis()-startTime < (numSeconds*1000): 
-        RedValue = Spo2Sensor.getRed()
-        IRValue = Spo2Sensor.getIR()
-        Spo2Sensor.nextSample()
-        self.Red = np.append(self.Red,RedValue)
-        self.IR = np.append(self.IR, IRValue)
+    #startTime = wiringpi.millis()
+    #while wiringpi.millis()-startTime < (numSeconds*1000): 
+    #    RedValue = Spo2Sensor.getRed()
+    #    IRValue = Spo2Sensor.getIR()
+    #    Spo2Sensor.nextSample()
+    #    self.Red = np.append(self.Red,RedValue)
+    #    self.IR = np.append(self.IR, IRValue)
 
         
    
