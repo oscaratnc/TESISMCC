@@ -118,7 +118,7 @@ class Spo2Sensor (object):
         3200:0x1C
         }
     LED_CURRENT = { 
-        0: x00, 
+        0: 0x00, 
         .2: 0x01, 
         .4: 0x02, 
         3.1:0x0F, 
