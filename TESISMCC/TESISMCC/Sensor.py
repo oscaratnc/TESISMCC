@@ -54,10 +54,12 @@ def getSpo2(self,numSeconds):
    
     while wiringpi.millis()-startTime < (numSeconds*1000): 
         mx102.read_sensor()
-        wiringpi.delay(1)
+        self.Red =np.append(self.Red,mx102.red)
+        self.IR = np.append(self.IR,mx102.ir)
+
+        
     
-    self.Red = mx102.buffer_red
-    self.IR = mx102.buffer_ir
+   
     
 
     
