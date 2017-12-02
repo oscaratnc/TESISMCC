@@ -61,6 +61,7 @@ def getSpo2(self,numSeconds):
     WP  = Spo2.getWritePointer()
     RP = Spo2.getReadPointer()
     print "Wp: ",WP, "RP: ", RP
+    Spo2.clearFIFO()
    
     print "Samples = ",numberSamples
     while i <= numberSamples:
