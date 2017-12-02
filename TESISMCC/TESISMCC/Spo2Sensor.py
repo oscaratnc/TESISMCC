@@ -323,7 +323,7 @@ class Spo2Sensor (object):
     def getNumberofSamples(self):
         writePointer = self.getWritePointer()
         readPointer = self.getReadPointer()
-        numberofSamples = abs(32+ (writePointer-readPointer)) % 32
+        numberofSamples = (writePointer-readPointer)+32
         return numberofSamples
 
     def readFromFIFO(self):
