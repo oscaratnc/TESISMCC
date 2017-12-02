@@ -60,7 +60,7 @@ def getSpo2(self,numSeconds):
     numberSamples = Spo2.getNumberofSamples()
     print "Samples = ",numberSamples
     while i <= numberSamples:
-        print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS, Spo2.FIFODATAREG,6)
+        print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS, Spo2.FIFODATAREG,1)
         WP  = Spo2.getWritePointer()
         RP = Spo2.getReadPointer()
         print "Wp: ",WP, "RP: ", RP
