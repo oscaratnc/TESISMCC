@@ -50,13 +50,16 @@ def getECG(self, numSeconds):
 
 def getSpo2(self,numSeconds):
     Spo2 = Sp2.Spo2Sensor()
-    WP  = Spo2.getWritePointer()
-    RP = Spo2.getReadPointer()
-    print "Wp: ",WP, "RP: ", RP
-    print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS, Spo2.FIFODATAREG,)
-    WP  = Spo2.getWritePointer()
-    RP = Spo2.getReadPointer()
-    print "Wp: ",WP, "RP: ", RP
+    i=0
+    while i <5:
+        WP  = Spo2.getWritePointer()
+        RP = Spo2.getReadPointer()
+        print "Wp: ",WP, "RP: ", RP
+        print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS, Spo2.FIFODATAREG,)
+        WP  = Spo2.getWritePointer()
+        RP = Spo2.getReadPointer()
+        print "Wp: ",WP, "RP: ", RP
+        i+=1
 
 
 
