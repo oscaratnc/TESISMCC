@@ -247,37 +247,37 @@ class Spo2Sensor (object):
         self.bitmask(self.MODECONFIG, self.RESET_MASK, self.RESET)
     
     def setLEDMode(self, mode):
-        self._get_valid(self.MODE, mode)
+        mode = _get_valid(self.MODE, mode)
         self.bitmask(self.MODECONFIG, self.MODE_MASK, mode)
         print "mode set: ", mode
     
     def setADCRange(self, ADCrange):
-        self._get_valid(self.ADCRANGE, ADCrange)
+        ADCrange = _get_valid(self.ADCRANGE, ADCrange)
         self.bitmask(self.SPO2CONFIG, self.ADCRANGE_MASK,ADCrange)
         print "ADC at ", ADCrange
 
     def setSampleRate(self, sampleRate):
-        self._get_valid(self.SAMPLE_RATE, sampleRate)
+        sampleRate = _get_valid(self.SAMPLE_RATE, sampleRate)
         self.bitmask(self.SPO2CONFIG, self.SAMPLERATE_MASK, sampleRate)
 
     def setPulseWidth(self, pulseWidth):
-        self._get_valid(self.PULSE_WIDTH, pulseWidth)
+        pulseWidth = _get_valid(self.PULSE_WIDTH, pulseWidth)
         self.bitmask(self.SPO2CONFIG, self.PULSEWIDTH_MASK, pulseWidth)
 
     def setLEDCurrent(self,led_current = 6.4):
-        self._get_valid(self.LED_CURRENT,led_current)
+        led_current = _get_valid(self.LED_CURRENT,led_current)
         self.i2c.write_byte_data(self.ADDRESS,self.LED1_PA,led_current)
         self.i2c.write_byte_data(self.ADDRESS,self.LED2_PA, led_current)
 
     def setProxCurrent(self, proxCurrent = 6.4):
-        self._get_valid(self.LED_CURRENT,proxCurrent)
+        proxCurrent = _get_valid(self.LED_CURRENT,proxCurrent)
         self.i2c.write_byte_data(self.ADDRESS, self.PROXLED_PA, proxCurrent)
 
     def setProxThreshold(self, threshold):
         self.i2c.write_byte_data(self.ADDRESS, self.PROXINTTHRES, threshold)
 
     def setFIFOAverage(self, numberofSamples):
-        self._get_valid(self.SAMPLEAVG, numberofSamples)
+        numberofSamples = _get_valid(self.SAMPLEAVG, numberofSamples)
         self.bitmask(self.FIFOCONFIG, self.SAMPLEAVG_MASK, numberofSamples)
     
     def clearFIFO(self):
@@ -296,7 +296,7 @@ class Spo2Sensor (object):
     # Note it is reverse: 0x00 is 32 samples, 0x0F is 17 samples
         
     def setFIFOAF(self, numberofSamples):
-        self._get_valid(self.FIFOALMOSTFULL, numberofSamples)
+        numberofSamples = _get_valid(self.FIFOALMOSTFULL, numberofSamples)
         self.bitmask(self.FIFOCONFIG, self.A_FULL_MASK, numberofSamples)
 
     def getWritePointer(self):
