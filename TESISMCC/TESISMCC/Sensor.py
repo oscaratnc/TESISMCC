@@ -53,6 +53,10 @@ def getSpo2(self,numSeconds):
     WP  = Spo2.getWritePointer()
     RP = Spo2.getReadPointer()
     print "Wp: ",WP, "RP: ", RP
+    print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS, Spo2.FIFODATAREG,6)
+    WP  = Spo2.getWritePointer()
+    RP = Spo2.getReadPointer()
+    print "Wp: ",WP, "RP: ", RP
 
 
 
