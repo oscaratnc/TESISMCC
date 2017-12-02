@@ -51,7 +51,7 @@ def getECG(self, numSeconds):
 def getSpo2(self,numSeconds):
     Spo2 = Sp2.Spo2Sensor()
     i=0
-    while i <5:
+    while i <15:
         numberSamples = Spo2.getNumberofSamples()
         print "Samples = ",numberSamples
         WP  = Spo2.getWritePointer()
