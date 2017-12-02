@@ -87,7 +87,7 @@ class Spo2Sensor (object):
     MODE_MASK = 0xF8
     MODE = {
         'RED': 0X02,
-        'IR':0X03,
+        'SPO2':0X03,
         'MULTI':0X07}
     
     #SPO2 CONFIGURATION MASKS AND DICTIONARIES
