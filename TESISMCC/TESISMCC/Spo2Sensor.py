@@ -174,7 +174,7 @@ class Spo2Sensor (object):
     BUS = 1
     i2c = SMBus(BUS)
     
-    def __init__(self, mode = 'SPO2', ledCurrent = 6.4, sampleAvg = 4, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
+    def __init__(self, mode = 'SPO2', ledCurrent = 6.4, sampleAvg = 1, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
         self.setLEDMode(mode)
         self.setFIFOAverage(sampleAvg)
         self.setLEDCurrent(ledCurrent)
