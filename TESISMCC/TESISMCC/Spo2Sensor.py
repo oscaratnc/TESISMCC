@@ -5,7 +5,7 @@ def _get_valid(d,value):
     try:
         return d[value]
     except KeyError:
-        raise("Value %s not valid, use one of: %s" % (value,','.join([str(s) for s in d.keys()])))
+        raise KeyError("Value %s not valid, use one of: %s" % (value,','.join([str(s) for s in d.keys()])))
 
 def _twos_complement(val,bits):
     if (val &(1<<(bits-1)))!=0:
