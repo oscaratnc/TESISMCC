@@ -56,7 +56,7 @@ def getSpo2(self,numSeconds):
     interrupt  = Button(7)
 
    
-    Spo2.i2c.write_byte_data(Spo2.ADDRESS,Spo2.FIFOREADPTR,1)
+   # Spo2.i2c.write_byte_data(Spo2.ADDRESS,Spo2.FIFOREADPTR,1)
     numberSamples = Spo2.getNumberofSamples()
     WP  = Spo2.getWritePointer()
     RP = Spo2.getReadPointer()
