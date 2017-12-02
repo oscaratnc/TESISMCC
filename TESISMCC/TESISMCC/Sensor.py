@@ -57,11 +57,12 @@ def getSpo2(self,numSeconds):
 
    
     Spo2.i2c.write_byte_data(Spo2.ADDRESS,Spo2.FIFOREADPTR,1)
+    Spo2.clearFIFO()
     numberSamples = Spo2.getNumberofSamples()
     WP  = Spo2.getWritePointer()
     RP = Spo2.getReadPointer()
     print "Wp: ",WP, "RP: ", RP
-    Spo2.clearFIFO()
+   
    
     print "Samples = ",numberSamples
     while i <= numberSamples:
