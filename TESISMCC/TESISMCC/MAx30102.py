@@ -225,10 +225,10 @@ class MAX30102(object):
         HR = 0
         IR = 0
 
-        HR = (Samples[0]<<16) | (Samples[1]<<8) | Samples[2]
-        HR = HR>>2
-        IR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
+        IR = (Samples[0]<<16) | (Samples[1]<<8) | Samples[2]
         IR = IR>>2
+        HR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
+        HR = HR>>2
         
         self.buffer_red = np.append(self.buffer_red,HR)
         self.buffer_ir  = np.append(self.buffer_ir,IR)

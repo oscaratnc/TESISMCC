@@ -229,7 +229,7 @@ class Spo2Sensor (object):
         self.bitmask(self.INTENABLE1, self.INT_PROX_INT_MASK,self.INT_PROX_INT_ENABLE)
 
     def disablePROXINT(self):
-        self.bitmask(self.INTENABLE1, self.INT_PROX_INT_MASK, self.INT_A_FULL_DISABLE)
+        self.bitmask(self.INTENABLE1, self.INT_PROX_INT_MASK, self.INT_PROX_INT_DISABLE)
     
     def enableDIETEMPRDY(self):
         self.bitmask(self.INTENABLE2, self.INT_DIE_TEMP_RDY_MASK, self.INT_DIE_TEMP_RDY_ENABLE)
@@ -328,4 +328,5 @@ class Spo2Sensor (object):
 
     def readFromFIFO(self):
         writePointer= self.getWritePointer()
+
         
