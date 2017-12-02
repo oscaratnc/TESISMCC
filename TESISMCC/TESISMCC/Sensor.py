@@ -51,7 +51,7 @@ def getECG(self, numSeconds):
 def getSpo2(self,numSeconds):
     Spo2 = Sp2.Spo2Sensor()
     Spo2.enableAfull()
-    Spo2.setFIFOAF(0)
+    Spo2.setFIFOAF(32)
     i=0
     interrupt  = Button(7)
 
