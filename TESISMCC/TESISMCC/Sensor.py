@@ -51,7 +51,10 @@ def getECG(self, numSeconds):
 def getSpo2(self,numSeconds):
     Spo2 = Sp2.Spo2Sensor()
     WP  = Spo2.getWritePointer()
-    print "Wp: ",WP
+    RP = Spo2.getReadPointer()
+    print "Wp: ",WP, "RP: ", RP
+
+
 
 
     #mx102 = MAx30102.MAX30102()
