@@ -63,7 +63,7 @@ class Spo2Sensor (object):
     SAMPLEAVG = {
         1:0x00,
         2:0X20,
-        3:0X40, 
+        4:0X40, 
         8:0X60, 
         16:0X80, 
         32:0XA0
