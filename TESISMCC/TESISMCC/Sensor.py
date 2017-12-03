@@ -58,7 +58,8 @@ def getSpo2(self,numSeconds, samplerate):
     interrupt  = Button(7)
     i = 0
     while wiringpi.millis()-startTime < numSeconds*1000:
-       interrupt.when_activated = Spo2.ReadFIFOFULL()
+       interrupt.when_activated = Spo2.readSample()
+       #interrupt.when_activated = Spo2.ReadFIFOFULL()
        i+=1
       
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
