@@ -366,11 +366,11 @@ class Spo2Sensor (object):
     def removeDC(self, measure):
         mean = np.mean(measure)
 
-        for i in range (len(measure)):
-            measure[i]= measure[i]-mean
+        for i in np.nditer(measure):
+            i= i-mean
 
-        for i in range(len(measure)):
-           abs = np.max(np.abs(measure))
-           measure[i] = np.around(measure[i]/abs,2)
-        return measure
+        for i in np.nditer(measure):
+          abs = np.max(np.abs(measure))
+          i = np.around(i/abs,2)
+        return i
     
