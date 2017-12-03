@@ -48,19 +48,17 @@ def getECG(self, numSeconds):
     #self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
 
-def getSpo2(self,numSeconds):
+def getSpo2(self,numSeconds, sampleRate):
     startTime = wiringpi.millis()
-    Spo2 = Sp2.Spo2Sensor()
+    Spo2 = Sp2.Spo2Sensor(sampleRate=100)
     Spo2.enableAfull()
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
     iter  = 0
-    while True:
+    while iter < numSeconds*sampleRate:
        interrupt.when_activated = Spo2.ReadFIFOFULL()
-       if wiringpi.millis()-startTime >= (numSeconds*1000):
-           return False
-           print iter
-       iter +=1
+       print iter
+       iter +=32
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "Buffer IR: ", len(Spo2.buffer_ir)
     self.IR = Spo2.buffer_ir
