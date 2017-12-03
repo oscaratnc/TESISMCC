@@ -50,7 +50,7 @@ def getECG(self, numSeconds):
 
 def getSpo2(self,numSeconds, samplerate):
     startTime = wiringpi.millis()
-    Spo2 = Sp2.Spo2Sensor(samplesAvg = 4,sampleRate=samplerate)
+    Spo2 = Sp2.Spo2Sensor(sampleAvg= 4,sampleRate=samplerate)
     Spo2.enableAfull()
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
