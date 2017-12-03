@@ -182,6 +182,7 @@ class Spo2Sensor (object):
         self.setPulseWidth(pulseWidth)
         self.setADCRange(ADCrange)
 
+        self.max_buffer_len = 10000
         self.buffer_red = []
         self.buffer_ir = []
         
@@ -326,7 +327,20 @@ class Spo2Sensor (object):
         numberofSamples = (writePointer-readPointer)+32
         return numberofSamples
 
-    def readFromFIFO(self):
-        writePointer= self.getWritePointer()
+    def readSample(self):
+        Samples = self.i2c.read_i2c_block_data(self.MAX30102_ADDRESS,self.MAX30102_FIFODATAREG,6)
+        HR = 0
+        IR = 0
+
+        IR = (Samples[0]<<16) | (Samples[1]<<8) | Samples[2]
+        IR = IR & 0x3FFFF
+        HR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
+        HR = HR & 0x3FFFF
+        
+        self.buffer_red = append(self.buffer_red,HR)
+        self.buffer_ir  = append(self.buffer_ir,IR)
+        
+        self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
         

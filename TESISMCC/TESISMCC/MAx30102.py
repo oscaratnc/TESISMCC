@@ -217,10 +217,7 @@ class MAX30102(object):
         return abs(32+(writePointer - readPointer))%32
 
     def read_sensor(self):
-        i2c = self.i2c
-       
-        
-        
+        i2c = self.i2c 
         Samples = i2c.read_i2c_block_data(self.MAX30102_ADDRESS,self.MAX30102_FIFODATAREG,6)
         HR = 0
         IR = 0
@@ -230,10 +227,10 @@ class MAX30102(object):
         HR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
         HR = HR>>2
         
-        self.buffer_red = np.append(self.buffer_red,HR)
+        self.buffer_red = np.append(self.buffer_red,HR).
         self.buffer_ir  = np.append(self.buffer_ir,IR)
 
-        #self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        #self.buffer_red = self.buffer_red[-selfmax_buffer_len:]
         #self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
         
         
