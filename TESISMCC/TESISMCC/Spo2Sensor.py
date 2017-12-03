@@ -355,6 +355,7 @@ class Spo2Sensor (object):
         #print "Wp INIT: ",WP, "RP INIT: ", RP 
         #print "Samples INIT = ",numberSamples
         while i <= numberSamples:
+            print i
             self.readSample()
             i+=1
             
