@@ -4,7 +4,7 @@ import numpy as np
 import pyqtgraph as pg
 
 numSecondsECG=.5
-numSecondsSpO2=7
+numSecondsSpO2=1
 sampleRate = 200
 
 #Sensors.getECG(Sensors,numSecondsECG)
