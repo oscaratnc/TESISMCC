@@ -55,9 +55,12 @@ def getSpo2(self,numSeconds):
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
 
-    while wiringpi.millis()-startTime < (numSeconds*1000):
+    while True:
        Spo2.ReadFIFOFULL()
-       wiringpi.delayMicroseconds(400)
+       wiringpi.delay(10)
+       if wiringpi.millis()-startTime == (numSeconds*1000):
+           break
+
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "Buffer IR: ", len(Spo2.buffer_ir)
