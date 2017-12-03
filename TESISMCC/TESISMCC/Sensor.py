@@ -58,8 +58,8 @@ def getSpo2(self,numSeconds):
     while True:
        Spo2.ReadFIFOFULL()
        wiringpi.delay(10)
-       if wiringpi.millis()-startTime == (numSeconds*1000):
-           break
+       if wiringpi.millis()-startTime >= (numSeconds*1000):
+           return False
 
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
