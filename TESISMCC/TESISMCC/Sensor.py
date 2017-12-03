@@ -57,6 +57,12 @@ def getSpo2(self,numSeconds):
 
     while wiringpi.millis()-startTime < (numSeconds*1000):
        interrupt.when_activated = Spo2.ReadFIFOFULL()
+   
+    print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    print "Buffer IR: "
+    print self.buffer_ir
+    print "Buffer Red: "
+    print self.buffer_red
 
     #mx102 = MAx30102.MAX30102()
     #mx102.enable_interrupt(mx102.INTERRUPT_FIFO)

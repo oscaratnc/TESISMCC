@@ -359,12 +359,7 @@ class Spo2Sensor (object):
             WP  = self.getWritePointer()
             RP = self.getReadPointer()
             i+=1
-        print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-        print "Buffer IR: "
-        print self.buffer_ir
-        print "Buffer Red: "
-        print self.buffer_red
-
+        
 
 
         
