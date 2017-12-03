@@ -189,11 +189,11 @@ class Spo2Sensor (object):
         
     @property
     def red(self):
-        return self.buffer_red[-1] # if self.buffer_red else None
+        return self.buffer_red[-1] if self.buffer_red else None
 
     @property
     def ir(self):
-        return self.bufer_ir[-1] #if self.buffer_ir else None    
+        return self.bufer_ir[-1] if self.buffer_ir else None    
 
     def bitmask(self, reg, mask, thing):
         originalContents= self.i2c.read_byte_data(self.ADDRESS, reg)
