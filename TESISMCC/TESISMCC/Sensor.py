@@ -48,9 +48,9 @@ def getECG(self, numSeconds):
     #self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
 
-def getSpo2(self,numSeconds, sampleRate):
+def getSpo2(self,numSeconds, samplerate):
     startTime = wiringpi.millis()
-    Spo2 = Sp2.Spo2Sensor(sampleRate=100)
+    Spo2 = Sp2.Spo2Sensor(samplesAvg = 4,sampleRate=samplerate)
     Spo2.enableAfull()
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
