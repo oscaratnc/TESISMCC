@@ -44,7 +44,7 @@ def getECG(self, numSeconds):
        # print (wiringpi.millis()-startTime)/1000
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
-        wiringpi.delayMicroseconds(400)
+        wiringpi.delayMicroseconds(200)
     #self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
    
 
@@ -57,6 +57,7 @@ def getSpo2(self,numSeconds):
 
     while wiringpi.millis()-startTime < (numSeconds*1000):
        interrupt.when_activated = Spo2.ReadFIFOFULL()
+       wiringpi.delayMicroseconds(200)
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "Buffer IR: ", len(Spo2.buffer_ir)
