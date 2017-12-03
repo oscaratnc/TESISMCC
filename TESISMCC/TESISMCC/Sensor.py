@@ -49,33 +49,14 @@ def getECG(self, numSeconds):
    
 
 def getSpo2(self,numSeconds):
+    startTime = wiringpi.millis()
     Spo2 = Sp2.Spo2Sensor()
     Spo2.enableAfull()
-    Spo2.setFIFOAF(32)
-    i=0
+    Spo2.setFIFOAF(31)
     interrupt  = Button(7)
 
-   
-   
-    Spo2.clearFIFO()
-   # Spo2.i2c.write_byte_data(Spo2.ADDRESS,Spo2.FIFOREADPTR,1)
-    numberSamples = Spo2.getNumberofSamples()
-    WP  = Spo2.getWritePointer()
-    RP = Spo2.getReadPointer()
-    print "Wp: ",WP, "RP: ", RP
-   
-   
-    print "Samples = ",numberSamples
-    while i <= numberSamples:
-        print Sp2.Spo2Sensor.i2c.read_i2c_block_data(Spo2.ADDRESS,Spo2.FIFODATAREG,6)   
-        WP  = Spo2.getWritePointer()
-        RP = Spo2.getReadPointer()
-        print "Wp: ",WP, "RP: ", RP
-        print "Samples = ", (WP-RP)+32
-        i+=1
-
-
-
+    while wiringpi.millis()-startTime < (numSeconds*1000):
+       interrupt.when_activated = Spo2.ReadFIFOFULL()
 
     #mx102 = MAx30102.MAX30102()
     #mx102.enable_interrupt(mx102.INTERRUPT_FIFO)

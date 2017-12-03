@@ -343,4 +343,25 @@ class Spo2Sensor (object):
         self.buffer_red = self.buffer_red[-self.max_buffer_len:]
         self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
+    def ReadFIFOFULL (self):
+        i=0
+        self.clearFIFO()
+        self.i2c.write_byte_data(Spo2.ADDRESS,Spo2.FIFOREADPTR,1)
+        numberSamples = Spo2.getNumberofSamples()
+        WP  = Spo2.getWritePointer()
+        RP = Spo2.getReadPointer()
+        print "Wp INIT: ",WP, "RP INIT: ", RP 
+        print "Samples INIT = ",numberSamples
+        while i <= numberSamples:
+            self.readSample()
+            print "buffer_ir: ", self.buffer_ir
+            print "buffer_red: ", self.buffer_red
+            WP  = Spo2.getWritePointer()
+            RP = Spo2.getReadPointer()
+            print "Wp: ",WP, "RP: ", RP
+            print "Samples = ", (WP-RP)+32
+            i+=1
+
+
+
         
