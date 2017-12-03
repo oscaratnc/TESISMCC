@@ -56,7 +56,7 @@ def getSpo2(self,numSeconds):
     interrupt  = Button(7)
 
     while wiringpi.millis()-startTime < (numSeconds*1000):
-       interrupt.when_activated = Spo2.ReadFIFOFULL()
+       interrupt.when_activated = Spo2.readSample()
        wiringpi.delayMicroseconds(400)
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
