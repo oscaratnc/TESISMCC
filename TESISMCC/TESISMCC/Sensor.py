@@ -55,12 +55,13 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.enableAfull()
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
- 
+    i = 0
     while wiringpi.millis()-startTime < numSeconds*1000:
        interrupt.when_activated = Spo2.getNumberofSamples()
-    
+       i+=1
       
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    print "iterations: ", i 
     print "Buffer IR: ", len(Spo2.buffer_ir)
     self.IR = Spo2.buffer_ir
     print Spo2.buffer_ir
