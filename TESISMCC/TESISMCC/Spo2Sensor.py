@@ -357,7 +357,7 @@ class Spo2Sensor (object):
         while i <= numberSamples:
             self.readSample()
             i+=1
-            print i
+            
 
     def getBuffer(self, buffer):
        if buffer == "Red":
