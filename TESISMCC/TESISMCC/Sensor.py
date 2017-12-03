@@ -67,7 +67,7 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     print Spo2.buffer_red
-    print (wiringpi.millis()-startTime)*1000
+    print (wiringpi.millis()-startTime)
 
     #mx102 = MAx30102.MAX30102()
     #mx102.enable_interrupt(mx102.INTERRUPT_FIFO)

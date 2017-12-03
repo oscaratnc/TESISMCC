@@ -329,7 +329,7 @@ class Spo2Sensor (object):
         if writePointer -readPointer == 0:
              numberofSamples = 32
         print numberofSamples
-        return numberofSamples
+        #return numberofSamples
 
     def readSample(self):
         Samples = self.i2c.read_i2c_block_data(self.ADDRESS,self.FIFODATAREG,6)
