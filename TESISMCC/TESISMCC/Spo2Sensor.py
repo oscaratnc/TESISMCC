@@ -173,6 +173,8 @@ class Spo2Sensor (object):
     ADDRESS = 0x57
     BUS = 1
     i2c = SMBus(BUS)
+    buffer_red = []
+    buffer_ir = []
     
     def __init__(self, mode = 'SPO2', ledCurrent = 6.4, sampleAvg = 4, sampleRate = 200, pulseWidth = 411, ADCrange = 16384):
         self.setLEDMode(mode)
@@ -183,8 +185,7 @@ class Spo2Sensor (object):
         self.setADCRange(ADCrange)
 
         self.max_buffer_len = 10000
-        self.buffer_red = []
-        self.buffer_ir = []
+       
         
     @property
     def red(self):
