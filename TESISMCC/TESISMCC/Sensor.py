@@ -53,7 +53,7 @@ def getSpo2(self,numSeconds, samplerate):
     startTime = wiringpi.millis()
     Spo2 = Sp2.Spo2Sensor(sampleAvg= 4,sampleRate=samplerate)
     Spo2.enableAfull()
-    Spo2.setFIFOAF(31)
+    Spo2.setFIFOAF(32)
     interrupt  = Button(7)
     i = 0
     while wiringpi.millis()-startTime < numSeconds*1000:
