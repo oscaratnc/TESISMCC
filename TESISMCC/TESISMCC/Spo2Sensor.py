@@ -326,6 +326,8 @@ class Spo2Sensor (object):
         writePointer = self.getWritePointer()
         readPointer = self.getReadPointer()
         numberofSamples = abs((writePointer-readPointer)+32)%32
+        if writePointer -readPointer == 0:
+             numberofSamples = 32
         return numberofSamples
 
     def readSample(self):
@@ -347,7 +349,6 @@ class Spo2Sensor (object):
     def ReadFIFOFULL (self):
         i=0
         self.clearFIFO()
-        self.i2c.write_byte_data(self.ADDRESS,self.FIFOREADPTR,1)
         numberSamples = self.getNumberofSamples()
         WP  = self.getWritePointer()
         RP = self.getReadPointer()
