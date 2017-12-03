@@ -59,9 +59,9 @@ def getSpo2(self,numSeconds):
        interrupt.when_activated = Spo2.readSample()
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    print "Buffer IR: "
+    print "Buffer IR: ", len(Spo2.buffer_ir)
     print Spo2.buffer_ir
-    print "Buffer Red: "
+    print "Buffer Red: ", len(Spo2.buffer_red)
     print Spo2.buffer_red
 
     #mx102 = MAx30102.MAX30102()
