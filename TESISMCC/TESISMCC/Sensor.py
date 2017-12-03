@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 import Adafruit_MCP3008
 import wiringpi
 import numpy as np
+import scipy as scp
 from gpiozero import Button
 GPIO.setmode(GPIO.BCM)
 
@@ -65,10 +66,12 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer IR: ", len(Spo2.buffer_ir)
     self.IR = Spo2.buffer_ir
     self.IR = Spo2.removeDC(self.IR)
+    self.IR = scp.signal.medfilt(self.IR)
     print Spo2.buffer_ir
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = Spo2.removeDC(self.Red)
+    self.Red = scp.signal.medfilt(self.Red)
     print Spo2.buffer_red
     print (wiringpi.millis()-startTime)
 
