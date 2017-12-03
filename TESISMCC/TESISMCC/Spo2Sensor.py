@@ -355,10 +355,6 @@ class Spo2Sensor (object):
         print "Samples INIT = ",numberSamples
         while i <= numberSamples:
             self.readSample()
-            print "buffer_ir: ", self.ir
-            print "buffer_red: ", self.red
-            WP  = self.getWritePointer()
-            RP = self.getReadPointer()
             i+=1
 
     def getBuffer(self, buffer):
