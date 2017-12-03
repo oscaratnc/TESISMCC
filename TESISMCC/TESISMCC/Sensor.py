@@ -56,8 +56,7 @@ def getSpo2(self,numSeconds):
     interrupt  = Button(7)
 
     while True:
-       Spo2.ReadFIFOFULL()
-       wiringpi.delay(10)
+       interrupt.when_activated = Spo2.ReadFIFOFULL()
        if wiringpi.millis()-startTime >= (numSeconds*1000):
            return False
 
