@@ -60,8 +60,10 @@ def getSpo2(self,numSeconds):
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "Buffer IR: ", len(Spo2.buffer_ir)
+    self.IR = Spo2.buffer_ir
     print Spo2.buffer_ir
     print "Buffer Red: ", len(Spo2.buffer_red)
+    self.Red = Spo2.buffer_red
     print Spo2.buffer_red
 
     #mx102 = MAx30102.MAX30102()

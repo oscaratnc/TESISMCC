@@ -7,17 +7,17 @@ numSecondsECG=.5
 numSecondsSpO2=1
 sampleRate = 200
 
-#Sensors.getECG(Sensors,numSecondsECG)
+Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
 Sensors.getSpo2(Sensors, numSecondsSpO2)
 print "SPO2 done"
 ECG = Sensors.ecgValues
-RED = Sensors.Red
+RED  = Sensors.Red
 IR = Sensors.IR
 #PPG = RED/IR
 #print ECG
-print RED
-print IR
+#print RED
+#print IR
 
 
 

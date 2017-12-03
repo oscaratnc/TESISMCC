@@ -184,8 +184,8 @@ class Spo2Sensor (object):
         self.setADCRange(ADCrange)
 
         self.max_buffer_len = 10000
-        self.buffer_red = []
-        self.buffer_ir = []
+        self.buffer_red = np.array([])
+        self.buffer_ir = np.array([])
         
     @property
     def red(self):
@@ -338,8 +338,8 @@ class Spo2Sensor (object):
         HR = (Samples[3]<<16) | (Samples[4]<<8) | Samples[5]
         HR = HR & 0x3FFFF
         
-        self.buffer_red.append(HR)
-        self.buffer_ir.append(IR)
+        self.buffer_red = np.append(self.buffer_red,HR)
+        self.buffer_ir = np.append(self.buffer_ir, IR)
         
         self.buffer_red = self.buffer_red[-self.max_buffer_len:]
         self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
@@ -360,7 +360,13 @@ class Spo2Sensor (object):
             WP  = self.getWritePointer()
             RP = self.getReadPointer()
             i+=1
-        
+
+    def getBuffer(self, buffer):
+       if buffer == "Red":
+           return self.buffer_red
+       elif buffer == "IR":
+           return self.buffer_ir
+
 
 
         
