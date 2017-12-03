@@ -60,9 +60,9 @@ def getSpo2(self,numSeconds):
    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "Buffer IR: "
-    print self.buffer_ir
+    print Spo2.buffer_ir
     print "Buffer Red: "
-    print self.buffer_red
+    print Spo2.buffer_red
 
     #mx102 = MAx30102.MAX30102()
     #mx102.enable_interrupt(mx102.INTERRUPT_FIFO)
