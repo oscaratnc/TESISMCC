@@ -350,12 +350,7 @@ class Spo2Sensor (object):
     def ReadFIFOFULL (self):
         i=0
         self.clearFIFO()
-        numberSamples = self.getNumberofSamples()
-        WP  = self.getWritePointer()
-        RP = self.getReadPointer()
-        #print "Wp INIT: ",WP, "RP INIT: ", RP 
-        #print "Samples INIT = ",numberSamples
-        while i < numberSamples:
+        while i < 32:
             self.readSample()
             i+=1
             
