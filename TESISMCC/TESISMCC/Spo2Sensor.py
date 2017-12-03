@@ -371,6 +371,6 @@ class Spo2Sensor (object):
 
         for i in range(len(measure)):
            abs = np.max(np.abs(measure))
-           measure[i] = np.round(measure[i]/abs,2)
+           measure[i] = np.around(measure[i]/abs,2)
         return measure
     
