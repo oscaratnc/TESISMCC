@@ -65,13 +65,13 @@ def getSpo2(self,numSeconds, samplerate):
     print "iterations: ", i 
     print "Buffer IR: ", len(Spo2.buffer_ir)
     self.IR = Spo2.buffer_ir
-    self.IR = Spo2.removeDC(self.IR)
     self.IR = sp.medfilt(self.IR)
+    self.IR = Spo2.removeDC(self.IR)
     print Spo2.buffer_ir
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
-    self.Red = Spo2.removeDC(self.Red)
     self.Red = sp.medfilt(self.Red)
+    self.REd = Spo2.removeDC(self.Red)
     print Spo2.buffer_red
     print (wiringpi.millis()-startTime)
 
