@@ -692,16 +692,6 @@ class MAX30102:
                 return True
             #wiry.delay(1)
 
-    def removeDC(self, measure):
-        mean = np.mean(measure)
-
-        for i in range (len(measure)):
-            measure[i]= measure[i]-mean
-
-        #for i in range(len(measure)):
-        #    abs = np.max(np.abs(measure))
-        #    measure[i] = round(measure[i]/abs,4)
-        return measure
     
     def lowPasFilter(self,signal,fc,sampleF):
         sampleRate  = sampleF
