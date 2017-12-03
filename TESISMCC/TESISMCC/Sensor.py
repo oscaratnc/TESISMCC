@@ -55,7 +55,7 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.setFIFOAF(31)
     interrupt  = Button(7)
     iter  = 0
-    while iter < numSeconds*sampleRate:
+    while iter < numSeconds*samplerate:
        interrupt.when_activated = Spo2.ReadFIFOFULL()
        print iter
        iter +=32
