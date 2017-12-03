@@ -328,6 +328,7 @@ class Spo2Sensor (object):
         numberofSamples = abs((writePointer-readPointer)+32)%32
         if writePointer -readPointer == 0:
              numberofSamples = 32
+        print numberofSamples
         return numberofSamples
 
     def readSample(self):
