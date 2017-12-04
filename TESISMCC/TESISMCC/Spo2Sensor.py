@@ -347,10 +347,10 @@ class Spo2Sensor (object):
         self.buffer_red = self.buffer_red[-self.max_buffer_len:]
         self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
-    def ReadFIFOFULL (self, threshold):
+    def ReadFIFOFULL (self):
         i=0
         self.clearFIFO()
-        while i < threshold:
+        while i < 32:
             self.readSample()
             i+=1
             
