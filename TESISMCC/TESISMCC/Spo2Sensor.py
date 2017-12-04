@@ -331,7 +331,10 @@ class Spo2Sensor (object):
         #print numberofSamples
         return numberofSamples
 
-   
+    def sampleAvailable(self):
+        newSample = True
+       
+
     def readSample(self):
         Samples = self.i2c.read_i2c_block_data(self.ADDRESS,self.FIFODATAREG,6)
         HR = 0
@@ -345,8 +348,8 @@ class Spo2Sensor (object):
         self.buffer_red = np.append(self.buffer_red,HR)
         self.buffer_ir = np.append(self.buffer_ir, IR)
         
-        self.buffer_red = self.buffer_red[-self.max_buffer_len:]
-        self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
+        #self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        #self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
     def ReadFIFOFULL (self):
         i=0

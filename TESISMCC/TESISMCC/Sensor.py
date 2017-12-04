@@ -53,7 +53,7 @@ def getSpo2(self,numSeconds, samplerate):
     print "begin measure"
     startTime = wiringpi.millis()
     Spo2 = Sp2.Spo2Sensor(sampleAvg= 4,sampleRate=samplerate)
-    
+    newSample = False
     AFthreshold= 31
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)
@@ -61,9 +61,10 @@ def getSpo2(self,numSeconds, samplerate):
     i = 0
     while wiringpi.millis()-startTime < numSeconds*1000:
        #interrupt.when_activated = Spo2.readSample()
-       interrupt.when_activated = Spo2.ReadFIFOFULL()
+       interrupt.when_activated = Spo2.sampleAvailable()
+       if newSample == True:
+          Spo2.readSample()
        i+=1
-      
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "iterations: ", i 
     print "Buffer IR: ", len(Spo2.buffer_ir)
