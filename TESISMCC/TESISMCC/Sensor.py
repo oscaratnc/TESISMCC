@@ -53,6 +53,7 @@ def getSpo2(self,numSeconds, samplerate):
     print "begin measure"
     startTime = wiringpi.millis()
     Spo2 = Sp2.Spo2Sensor(sampleAvg= 4,sampleRate=samplerate)
+    
     AFthreshold= 31
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)

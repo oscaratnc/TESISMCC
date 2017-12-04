@@ -331,6 +331,7 @@ class Spo2Sensor (object):
         #print numberofSamples
         return numberofSamples
 
+   
     def readSample(self):
         Samples = self.i2c.read_i2c_block_data(self.ADDRESS,self.FIFODATAREG,6)
         HR = 0
