@@ -83,7 +83,7 @@ def getSpo2(self,numSeconds, samplerate):
     print (wiringpi.millis()-startTime)
 
    
-    def sampleAvailable(self):
+def sampleAvailable(self):
         newSample = True
        
    
