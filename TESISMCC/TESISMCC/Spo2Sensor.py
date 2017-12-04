@@ -339,7 +339,7 @@ class Spo2Sensor (object):
 
     def readSample(self):
         Samples = self.i2c.read_i2c_block_data(self.ADDRESS,self.FIFODATAREG,6)
-        print Samples
+       
         HR = 0
         IR = 0
 
