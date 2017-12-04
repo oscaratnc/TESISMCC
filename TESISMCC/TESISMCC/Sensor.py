@@ -60,12 +60,12 @@ def getSpo2(self,numSeconds, samplerate):
     self.IR = Spo2.buffer_ir
     self.IR = sp.medfilt(self.IR)
     self.IR = Spo2.removeDC(self.IR)
-    print Spo2.buffer_ir
+    print self.IR
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
     self.Red = Spo2.removeDC(self.Red)
-    print Spo2.buffer_red
+    print self.Red
    
 
    
