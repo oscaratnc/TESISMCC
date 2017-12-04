@@ -45,10 +45,10 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)
     interrupt  = Button(7)
-    i = 0
-    while i < numSeconds*samplerate :
+    i= 0
+    while wiringpi.millis()-startTime() < numSeconds*1000:
+      print i
       interrupt.when_activated = Spo2.sampleAvailable()
-      
       if Spo2.newSample == True:
           Spo2.readSample()
           i+=1
