@@ -61,7 +61,7 @@ def getSpo2(self,numSeconds, samplerate):
     i = 0
     while True :
        #interrupt.when_activated = Spo2.readSample()
-       interrupt.when_activated = Spo2.sampleAvailable()
+       interrupt.when_activated = self.sampleAvailable()
        if newSample == True:
           Spo2.readSample()
           newSample = False
