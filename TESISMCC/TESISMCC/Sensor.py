@@ -1,5 +1,6 @@
 
 import Spo2Sensor as Sp2
+import time
 from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import Adafruit_MCP3008
@@ -31,7 +32,7 @@ def getECG(self, numSeconds):
     while wiringpi.millis()-starTime/1000.0 < numSeconds: 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
-        wiringpi.delay(400)
+        time.sleep(.4)
    
    
 
