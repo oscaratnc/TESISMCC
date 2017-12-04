@@ -186,6 +186,8 @@ class Spo2Sensor (object):
         self.max_buffer_len = 10000
         self.buffer_red = np.array([])
         self.buffer_ir = np.array([])
+
+        self.newSample = False
         
     @property
     def red(self):
@@ -331,7 +333,8 @@ class Spo2Sensor (object):
         #print numberofSamples
         return numberofSamples
 
-   
+    def sampleAvailable(self):
+       self.newSample = True
        
 
     def readSample(self):

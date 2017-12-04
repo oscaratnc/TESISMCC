@@ -62,12 +62,14 @@ def getSpo2(self,numSeconds, samplerate):
     while True :
        #interrupt.when_activated = Spo2.readSample()
       interrupt.when_activated = sampleAvailable(self)
-      print newSample
-      if newSample == True:
+      print Spo2.newSample
+      if Spo2.newSample == True:
           Spo2.readSample()
-          newSample = False
+          Spo2.newSample = False
           i+=1
-      if wiringpi.millis()-startTime == numSeconds * 1000:
+          print wiringpi.millis()-startTime
+      if wiringpi.millis()-startTime >= numSeconds * 1000:
+          print wiringpi.millis()-startTime
           break
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     print "iterations: ", i 
@@ -81,11 +83,10 @@ def getSpo2(self,numSeconds, samplerate):
     #self.Red = sp.medfilt(self.Red)
     #self.REd = Spo2.removeDC(self.Red)
     print Spo2.buffer_red
-    print (wiringpi.millis()-startTime)
+   
 
    
-def sampleAvailable(self):
-        newSample = True
+
        
    
    
