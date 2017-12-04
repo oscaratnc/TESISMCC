@@ -43,16 +43,14 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)
     interrupt  = Button(7)
-    i = 0
     while True :
-       #interrupt.when_activated = Spo2.readSample()
       interrupt.when_activated = Spo2.sampleAvailable()
-      print Spo2.newSample
+      
       if Spo2.newSample == True:
           Spo2.readSample()
           Spo2.newSample = False
-          i+=1
-          print (wiringpi.millis()-startTime)/100
+          print (wiringpi.millis()-startTime)/100.0
+
       if wiringpi.millis()-startTime >= numSeconds * 1000:
           print wiringpi.millis()-startTime
           break
