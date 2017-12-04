@@ -32,7 +32,7 @@ def getECG(self, numSeconds):
     while wiringpi.millis()-starTime/1000.0 < numSeconds: 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
-        time.sleep(.4)
+        wiringpi.delayMicroseconds(400)
    
    
 
