@@ -4,7 +4,7 @@ import numpy as np
 import pyqtgraph as pg
 
 numSecondsECG=3
-numSecondsSpO2=3
+numSecondsSpO2=5
 sampleRate = 100
 
 Sensors.getECG(Sensors,numSecondsECG)
@@ -15,7 +15,7 @@ ECG = Sensors.ecgValues
 RED  = Sensors.Red
 IR = Sensors.IR
 #PPG = RED/IR
-#print ECG
+print ECG
 #print RED
 #print IR
 
