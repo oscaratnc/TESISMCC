@@ -17,6 +17,8 @@ class filters:
         print N, Wn
         [b, a] = sp.butter(N,Wp,'low')
         print b, a
+
+        filtered = sp.lfilter(b,a,signal)
         
         return filtered
    
