@@ -49,7 +49,7 @@ def getSpo2(self,numSeconds, samplerate):
       if Spo2.newSample == True:
           Spo2.readSample()
           Spo2.newSample = False
-          print (wiringpi.millis()-startTime)/100.0
+          print (wiringpi.millis()-startTime)/1000.0
 
       if wiringpi.millis()-startTime >= numSeconds * 1000:
           print wiringpi.millis()-startTime
