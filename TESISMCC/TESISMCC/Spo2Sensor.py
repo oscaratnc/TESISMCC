@@ -334,6 +334,7 @@ class Spo2Sensor (object):
     def sampleAvailable(self):
         print "Sample detected"
         newSample = True
+        return newSample
        
 
     def readSample(self):
