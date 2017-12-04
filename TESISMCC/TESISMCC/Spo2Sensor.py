@@ -348,8 +348,8 @@ class Spo2Sensor (object):
         self.buffer_red = np.append(self.buffer_red,HR)
         self.buffer_ir = np.append(self.buffer_ir, IR)
         
-        #self.buffer_red = self.buffer_red[-self.max_buffer_len:]
-        #self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
+        self.buffer_red = self.buffer_red[-self.max_buffer_len:]
+        self.buffer_ir = self.buffer_ir[-self.max_buffer_len:]
 
     def ReadFIFOFULL (self):
         i=0
