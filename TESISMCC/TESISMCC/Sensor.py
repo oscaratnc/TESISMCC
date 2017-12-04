@@ -42,13 +42,16 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)
     interrupt  = Button(7)
-    while len(self.Red)< numSeconds*samplerate :
+    i = 0
+    while i < numSeconds*samplerate-1 :
       interrupt.when_activated = Spo2.sampleAvailable()
       
       if Spo2.newSample == True:
           Spo2.readSample()
+          i+=1
           Spo2.newSample = False
-        
+          
+    
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 
     print "Buffer IR: ", len(Spo2.buffer_ir)
