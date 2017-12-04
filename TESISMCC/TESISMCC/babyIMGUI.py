@@ -5,7 +5,7 @@ import pyqtgraph as pg
 
 numSecondsECG=0
 numSecondsSpO2=2
-sampleRate = 100
+sampleRate = 200
 
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
