@@ -29,7 +29,7 @@ def getECG(self, numSeconds):
     sampleRate = 250
     starTime = wiringpi.millis()
 
-    while wiringpi.millis()-starTime/1000.0 < numSeconds: 
+    while wiringpi.millis()-starTime < numSeconds*1000: 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
         wiringpi.delayMicroseconds(400)
@@ -63,14 +63,12 @@ def getSpo2(self,numSeconds, samplerate):
     self.IR = sp.medfilt(self.IR)
     self.IR = fl.lowPasFilter(fl(), self.IR, 10,samplerate)
     self.IR = Spo2.removeDC(self.IR)
-    print self.IR
-   
-   
+
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
     self.Red = Spo2.removeDC(self.Red)
-    print self.Red
+  
 
    
 
