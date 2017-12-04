@@ -55,7 +55,7 @@ def getSpo2(self,numSeconds, samplerate):
           print wiringpi.millis()-startTime
           break
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    print "iterations: ", i 
+
     print "Buffer IR: ", len(Spo2.buffer_ir)
     self.IR = Spo2.buffer_ir
     self.IR = sp.medfilt(self.IR)
