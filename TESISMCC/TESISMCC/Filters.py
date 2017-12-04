@@ -15,7 +15,7 @@ class filters:
         print "Wp = ",Wp
         [N, Wn] = sp.buttord(Wp, Ws, rbp,rtb )
         print N, Wn
-        [b, a] = sp.butter(N,Wn,'low')
+        [b, a] = sp.butter(N,Wp,'low')
         print [b,a]
         filtered = sp.lfilter(b,a,signal)
         return filtered
