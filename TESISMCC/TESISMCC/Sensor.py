@@ -17,21 +17,6 @@ MOSI = 10
 CS   = 8
 mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 
-#Definitions for SPO2 Acquisition
-#max102 = MAX30102.MAX30102.max102
-#Spo2Sensor = MAX30102.MAX30102()
-#sampleRate= 200
-
-#def setSamplerate(self, samplerate):
-#    self.sampleRate = samplerate
-
-#def getSampleRate(self):
-#    return sampleRate
-#def beginSpO2(self, sampleRate):
-#    Spo2Sensor.begintest(Spo2Sensor.MAX30102_PARTID, Spo2Sensor.MAX30102_EXPECTED_PARTID)
-#    Spo2Sensor.setup(31, 4, 2, sampleRate, 411, 4096)
-#    Spo2Sensor.setup()
-    
 
 #Array variables to store samples
 ecgValues = np.array([])
@@ -81,7 +66,7 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
-    #self.REd = Spo2.removeDC(self.Red)
+    self.REd = Spo2.removeDC(self.Red)
     print Spo2.buffer_red
    
 

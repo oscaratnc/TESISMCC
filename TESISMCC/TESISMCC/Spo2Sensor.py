@@ -375,10 +375,10 @@ class Spo2Sensor (object):
         
         measure = measure-mean
 
-        #abs = np.max(np.abs(measure))
-        #measureN = measure/abs
+        abs = np.max(np.abs(measure))
+        measureN = measure/abs
 
-        #measureN = np.around(measureN,4)
+        measureN = np.round(measureN,4)
 
         return measure
     
