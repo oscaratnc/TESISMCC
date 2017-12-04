@@ -25,13 +25,12 @@ IR = np.array([])
 
 
 def getECG(self, numSeconds):
-    startTime = wiringpi.millis()
-    while wiringpi.millis()-startTime < (numSeconds*1000): 
-       # print (wiringpi.millis()-startTime)/1000
+    sampleRate = 250
+    while len(ecgValues) < numSeconds*sampleRate: 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
-        wiringpi.delayMicroseconds(200)
-    #self.ecgValues = Spo2Sensor.removeDC(self.ecgValues)
+        wiringpi.delay(400)
+   
    
 
 def getSpo2(self,numSeconds, samplerate):
@@ -39,21 +38,17 @@ def getSpo2(self,numSeconds, samplerate):
     startTime = wiringpi.millis()
     Spo2 = Sp2.Spo2Sensor(sampleAvg= 4,sampleRate=samplerate)
     newSample = False
-    AFthreshold= 32
+    AFthreshold= 31
     Spo2.enableAfull()
     Spo2.setFIFOAF(AFthreshold)
     interrupt  = Button(7)
-    while True :
+    while len(self.Red)< numSeconds*samplerate :
       interrupt.when_activated = Spo2.sampleAvailable()
       
       if Spo2.newSample == True:
           Spo2.readSample()
           Spo2.newSample = False
-         
-
-      if (wiringpi.millis()-startTime)/1000.0 >= numSeconds :
-          print wiringpi.millis()-startTime
-          break
+        
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 
     print "Buffer IR: ", len(Spo2.buffer_ir)
