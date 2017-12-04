@@ -25,13 +25,10 @@
     <Compile Include="babyIMGUI.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GuiTest.py">
+    <Compile Include="Filters.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="HeartRate.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MAx30102.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MAX3010X.py">
@@ -41,9 +38,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Spo2Sensor.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MAX3010X.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

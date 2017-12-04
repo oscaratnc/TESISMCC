@@ -1,10 +1,10 @@
-#import MAX3010X as MAX30102
-#import MAx30102 
+
 import Spo2Sensor as Sp2
 from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import Adafruit_MCP3008
 import wiringpi
+from Filters import filters as fl
 import numpy as np
 from scipy import signal as sp
 from gpiozero import Button
@@ -60,6 +60,7 @@ def getSpo2(self,numSeconds, samplerate):
     self.IR = Spo2.buffer_ir
     self.IR = sp.medfilt(self.IR)
     self.IR = Spo2.removeDC(self.IR)
+    self.IR = fl.lowPasFilter(fl(), self.IR, 6,samplerate)
     print self.IR
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red

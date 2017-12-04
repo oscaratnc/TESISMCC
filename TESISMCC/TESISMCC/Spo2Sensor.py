@@ -375,4 +375,5 @@ class Spo2Sensor (object):
         measureN = measure/abs
         measureN = np.round(measureN,4)
         return measureN
+
     
