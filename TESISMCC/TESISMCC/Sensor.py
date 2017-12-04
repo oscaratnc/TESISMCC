@@ -62,9 +62,9 @@ def getSpo2(self,numSeconds, samplerate):
     while True :
        #interrupt.when_activated = Spo2.readSample()
        interrupt.when_activated = Spo2.sampleAvailable()
-       if newSample == False:
+       if newSample == True:
           Spo2.readSample()
-          newSample = True
+          newSample = False
           i+=1
        if wiringpi.millis()-startTime == numSeconds * 1000:
           break
@@ -82,7 +82,11 @@ def getSpo2(self,numSeconds, samplerate):
     print Spo2.buffer_red
     print (wiringpi.millis()-startTime)
 
-    
+   
+    def sampleAvailable(self):
+        newSample = True
+       
+   
    
         
     
