@@ -46,7 +46,7 @@ def getSpo2(self,numSeconds, samplerate):
     Spo2.setFIFOAF(AFthreshold)
     interrupt  = Button(7)
     i = 0
-    while i < numSeconds*samplerate-1 :
+    while i < numSeconds*samplerate :
       interrupt.when_activated = Spo2.sampleAvailable()
       
       if Spo2.newSample == True:
