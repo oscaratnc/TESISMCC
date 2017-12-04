@@ -373,5 +373,5 @@ class Spo2Sensor (object):
 
         #measureN = np.around(measureN,4)
 
-        return measureN
+        return measure
     
