@@ -26,9 +26,11 @@ IR = np.array([])
 
 def getECG(self, numSeconds):
     sampleRate = 250
-    while len(ecgValues) < numSeconds*sampleRate: 
+    i= 0
+    while i < numSeconds*sampleRate: 
         Ecg = round((mcp.read_adc(1)*3.3)/1024,3)
         self.ecgValues = np.append(self.ecgValues,Ecg)
+        i+=1
         wiringpi.delay(400)
    
    
