@@ -72,7 +72,7 @@ def getSpo2(self,numSeconds, samplerate):
     #self.Red = fl.lowPasFIRFilter(fl(), self.Red, 60,samplerate)
     print self.Red
   
-    x
+    
    
 
    
