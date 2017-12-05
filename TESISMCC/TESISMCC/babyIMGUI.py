@@ -32,9 +32,9 @@ pg.setConfigOptions(antialias= True)
 p1 = win.addPlot(title="ECG")
 p1.plot(ECG, pen = pg.mkPen(color = 'r', width= 4))
 
-win.nextRow()
-p2 = win.addPlot(title = "RED LED")
-p2.plot(RED, pen = pg.mkPen(color = 'g', width= 4))
+#win.nextRow()
+#p2 = win.addPlot(title = "RED LED")
+#p2.plot(RED, pen = pg.mkPen(color = 'g', width= 4))
 
 
 win.nextRow()
