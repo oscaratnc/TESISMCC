@@ -73,10 +73,10 @@ def getSpo2(self,numSeconds, samplerate):
     
     self.Spo2Value = pro.calcSpO2(self.Red,self.IR)
 
-    #self.IR = pro.getACcomponent(self.IR)
-    #self.Red = pro.getACcomponent(self.Red)
-    #self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
-    #self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
+    self.IR = pro.getACcomponent(self.IR)
+    self.Red = pro.getACcomponent(self.Red)
+    self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
+    self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
 
     print "Spo2: ", Spo2Value
     
