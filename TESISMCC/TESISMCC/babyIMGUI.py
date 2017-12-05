@@ -25,7 +25,7 @@ IR = Sensors.IR
 app = QtGui.QApplication([])
 
 win = pg.GraphicsWindow()
-win.resize(500,500)
+win.resize(800,800)
 win.setWindowTitle("Signals Ploting")
 
 pg.setConfigOptions(antialias= True)
