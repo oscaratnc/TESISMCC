@@ -35,8 +35,11 @@ class Processing:
 
     def calcSpO2(self, measureRed, measureIR):
         RR = self.ratioOfRatios(measureRed, measureIR)
-        spO2 = 110-25 * RR
-        return spO2
+        spO2Array = 110-25 * RR
+
+        Spo2Value = np.mean(spO2Array)
+
+        return Spo2Value
         
     def Normalize(self, measure):
         abs = np.max(np.abs(measure))
