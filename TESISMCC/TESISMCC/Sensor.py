@@ -75,8 +75,9 @@ def getSpo2(self,numSeconds, samplerate):
    
     
     self.Spo2Value = pro.calcSpO2(self.Red,self.IR)
-    print "Spo2: ", Spo2Value
+    print "Spo2: ", Spo2Value, "%"
 
+    self.Red = pro.getACcomponent(self.Red)
     self.IR = pro.getACcomponent(self.IR)
     self.IR = pro.Normalize(self.IR)
 
