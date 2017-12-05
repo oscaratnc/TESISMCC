@@ -13,8 +13,6 @@ class Processing:
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
     
-  
-    
     def getACcomponent(self, measure):
         mean = np.mean(measure)
         measure = measure[1000:np.alen(measure)]-mean
@@ -38,7 +36,7 @@ class Processing:
         RR = self.ratioOfRatios(measureRed, measureIR)
         spO2Array = 110-25 * RR
 
-        Spo2Value = np.around(np.mean(spO2Array),0)
+        Spo2Value = np.mean(spO2Array)
 
         return Spo2Value
         

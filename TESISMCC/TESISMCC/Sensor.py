@@ -60,9 +60,10 @@ def getSpo2(self,numSeconds, samplerate):
     pro = pr.Processing()
 
     self.IR = Spo2.buffer_ir
-    self.IR = sp.medfilt(self.IR)
+    
     self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
     #self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
+    self.IR = sp.medfilt(self.IR)
   
    
     
