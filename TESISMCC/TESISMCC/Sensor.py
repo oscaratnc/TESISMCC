@@ -75,6 +75,7 @@ def getSpo2(self,numSeconds, samplerate):
         print x
 
     self.Spo2Value = pr.Processing.calcSpO2(pr(),self.Red,seld.IR)
+    print "Spo2: ", Spo2Value
     
 
 
