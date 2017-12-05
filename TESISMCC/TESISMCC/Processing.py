@@ -24,10 +24,10 @@ class Processing:
         return DCcomponent
     
     def ratioOfRatios(self, measureRed,measureIR):
-        dcRed= getDCComponent(measureRed)
-        acRed = getACcomponent(measureRed)
-        dcIR = getDCComponent(measureIR)
-        acIR = getACcomponent(measureIR)
+        dcRed= self.getDCComponent(measureRed)
+        acRed = self.getACcomponent(measureRed)
+        dcIR = self.getDCComponent(measureIR)
+        acIR = self.getACcomponent(measureIR)
 
         RR = (acRed/dcRed) / (acIR/dcIR)
 
