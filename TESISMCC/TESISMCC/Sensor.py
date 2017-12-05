@@ -5,7 +5,7 @@ from smbus2 import SMBus
 import RPi.GPIO as GPIO
 import Adafruit_MCP3008
 import wiringpi
-import Processing as pro
+import Processing as pr
 import numpy as np
 from scipy import signal as sp
 from gpiozero import Button
@@ -58,19 +58,19 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer IR: ", len(Spo2.buffer_ir)
 
     self.IR = Spo2.buffer_ir
-    self.IR = pro.removeDC(self.IR)
+    self.IR = pr.removeDC(self.IR)
     self.IR = sp.medfilt(self.IR)
-    self.IR = pro.lowPasFIRFilter(pro(), self.IR, 6,samplerate)
-    #self.IR = pro.lowPasFIRFilter(pro(), self.IR, 60,samplerate)
+    self.IR = pr.lowPasFIRFilter(pr(), self.IR, 6,samplerate)
+    #self.IR = pr.lowPasFIRFilter(pr(), self.IR, 60,samplerate)
     for x in np.ndarray(self.IR):
         print x
     
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
-    self.Red = pro.removeDC(self.Red)
-    self.Red = pro.lowPasFIRFilter(pro(), self.Red, 6,samplerate)
-    #self.Red = pro.lowPasFIRFilter(pro(), self.Red, 60,samplerate)
+    self.Red = pr.removeDC(self.Red)
+    self.Red = pr.lowPasFIRFilter(pr(), self.Red, 6,samplerate)
+    #self.Red = pr.lowPasFIRFilter(pr(), self.Red, 60,samplerate)
     for x in np.ndarray(self.Red):
         print x
   
