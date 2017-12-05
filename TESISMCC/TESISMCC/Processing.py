@@ -34,7 +34,7 @@ class Processing:
         return RR
 
     def calcSpO2(self, measureRed, measureIR):
-        RR = ratioOfRatios(measureRed, measureIR)
+        RR = self.ratioOfRatios(measureRed, measureIR)
         spO2 = 110-25 * RR
         return spO2
         
