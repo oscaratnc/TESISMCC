@@ -13,14 +13,11 @@ class Processing:
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
     
-    def quitaSobretiro(self,measure):
-        measure = measure[2000:np.alen(measure)]
-        return measure
-
+  
     
     def getACcomponent(self, measure):
         mean = np.mean(measure)
-        measure = measure-mean
+        measure = measure[1000:np.alen(measure)]-mean
         return measure
     
     def getDCComponent(self,measure):

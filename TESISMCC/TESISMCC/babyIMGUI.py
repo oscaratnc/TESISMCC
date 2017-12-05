@@ -30,7 +30,7 @@ win.setWindowTitle("Signals Ploting")
 
 pg.setConfigOptions(antialias= True)
 p1 = win.addPlot(title="ECG")
-p1.plot(ECG, pen = pg.mkPen(color = 'r', width= 4))
+p1.plot(ECG, pen = pg.mkPen(color = 'r', width= 3))
 
 #win.nextRow()
 #p2 = win.addPlot(title = "RED LED")
@@ -39,7 +39,7 @@ p1.plot(ECG, pen = pg.mkPen(color = 'r', width= 4))
 
 win.nextRow()
 p3= win.addPlot(title = "IR LED")
-p3.plot(IR, pen = pg.mkPen(color = 'b', width= 4))
+p3.plot(IR, pen = pg.mkPen(color = 'b', width= 3))
 
 if __name__ == '__main__':
     import sys
