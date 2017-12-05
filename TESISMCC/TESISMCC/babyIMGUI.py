@@ -3,8 +3,8 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-numSecondsECG=2
-numSecondsSpO2=2
+numSecondsECG=3
+numSecondsSpO2=3
 sampleRate = 200
 
 Sensors.getECG(Sensors,numSecondsECG)
