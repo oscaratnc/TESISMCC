@@ -12,9 +12,14 @@ class Processing:
         taps  = sp.firwin(N, cutoff_hz/nyq_rate,width, window = 'kaiser')
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
-      
+    
+    def quitaSobretiro(self,measure):
+        measure[0:1000] = 0
+        return measure
+
     
     def getACcomponent(self, measure):
+        measure = self.quitaSobretiro(measure)
         mean = np.mean(measure)
         measure = measure-mean
         return measure
