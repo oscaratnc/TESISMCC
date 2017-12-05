@@ -57,29 +57,37 @@ def getSpo2(self,numSeconds, samplerate):
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 
     print "Buffer IR: ", len(Spo2.buffer_ir)
+    print "Buffer Red: ", len(Spo2.buffer_red)
+
     pro = pr.Processing()
 
+    #get Red and Ir buffers
     self.IR = Spo2.buffer_ir
+    self.Red = Spo2.buffer_red
+
+    #Delay Signal to avoid start overshoot
+    self.Red = pro.delaySignal(self.Red)
+    self.IR = pro.delaySignal(self. IR)
+
+
+
+    #self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
+    #self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
+    #self.IR = sp.medfilt(self.IR)
     
-    self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
-    self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
-    self.IR = sp.medfilt(self.IR)
-  
    
     
-    print "Buffer Red: ", len(Spo2.buffer_red)
-    self.Red = Spo2.buffer_red
-    self.Red = sp.medfilt(self.Red)
-    self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
-    self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
+    #self.Red = sp.medfilt(self.Red)
+    #self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
+    #self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
    
     
     self.Spo2Value = pro.calcSpO2(self.Red,self.IR)
     print "Spo2: ", Spo2Value, "%"
 
-    self.Red = pro.getACcomponent(self.Red)
-    self.IR = pro.getACcomponent(self.IR)
-    self.IR = pro.Normalize(self.IR)
+    #self.Red = pro.getACcomponent(self.Red)
+    #self.IR = pro.getACcomponent(self.IR)
+    #self.IR = pro.Normalize(self.IR)
 
 
     

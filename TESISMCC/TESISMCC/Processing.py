@@ -13,11 +13,14 @@ class Processing:
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
     
+    def delaySignal(self, measure1):
+        size1 = np.alen(measure)
+        measure1 = measure1[int(size*.3): size]
+        return measure
+    
     def getACcomponent(self, measure):
         mean = np.mean(measure)
-        size = np.alen(measure)
-        measure = measure[int(size*.2): size]-mean
-        #measure = measure-mean
+        measure = measure-mean
         return measure
     
     def getDCComponent(self,measure):
