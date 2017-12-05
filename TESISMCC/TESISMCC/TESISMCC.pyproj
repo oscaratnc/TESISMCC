@@ -25,9 +25,6 @@
     <Compile Include="babyIMGUI.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Filters.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="HeartRate.py">
       <SubType>Code</SubType>
     </Compile>
