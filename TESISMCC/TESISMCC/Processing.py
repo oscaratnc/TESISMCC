@@ -16,7 +16,7 @@ class Processing:
     def getACcomponent(self, measure):
         mean = np.mean(measure)
         size = np.alen(measure)
-        measure = measure[size*.2: size]-mean
+        measure = measure[int(size*.2): size]-mean
         #measure = measure-mean
         return measure
     
