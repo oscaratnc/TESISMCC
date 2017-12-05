@@ -61,16 +61,16 @@ def getSpo2(self,numSeconds, samplerate):
 
     self.IR = Spo2.buffer_ir
     self.IR = sp.medfilt(self.IR)
-    self.IR = pro.lowPasFIRFilter(self.IR, 5,samplerate)
-    self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
+    self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
+    #self.IR = pro.lowPasFIRFilter(self.IR, 60,samplerate)
   
    
     
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
-    self.Red = pro.lowPasFIRFilter(self.Red, 5,samplerate)
-    self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
+    self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
+   # self.Red = pro.lowPasFIRFilter(self.Red, 60,samplerate)
    
     
     self.Spo2Value = pro.calcSpO2(self.Red,self.IR)
