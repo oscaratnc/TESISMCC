@@ -74,7 +74,7 @@ def getSpo2(self,numSeconds, samplerate):
     for x in np.ndarray(self.Red):
         print x
 
-    self.Spo2Value = pr.Processing.
+    self.Spo2Value = pr.Processing.calcSpO2(pr(),self.Red,seld.IR)
     
 
 
