@@ -16,7 +16,7 @@ class Processing:
     
     def getACcomponent(self, measure):
         mean = np.mean(measure)
-        measure = measure[1000:np.alen(measure)]-mean
+        measure = measure-mean
         return measure
     
     def getDCComponent(self,measure):
