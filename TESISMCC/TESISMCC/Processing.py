@@ -1,6 +1,7 @@
 from scipy import signal as sp
+import numpy as np
 
-class filters:
+class Processing:
     def lowPasFIRFilter(self,signal,fc,sampleF):
         sampleRate = sampleF
         nyq_rate = sampleRate/2.0
@@ -13,10 +14,29 @@ class filters:
         return filtered
       
     
-    def removeDC(self, measure):
+    def getACcomponent(self, measure):
         mean = np.mean(measure)
-        measure = measure-mean
+        measure = measure[1000:np.alen(measure)]-mean
         return measure
+    
+    def getDCComponent(self,measure):
+        DCcomponent = np.mean(measure)
+        return DCcomponent
+    
+    def ratioOfRatios(self, measureRed,measureIR):
+        dcRed= getDCComponent(measureRed)
+        acRed = getACcomponent(measureRed)
+        dcIR = getDCComponent(measureIR)
+        acIR = getACcomponent(measureIR)
+
+        RR = (acRed/dcRed) / (acIR/dcIR)
+
+        return RR
+
+    def calcSpO2(self, measureRed, measureIR):
+        RR = ratioOfRatios(measureRed, measureIR)
+        spO2 = 110-25 * RR
+        return spO2
         
     def Normalize(self, measure):
         abs = np.max(np.abs(measure))

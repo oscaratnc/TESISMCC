@@ -23,6 +23,7 @@ mcp = Adafruit_MCP3008.MCP3008(CLK, CS, MISO, MOSI)
 ecgValues = np.array([])
 Red = np.array([])
 IR = np.array([])
+Spo2Value = 0
 
 
 def getECG(self, numSeconds):
@@ -68,11 +69,15 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
-    self.Red = pr.removeDC(self.Red)
     self.Red = pr.lowPasFIRFilter(pr(), self.Red, 6,samplerate)
     #self.Red = pr.lowPasFIRFilter(pr(), self.Red, 60,samplerate)
     for x in np.ndarray(self.Red):
         print x
+
+    self.Spo2Value = pr.Processing.
+    
+
+
   
 
    

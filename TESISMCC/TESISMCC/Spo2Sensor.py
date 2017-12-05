@@ -359,13 +359,14 @@ class Spo2Sensor (object):
         self.clearFIFO()
         while i < 32:
             self.readSample()
-            i+=1
-            
+            i+=1        
 
     def getBuffer(self, buffer):
        if buffer == "Red":
            return self.buffer_red
        elif buffer == "IR":
            return self.buffer_ir
+
+    
 
     
