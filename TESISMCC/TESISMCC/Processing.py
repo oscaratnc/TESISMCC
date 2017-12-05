@@ -14,7 +14,7 @@ class Processing:
         return filtered
     
     def quitaSobretiro(self,measure):
-        measure[0:1000] = 0
+        measure[0:1001] = 0
         return measure
 
     
