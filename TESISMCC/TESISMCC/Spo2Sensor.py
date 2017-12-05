@@ -368,12 +368,4 @@ class Spo2Sensor (object):
        elif buffer == "IR":
            return self.buffer_ir
 
-    def removeDC(self, measure):
-        #mean = np.mean(measure)
-        #measure = measure-mean
-        abs = np.max(np.abs(measure))
-        measureN = measure/abs
-        measureN = np.round(measureN,4)
-        return measureN
-
     

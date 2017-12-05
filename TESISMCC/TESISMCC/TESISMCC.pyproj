@@ -34,6 +34,9 @@
     <Compile Include="MAX3010X.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Processing.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Sensor.py">
       <SubType>Code</SubType>
     </Compile>
