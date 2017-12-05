@@ -13,7 +13,7 @@ class Processing:
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
     
-    def delaySignal(self, measure1):
+    def delaySignal(self, measure):
         size1 = np.alen(measure)
         measure1 = measure1[int(size*.3): size]
         return measure
