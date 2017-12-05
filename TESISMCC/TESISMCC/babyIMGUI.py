@@ -29,7 +29,7 @@ win.resize(500,500)
 win.setWindowTitle("Signals Ploting")
 
 pg.setConfigOptions(antialias= True)
-pg.mkPen(pg.mkColor(255,0,0),width= 6)
+pg.mkPen(color = 'r', width = 6)
 p1 = win.addPlot(title="ECG")
 p1.plot(ECG)
 
