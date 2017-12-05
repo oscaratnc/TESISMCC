@@ -14,8 +14,8 @@ class Processing:
         return filtered
     
     def delaySignal(self, measure):
-        size1 = np.alen(measure)
-        measure1 = measure1[int(size*.3): size]
+        size = np.alen(measure)
+        measure = measure[int(size*.3): size]
         return measure
     
     def getACcomponent(self, measure):
