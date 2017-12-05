@@ -34,12 +34,12 @@ p1.plot(ECG, pen = pg.mkPen(color = 'r', width= 3))
 
 win.nextRow()
 p2 = win.addPlot(title = "RED LED")
-p2.plot(RED, pen = pg.mkPen(color = 'g', width= .5))
+p2.plot(RED, pen = pg.mkPen(color = 'g', width= 1))
 
 
 win.nextRow()
 p3= win.addPlot(title = "IR LED")
-p3.plot(IR, pen = pg.mkPen(color = 'b', width= .5))
+p3.plot(IR, pen = pg.mkPen(color = 'b', width= 1))
 
 if __name__ == '__main__':
     import sys
