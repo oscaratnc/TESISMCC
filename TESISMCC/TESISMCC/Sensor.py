@@ -57,11 +57,12 @@ def getSpo2(self,numSeconds, samplerate):
     print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 
     print "Buffer IR: ", len(Spo2.buffer_ir)
+    pro = pr.Processing()
 
     self.IR = Spo2.buffer_ir
-    self.IR = pr.removeDC(self.IR)
+    self.IR = pro.getACcomponent(self.IR)
     self.IR = sp.medfilt(self.IR)
-    self.IR = pr.lowPasFIRFilter(pr(), self.IR, 6,samplerate)
+    self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
     #self.IR = pr.lowPasFIRFilter(pr(), self.IR, 60,samplerate)
     for x in np.ndarray(self.IR):
         print x
@@ -69,12 +70,12 @@ def getSpo2(self,numSeconds, samplerate):
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
     self.Red = sp.medfilt(self.Red)
-    self.Red = pr.lowPasFIRFilter(pr(), self.Red, 6,samplerate)
+    self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
     #self.Red = pr.lowPasFIRFilter(pr(), self.Red, 60,samplerate)
     for x in np.ndarray(self.Red):
         print x
 
-    self.Spo2Value = pr.Processing.calcSpO2(pr(),self.Red,seld.IR)
+    self.Spo2Value = pro.calcSpO2(self.Red,seld.IR)
     print "Spo2: ", Spo2Value
     
 
