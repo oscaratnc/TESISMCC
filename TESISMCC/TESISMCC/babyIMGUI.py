@@ -15,7 +15,7 @@ ECG = Sensors.ecgValues
 RED  = Sensors.Red
 IR = Sensors.IR
 #PPG = RED/IR
-print ECG
+#print ECG
 #print RED
 #print IR
 

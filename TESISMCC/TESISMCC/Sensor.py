@@ -50,7 +50,6 @@ def getSpo2(self,numSeconds, samplerate):
       interrupt.when_activated = Spo2.sampleAvailable()
       if Spo2.newSample == True:
           Spo2.readSample()
-         
           Spo2.newSample = False
           
     
@@ -62,7 +61,7 @@ def getSpo2(self,numSeconds, samplerate):
     self.IR = Spo2.removeDC(self.IR)
 
     self.IR = sp.medfilt(self.IR)
-    #self.IR = fl.lowPasFilter(fl(), self.IR, 10,samplerate)
+    self.IR = fl.lowPasFIRFilter(fl(), self.IR, 6,samplerate)
     
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
