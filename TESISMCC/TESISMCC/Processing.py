@@ -37,7 +37,7 @@ class Processing:
         RR = self.ratioOfRatios(measureRed, measureIR)
         spO2Array = 110-25 * RR
 
-        Spo2Value = np.mean(spO2Array)
+        Spo2Value = np.around(np.mean(spO2Array),0)
 
         return Spo2Value
         
