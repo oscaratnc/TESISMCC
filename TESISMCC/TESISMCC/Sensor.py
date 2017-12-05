@@ -62,7 +62,8 @@ def getSpo2(self,numSeconds, samplerate):
     self.IR = sp.medfilt(self.IR)
     self.IR = pro.lowPasFIRFilter(pro(), self.IR, 6,samplerate)
     #self.IR = pro.lowPasFIRFilter(pro(), self.IR, 60,samplerate)
-    print self.IR
+    for x in np.ndarray(self.IR):
+        print x
     
     print "Buffer Red: ", len(Spo2.buffer_red)
     self.Red = Spo2.buffer_red
@@ -70,7 +71,8 @@ def getSpo2(self,numSeconds, samplerate):
     self.Red = pro.removeDC(self.Red)
     self.Red = pro.lowPasFIRFilter(pro(), self.Red, 6,samplerate)
     #self.Red = pro.lowPasFIRFilter(pro(), self.Red, 60,samplerate)
-    print self.Red
+    for x in np.ndarray(self.Red):
+        print x
   
 
    
