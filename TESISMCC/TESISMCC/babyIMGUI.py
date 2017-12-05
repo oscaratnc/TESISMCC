@@ -31,7 +31,7 @@ win.setWindowTitle("Signals Ploting")
 pg.setConfigOptions(antialias= True)
 
 p1 = win.addPlot(title="ECG")
-p1.mkpen((255,0,0),width=4)
+pg.mkPen((255,0,0),width= 4)
 p1.plot(ECG, pen)
 
 win.nextRow()
