@@ -19,10 +19,10 @@ class Processing:
 
     
     def getACcomponent(self, measure):
-        measure = self.quitaSobretiro(measure)
-        mean = np.mean(measure)
-        measure = measure-mean
-        return measure
+        measureN = self.quitaSobretiro(measure)
+        mean = np.mean(measureN)
+        measureN = measureN-mean
+        return measureN
     
     def getDCComponent(self,measure):
         DCcomponent = np.mean(measure)
