@@ -3,9 +3,9 @@ from pyqtgraph.Qt import QtGui, QtCore
 import numpy as np
 import pyqtgraph as pg
 
-numSecondsECG=5
-numSecondsSpO2=5
-sampleRate = 200
+numSecondsECG=2
+numSecondsSpO2=2
+sampleRate = 100
 
 Sensors.getECG(Sensors,numSecondsECG)
 print "ECG done"
