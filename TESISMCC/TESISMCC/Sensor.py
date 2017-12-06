@@ -66,8 +66,8 @@ def getSpo2(self,numSeconds, samplerate):
     self.Red = Spo2.buffer_red
 
     #Delay Signal to avoid start overshoot
-    self.Red = pro.delaySignal(self.Red)
-    self.IR = pro.delaySignal(self. IR)
+    #self.Red = pro.delaySignal(self.Red)
+    #self.IR = pro.delaySignal(self. IR)
 
     #Median filter to the signals
     self.IR = sp.medfilt(self.IR)
