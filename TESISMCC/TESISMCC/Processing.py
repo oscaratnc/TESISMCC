@@ -13,6 +13,15 @@ class Processing:
         filtered = sp.lfilter(taps,1.0,signal)
         return filtered
     
+    def NotchFilter(self, signal, fc, sampleF):
+        nyqRate = sampleF/2.0
+        f1 = (fc-0.9)/nyqRate
+        f2 = (fc*1.1)/nyqRate
+        order = 20 
+        a = sp.firwin(order, [f1,f2])
+        Filtered = sp.lfilter(a,1.0,signal)
+        return Filtered
+
     def delaySignal(self, measure):
         size = np.alen(measure)
         measure = measure[int(size*.3): size]
@@ -34,7 +43,6 @@ class Processing:
         acIR = self.getACcomponent(measureIR)
 
         RR = (acRed/dcRed) / (acIR/dcIR)
-
         return RR
 
     def calcSpO2(self, measureRed, measureIR):
