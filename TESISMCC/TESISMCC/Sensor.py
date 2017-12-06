@@ -74,8 +74,8 @@ def getSpo2(self,numSeconds, samplerate):
     self.Red = sp.medfilt(self.Red)
 
     #low pass filter at 60hz
-    self.IR = pro.NotchFilter(self.IR, 60,samplerate)
-    self.Red = pro.NotchFilter(self.Red, 60,samplerate)
+    #self.IR = pro.NotchFilter(self.IR, 60,samplerate)
+    #self.Red = pro.NotchFilter(self.Red, 60,samplerate)
 
     #lowpass filter at 6Hz:
     #self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
