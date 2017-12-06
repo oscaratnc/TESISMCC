@@ -78,8 +78,8 @@ def getSpo2(self,numSeconds, samplerate):
     self.Red = pro.NotchFilter(self.Red, 60,samplerate)
 
     #lowpass filter at 6Hz:
-    self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
-    self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
+    #self.IR = pro.lowPasFIRFilter(self.IR, 6,samplerate)
+    #self.Red = pro.lowPasFIRFilter(self.Red, 6,samplerate)
     
     #Compute Spo2Value:
     self.Spo2Value = pro.calcSpO2(self.Red,self.IR)
